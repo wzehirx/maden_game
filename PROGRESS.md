@@ -39,3 +39,9 @@ Neden: Unity Personal lisansı başsız etkinleştirilemedi (manuel etkinleştir
 - Unity dosyaları silindi (Runtime, Editor, Plugins, Packages, ProjectSettings, license, tools/stubs). Mantık Godot'ya taşındı (Assets/Scripts/Game).
 - Core + GestureRecognizer: Core.Tests 91 test geçiyor; Sim KABUL EVET.
 - Android: `tools/build_android.sh` ile Builds/Maden.apk üretildi (gradle yolu, arm64-v8a, imzalı). GERÇEK CİHAZDA DENENMEDİ: TTS, dokunma, titreşim, .NET çalışma zamanı.
+
+## Durum (Godot taşıması TAMAM, orkestratör doğruladı)
+- 91 xUnit testi geçiyor; Sim KABUL EVET (16.9-17.1 sa, en uzun bekleme 235 sn); Builds/Maden.apk (117 MB) bu kutuda derlendi, imzalı, com.maden.oyun, arm64, VIBRATE.
+- AÇIK RİSK 1: Godot şablonu net9.0 bekliyor, oyun net8.0 ile paketli (gradle yolu). Cihazda açılışta çökebilir. Düzeltme: .NET 9 SDK kur + csproj TargetFramework=net9.0 (bu oturumda kurulum izni reddedildi).
+- AÇIK RİSK 2: TTS, dokunma, titreşim cihazda test edilmedi.
+- Sıradaki: Synth yok (Unity silindi); büyük sayı/dükkân listesi iyileştirmesi; son erişilebilirlik denetimi; kullanıcı kurulum tarifi (tools/KURULUM_TR.md hazır).
