@@ -788,7 +788,7 @@
   {
    "id": "dynamitePower",
    "name": "Dinamit Gücü",
-   "desc": "Gücü her seviyede yüzde 6 artar",
+   "desc": "Gücü her seviyede yüzde 3 artar",
    "baseCost": 3704,
    "costMult": 1.08,
    "maxLevel": 10,
@@ -799,7 +799,7 @@
   {
    "id": "dynamiteSpeed",
    "name": "Dinamit Hızı",
-   "desc": "Hızı her seviyede yüzde 4 artar",
+   "desc": "Hızı her seviyede yüzde 2 artar",
    "baseCost": 5556,
    "costMult": 1.08,
    "maxLevel": 10,
@@ -810,7 +810,7 @@
   {
    "id": "drillPower",
    "name": "Matkap Gücü",
-   "desc": "Gücü her seviyede yüzde 6 artar",
+   "desc": "Gücü her seviyede yüzde 3 artar",
    "baseCost": 71377,
    "costMult": 1.08,
    "maxLevel": 10,
@@ -821,7 +821,7 @@
   {
    "id": "drillSpeed",
    "name": "Matkap Hızı",
-   "desc": "Hızı her seviyede yüzde 4 artar",
+   "desc": "Hızı her seviyede yüzde 2 artar",
    "baseCost": 107065,
    "costMult": 1.08,
    "maxLevel": 10,
@@ -832,7 +832,7 @@
   {
    "id": "dynamite2Power",
    "name": "Güçlü Dinamit Gücü",
-   "desc": "Gücü her seviyede yüzde 6 artar",
+   "desc": "Gücü her seviyede yüzde 3 artar",
    "baseCost": 26492648,
    "costMult": 1.08,
    "maxLevel": 10,
@@ -843,7 +843,7 @@
   {
    "id": "dynamite2Speed",
    "name": "Güçlü Dinamit Hızı",
-   "desc": "Hızı her seviyede yüzde 4 artar",
+   "desc": "Hızı her seviyede yüzde 2 artar",
    "baseCost": 39738972,
    "costMult": 1.08,
    "maxLevel": 10,
@@ -854,7 +854,7 @@
   {
    "id": "drill2Power",
    "name": "Güçlü Matkap Gücü",
-   "desc": "Gücü her seviyede yüzde 6 artar",
+   "desc": "Gücü her seviyede yüzde 3 artar",
    "baseCost": 510397483,
    "costMult": 1.08,
    "maxLevel": 10,
@@ -865,7 +865,7 @@
   {
    "id": "drill2Speed",
    "name": "Güçlü Matkap Hızı",
-   "desc": "Hızı her seviyede yüzde 4 artar",
+   "desc": "Hızı her seviyede yüzde 2 artar",
    "baseCost": 765596225,
    "costMult": 1.08,
    "maxLevel": 10,
@@ -876,7 +876,7 @@
   {
    "id": "dynamite3Power",
    "name": "Mega Dinamit Gücü",
-   "desc": "Gücü her seviyede yüzde 6 artar",
+   "desc": "Gücü her seviyede yüzde 3 artar",
    "baseCost": 189441374136,
    "costMult": 1.08,
    "maxLevel": 10,
@@ -887,7 +887,7 @@
   {
    "id": "dynamite3Speed",
    "name": "Mega Dinamit Hızı",
-   "desc": "Hızı her seviyede yüzde 4 artar",
+   "desc": "Hızı her seviyede yüzde 2 artar",
    "baseCost": 284162061204,
    "costMult": 1.08,
    "maxLevel": 10,
@@ -898,7 +898,7 @@
   {
    "id": "drill3Power",
    "name": "Elmas Matkap Gücü",
-   "desc": "Gücü her seviyede yüzde 6 artar",
+   "desc": "Gücü her seviyede yüzde 3 artar",
    "baseCost": 3649706918312,
    "costMult": 1.08,
    "maxLevel": 10,
@@ -909,7 +909,7 @@
   {
    "id": "drill3Speed",
    "name": "Elmas Matkap Hızı",
-   "desc": "Hızı her seviyede yüzde 4 artar",
+   "desc": "Hızı her seviyede yüzde 2 artar",
    "baseCost": 5474560377468,
    "costMult": 1.08,
    "maxLevel": 10,

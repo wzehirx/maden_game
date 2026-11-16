@@ -20,6 +20,7 @@ namespace Maden.Core
     public sealed class GameSession
     {
         private const int MaxBlocksPerCall = 200000;
+        private const long MaxMoney = 4000000000000000000L; // taşmaya karşı üst sınır
 
         private readonly EconomyConfig cfg;
         private readonly IRandom rng;
@@ -182,7 +183,7 @@ namespace Maden.Core
             int idx = PickItem(layer);
             var def = layer.Items[idx];
             State.AddToBag(GameState.BagKey(li, idx), 1);
-            long val = (long)Math.Round(def.Value * SellMultiplier);
+            long val = (long)Math.Round(def.Value * SellMultiplier, MidpointRounding.AwayFromZero);
             State.TotalItems++;
             if (def.Rarity == Rarity.Rare) State.RareCount++;
             State.TotalBlocks++;
@@ -279,10 +280,10 @@ namespace Maden.Core
                 total += def.Value * kv.Value;
                 count += kv.Value;
             }
-            long money = (long)Math.Round(total * mult);
+            long money = (long)Math.Round(total * mult, MidpointRounding.AwayFromZero);
             State.ClearBag();
-            State.Money += money;
-            State.TotalEarned += money;
+            State.Money = Math.Min(State.Money + money, MaxMoney);
+            State.TotalEarned = Math.Min(State.TotalEarned + money, MaxMoney);
             Emit(EventKind.Sold,
                 (auto ? "Otomatik satış: " : "") + count + " eşya satıldı, " + NumberFormat.Lira(money) + " kazandın. Toplam " + NumberFormat.Lira(State.Money) + ".",
                 Rarity.Common, money);
@@ -454,12 +455,13 @@ namespace Maden.Core
             if (dtSeconds <= 0 || double.IsNaN(dtSeconds)) return;
             State.PlaySeconds += dtSeconds;
             Advance(dtSeconds);
-            if (!silent && drillBlocks > 0)
+            if (!silent)
             {
                 drillClock += dtSeconds;
                 if (drillClock >= cfg.DrillReportSeconds)
                 {
-                    Emit(EventKind.MachineDrill, "Matkaplar " + drillBlocks + " blok kazdı.", Rarity.Common, drillBlocks);
+                    if (drillBlocks > 0)
+                        Emit(EventKind.MachineDrill, "Matkaplar " + drillBlocks + " blok kazdı.", Rarity.Common, drillBlocks);
                     drillBlocks = 0; drillValue = 0; drillClock = 0;
                 }
             }
