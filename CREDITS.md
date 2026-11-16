@@ -1,6 +1,6 @@
 # Ses Efektleri Kredileri
 
-Tüm ses dosyaları `Assets/Resources/Audio/sfx/` altındadır. Lisanslar, her kaynak sayfasında (opengameart.org) doğrulanmıştır.
+Tüm ses dosyaları `Assets/Resources/Audio/sfx/` altındadır. Lisanslar, her kaynak sayfasında (opengameart.org) doğrulanmıştır. Sonniss kaynaklı dosyalar için lisans metni aşağıdaki "Sonniss lisansı" bölümündedir.
 
 | Dosya | Başlık | Yazar | Kaynak URL | Lisans |
 |---|---|---|---|---|
@@ -12,48 +12,16 @@ Tüm ses dosyaları `Assets/Resources/Audio/sfx/` altındadır. Lisanslar, her k
 | sell.ogg | 12 Coin Sound Effects (coin.1.ogg) | starninjas | https://opengameart.org/content/12-coin-sound-effects | CC0 |
 | buy.ogg | 50 CC0 retro / synth SFX (power_up_01.ogg) | rubberduck | https://opengameart.org/content/50-cc0-retro-synth-sfx | CC0 |
 | dynamite.ogg | 50 CC0 retro / synth SFX (retro_explosion_01.ogg) | rubberduck | https://opengameart.org/content/50-cc0-retro-synth-sfx | CC0 |
-| drill_loop.ogg | Drill 1 (cordless_drill_1.wav, 4 sn kırpıldı, döngü dikişi doğrulanmadı) | dklon | https://opengameart.org/content/drill-1 | CC-BY 3.0 (atıf zorunlu) |
 | menu_open.ogg | Air whoosh (whoosh2_0.wav, 1.2 sn kırpıldı) | pyranostudios | https://opengameart.org/content/air-whoosh | CC0 |
 | menu_close.ogg | Air whoosh (whoosh2_0.wav, ters çevrildi, 1.2 sn) | pyranostudios | https://opengameart.org/content/air-whoosh | CC0 (türetilmiş) |
-| fanfare.ogg | Classic fanfare lick (fanfare_3.ogg) | fvcalderan | https://opengameart.org/content/classic-fanfare-lick | CC0 |
-| dirt_hit_1.ogg | Shovel Sound (shovel_0.ogg, kırpıldı) | themightyglider | https://opengameart.org/content/shovel-sound | CC0 |
-| dirt_hit_2.ogg | Digging Underground (dig_underground_1.mp3, kırpıldı) | Almitory, kimdagamer | https://opengameart.org/content/digging-underground | CC0 |
-| dirt_hit_3.ogg | Mining sample (mining_1.ogg, 4.10–5.75 sn segmenti) | jordan4ibanez | https://opengameart.org/content/mining-sample | CC0 |
-| dirt_hit_4.ogg | Mining sample (mining_1.ogg, 18.10–19.70 sn segmenti) | jordan4ibanez | https://opengameart.org/content/mining-sample | CC0 |
-| stone_hit_1.ogg | 75 CC0 breaking / falling / hit sfx (bfh1_rock_breaking_01) | frances, jjustra, rubberduck | https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx | CC0 |
-| stone_hit_2.ogg | 75 CC0 breaking / falling / hit sfx (bfh1_rock_breaking_02) | frances, jjustra, rubberduck | https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx | CC0 |
-| stone_hit_3.ogg | 75 CC0 breaking / falling / hit sfx (bfh1_rock_falling_03) | frances, jjustra, rubberduck | https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx | CC0 |
-| stone_hit_4.ogg | 75 CC0 breaking / falling / hit sfx (bfh1_rock_breaking_03) | frances, jjustra, rubberduck | https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx | CC0 |
-| coal_hit_1.ogg | 75 CC0 breaking / falling / hit sfx (bfh1_rock_falling_01) | frances, jjustra, rubberduck | https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx | CC0 |
-| coal_hit_2.ogg | 75 CC0 breaking / falling / hit sfx (bfh1_rock_falling_05) | frances, jjustra, rubberduck | https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx | CC0 |
-| coal_hit_3.ogg | 75 CC0 breaking / falling / hit sfx (bfh1_rock_falling_06) | frances, jjustra, rubberduck | https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx | CC0 |
-| metal_hit_1.ogg | 75 CC0 breaking / falling / hit sfx (bfh1_metal_hit_01) | frances, jjustra, rubberduck | https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx | CC0 |
-| metal_hit_2.ogg | 75 CC0 breaking / falling / hit sfx (bfh1_metal_hit_02) | frances, jjustra, rubberduck | https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx | CC0 |
-| metal_hit_3.ogg | 75 CC0 breaking / falling / hit sfx (bfh1_metal_hit_03) | frances, jjustra, rubberduck | https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx | CC0 |
-| metal_hit_4.ogg | 75 CC0 breaking / falling / hit sfx (bfh1_metal_hit_04) | frances, jjustra, rubberduck | https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx | CC0 |
-| crystal_hit_1.ogg | 100 CC0 SFX (glass_04.ogg) | 2DPIXX, HauntedBees, Liberiton, aijikl, rubberduck, unitcodes | https://opengameart.org/content/100-cc0-sfx | CC0 |
-| crystal_hit_2.ogg | 100 CC0 SFX (glass_05.ogg) | 2DPIXX, HauntedBees, Liberiton, aijikl, rubberduck, unitcodes | https://opengameart.org/content/100-cc0-sfx | CC0 |
-| crystal_hit_3.ogg | Glass Break (glass_breaking.wav) | TinyWorlds | https://opengameart.org/content/glass-break | CC0 |
-| rare_find_1.ogg | Bell dings/chimes (bell_ding2.wav, kırpıldı) | PWL | https://opengameart.org/content/bell-dingschimes | CC0 |
-| rare_find_2.ogg | Bell dings/chimes (bell_ding3.wav, kırpıldı) | PWL | https://opengameart.org/content/bell-dingschimes | CC0 |
-| rare_find_3.ogg | Bell dings/chimes (bell_ding4.wav, kırpıldı) | PWL | https://opengameart.org/content/bell-dingschimes | CC0 |
 | legend_find_1.ogg | 100 CC0 SFX (gong_02.ogg) | 2DPIXX, HauntedBees, Liberiton, aijikl, rubberduck, unitcodes | https://opengameart.org/content/100-cc0-sfx | CC0 |
 | legend_find_2.ogg | 100 CC0 SFX (gong_01.ogg) | 2DPIXX, HauntedBees, Liberiton, aijikl, rubberduck, unitcodes | https://opengameart.org/content/100-cc0-sfx | CC0 |
-| sell_1.ogg | 12 Coin Sound Effects (coin.2.ogg) | StarNinjas (paket: RFCaldas, Spring Spring, Timattack, bandswithlegends) | https://opengameart.org/content/12-coin-sound-effects | CC0 |
-| sell_2.ogg | 12 Coin Sound Effects (coin.9.ogg) | StarNinjas (paket: RFCaldas, Spring Spring, Timattack, bandswithlegends) | https://opengameart.org/content/12-coin-sound-effects | CC0 |
-| sell_3.ogg | 12 Coin Sound Effects (coin.11.ogg) | StarNinjas (paket: RFCaldas, Spring Spring, Timattack, bandswithlegends) | https://opengameart.org/content/12-coin-sound-effects | CC0 |
-| buy_1.ogg | 50 CC0 retro / synth SFX (power_up_02.ogg) | DaveZ, Neyuriki, Snabisch, farcodev, retrogemn_, rubberduck | https://opengameart.org/content/50-cc0-retro-synth-sfx | CC0 |
-| buy_2.ogg | 50 CC0 retro / synth SFX (power_up_03.ogg) | DaveZ, Neyuriki, Snabisch, farcodev, retrogemn_, rubberduck | https://opengameart.org/content/50-cc0-retro-synth-sfx | CC0 |
 | upgrade.ogg | 50 CC0 retro / synth SFX (power_up_04.ogg) | DaveZ, Neyuriki, Snabisch, farcodev, retrogemn_, rubberduck | https://opengameart.org/content/50-cc0-retro-synth-sfx | CC0 |
 | error.ogg | 7 mechanical clicks and buzzes (buzzerr-01.flac) | PFNienow, qubodup | https://opengameart.org/content/7-mechanical-clicks-and-buzzes | CC0 |
-| dynamite_1.ogg | 50 CC0 retro / synth SFX (retro_explosion_03.ogg) | DaveZ, Neyuriki, Snabisch, farcodev, retrogemn_, rubberduck | https://opengameart.org/content/50-cc0-retro-synth-sfx | CC0 |
-| dynamite_2.ogg | 100 CC0 SFX (explosion.ogg) | 2DPIXX, HauntedBees, Liberiton, aijikl, rubberduck, unitcodes | https://opengameart.org/content/100-cc0-sfx | CC0 |
 | fuse.ogg | Simple Fuse Sound (fuse_0.ogg) | themightyglider | https://opengameart.org/content/simple-fuse-sound | CC0 |
-| drill_loop_2.ogg | 68 Workshop Sounds (workshop - drill long.wav, döngü dikişi 0.5 sn çapraz karartmayla düzeltildi) | HaelDB, TomCoenen, bart | https://opengameart.org/content/68-workshop-sounds | CC0 |
 
 ## Notlar
 
-- CC-BY 3.0 ile lisanslanan `drill_loop.ogg` için yukarıdaki atıf (dklon, Drill 1, CC-BY 3.0) oyunda gösterilmelidir.
 - `menu_close.ogg`, `menu_open.ogg` dosyasının zaman tersine çevrilmiş halidir.
 - `stone_hit.ogg`, `crystal_hit.ogg`, `metal_hit.ogg` 44.1 kHz'e yeniden örneklendi (önceki sürümler 24/48 kHz idi); adları korundu.
 - `menu_close.ogg` önceki sürümünde sessizdi (tepe -91 dBFS); `menu_open.ogg`'nin ters çevrilmiş hali olarak yeniden üretildi.
@@ -84,6 +52,37 @@ Dosyalar `Assets/Resources/Audio/music/` ve `Assets/Resources/Audio/ambient/` al
 | ambient/layer_3.ogg | Background Drones Vol 1 (temple_of_the_digital_monk_loop, 154 sn) | Tsorthan Grove | https://opengameart.org/content/background-drones-vol-1 | CC0 |
 | ambient/layer_4.ogg | Background Drones Vol 1 (light_through_a_pale_window_loop, 154 sn) | Tsorthan Grove | https://opengameart.org/content/background-drones-vol-1 | CC0 (kristal değil, yumuşak tınlayan drone) |
 | ambient/layer_5.ogg | Dark Ambient Drone #2 (loop, 307 sn) | Tsorthan Grove | https://opengameart.org/content/dark-ambient-drone-2 | CC0 |
+| dirt_hit_1.ogg | Sonniss GDC 2017 - Rock,Brick and Dirt Part 02 (Rock Hit and Bounce Dirt_RBDII 06 (0.05-0.6 sn)) | Mechanical Wave | https://archive.org/details/sonniss-gdc-2017-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| dirt_hit_2.ogg | Sonniss GDC 2016 - Rocks (soil and dirt debris heavy 13) | Alexander Kopeikin | https://archive.org/details/sonniss-gdc-2016-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| dirt_hit_3.ogg | Sonniss GDC 2019 - You Me & Debris (impact_gritty_grit_sandy_dirt_dig_shovel_shingle_roof_02) | Matt Script | https://archive.org/details/sonniss-gdc-2019-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| dirt_hit_4.ogg | Sonniss GDC 2017 - Rock,Brick and Dirt Part 02 (Multiple Rock Hit Dirt_RBDII 07 (ilk vuruş)) | Mechanical Wave | https://archive.org/details/sonniss-gdc-2017-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| stone_hit_1.ogg | Sonniss GDC 2015 - Rock Brick and Dirt (Hit Rock Debris_RBD 02) | Mechanical Wave | https://archive.org/details/sonniss-gdc-2015-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| stone_hit_2.ogg | Sonniss GDC 2017 - Rock,Brick and Dirt Part 02 (Hit Rock into Gravel_RBDII 06) | Mechanical Wave | https://archive.org/details/sonniss-gdc-2017-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| stone_hit_3.ogg | Sonniss GDC 2018 - Foley Elements Rocks, Dirt And Stone (boulder_impact_on_stones_14) | Soundrangers | https://archive.org/details/sonniss-gdc-2018-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| stone_hit_4.ogg | Sonniss GDC 2016 - Rocks (rock impact medium 26) | Alexander Kopeikin | https://archive.org/details/sonniss-gdc-2016-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| coal_hit_1.ogg | Sonniss GDC 2018 - Foley Elements Rocks, Dirt And Stone (brick_impact_debris_02) | Soundrangers | https://archive.org/details/sonniss-gdc-2018-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| coal_hit_2.ogg | Sonniss GDC 2015 - Rock Brick and Dirt (Debris Brick_RBD 02) | Mechanical Wave | https://archive.org/details/sonniss-gdc-2015-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| coal_hit_3.ogg | Sonniss GDC 2015 - Rock Brick and Dirt (Smash Rock On Debris_RBD 04) | Mechanical Wave | https://archive.org/details/sonniss-gdc-2015-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| metal_hit_1.ogg | Sonniss GDC 2017 - MEDIEVAL, Smithy (MEDIEVAL, Smithy - 08 - Anvil hits (1. vuruş)) | Mononeshot | https://archive.org/details/sonniss-gdc-2017-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| metal_hit_2.ogg | Sonniss GDC 2017 - MEDIEVAL, Smithy (MEDIEVAL, Smithy - 08 - Anvil hits (2. vuruş)) | Mononeshot | https://archive.org/details/sonniss-gdc-2017-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| metal_hit_3.ogg | Sonniss GDC 2015 - Ilmarinen (Ilmarinen, blacksmith, forge, hammer, anvil, strike, loose, ringing) | Eiravaein Works | https://archive.org/details/sonniss-gdc-2015-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| metal_hit_4.ogg | Sonniss GDC 2017 - The Blacksmith (Metal_Plate_Hit_02_06) | SoundBits | https://archive.org/details/sonniss-gdc-2017-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| crystal_hit_1.ogg | Sonniss GDC 2016 - The Source Collection SFX Pack (Wine Glass Hit Higher Pitch (1. vuruş)) | George Karagioules | https://archive.org/details/sonniss-gdc-2016-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| crystal_hit_2.ogg | Sonniss GDC 2016 - The Source Collection SFX Pack (Wine Glass Hit Higher Pitch (2. vuruş)) | George Karagioules | https://archive.org/details/sonniss-gdc-2016-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| crystal_hit_3.ogg | Sonniss GDC 2016 - The Source Collection SFX Pack (Wine Glass Hit Higher Pitch (3. vuruş)) | George Karagioules | https://archive.org/details/sonniss-gdc-2016-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| rare_find_1.ogg | Sonniss GDC 2015 - Percussion 01 (Bell_Waiter_Fienup_001) | Soundopolis | https://archive.org/details/sonniss-gdc-2015-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| rare_find_2.ogg | Sonniss GDC 2016 - The Source Collection SFX Pack (Wine Glass Hit Higher Pitch (4. vuruş)) | George Karagioules | https://archive.org/details/sonniss-gdc-2016-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| rare_find_3.ogg | Sonniss GDC 2016 - The Source Collection SFX Pack (Wine Glass Hit Higher Pitch (5. vuruş)) | George Karagioules | https://archive.org/details/sonniss-gdc-2016-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| sell_1.ogg | Sonniss GDC 2017 - Money (Money,Coins,Drop In Cash Register) | Hzandbits | https://archive.org/details/sonniss-gdc-2017-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| sell_2.ogg | Sonniss GDC 2018 - COINAGE (Coins_Pouch_Leather_Drop_Into_Takes_3) | Effectsworks | https://archive.org/details/sonniss-gdc-2018-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| sell_3.ogg | Sonniss GDC 2017 - Money (Money,Coins,Handle) | Hzandbits | https://archive.org/details/sonniss-gdc-2017-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| buy_1.ogg | Sonniss GDC 2018 - COINAGE (Coin_Wood_Table_Singles_Drop_Spin_Takes_5) | Effectsworks | https://archive.org/details/sonniss-gdc-2018-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| buy_2.ogg | Sonniss GDC 2018 - COINAGE (Coins_Hand_Jingle_Movement_Takes_6) | Effectsworks | https://archive.org/details/sonniss-gdc-2018-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| dynamite_1.ogg | Sonniss GDC 2015 - Guns (EFX EXT Mortar Explosion 08) | Coll Anderson | https://archive.org/details/sonniss-gdc-2015-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| dynamite_2.ogg | Sonniss GDC 2018 - Distant Blast (Distant Blast 17) | Lukas Tvrdon | https://archive.org/details/sonniss-gdc-2018-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| fanfare.ogg | Sonniss GDC 2018 - Audience Reactions (audience_cheers_13) | Soundrangers | https://archive.org/details/sonniss-gdc-2018-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| drill_loop.ogg | Sonniss GDC 2017 - Jackhammer (construction_jackhammer_drill_concrete_wall_01 (10-14.5 sn, 0.5 sn çapraz karartmalı döngü)) | RedSonic | https://archive.org/details/sonniss-gdc-2017-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
+| drill_loop_2.ogg | Sonniss GDC 2015 - Tools:Construction 01 (Jackhammer_Fienup_001 (40-44.5 sn, 0.5 sn çapraz karartmalı döngü)) | Soundopolis | https://archive.org/details/sonniss-gdc-2015-game-audio-bundle-normalized | Sonniss #GameAudioGDC Bundle lisansı (royalty-free, ticari kullanım serbest, atıfsız) |
 
 ## Müzik ve Ortam Notları
 
@@ -91,3 +90,8 @@ Dosyalar `Assets/Resources/Audio/music/` ve `Assets/Resources/Audio/ambient/` al
 - Kristal/çan tınlaması (layer_4 için): BULUNAMADI. CC0/CC-BY olarak bulunan kristal adayları (ör. "Crystal voices", Spellweaver) CC-BY-SA lisanslı olduğu için kullanılmadı; layer_4 yerine yumuşak tınlayan CC0 drone kullanıldı.
 - Kevin MacLeod (incompetech) parçaları bu turda kullanılmadı; müzik için yeterli CC0/CC-BY aday OpenGameArt'ta bulundu.
 - OpenGameArt'ta "loop" olarak etiketlenen dosyalar: layer_2, layer_3, layer_5, music/ambient2. Diğerleri (music/ambient1, ambient3, ambient4, layer_1, layer_4) "loop" etiketi taşımıyor; döngü dikişi doğrulanmadı, oyunda kontrol edilmeli.
+
+## Sonniss lisansı
+
+Kaynak: Sonniss #GameAudioGDC Bundle (2015-2020 yılları), Internet Archive aynaları (`sonniss-gdc-<yıl>-game-audio-bundle-normalized`); paketteki `License.pdf` okunmuştur. Özet: "worldwide, non-exclusive, royalty-free license"; kişisel ve ticari projelerde (oyunlar dahil) kullanım ve değiştirme serbest, atıf gerekmez; orijinal ses dosyaları olduğu gibi satılamaz, yazarlık iddia edilemez; yapay zeka eğitimi için kullanılamaz. Telif hakkı ilgili kayıt sahiplerindedir (listelenen yazarlar). Bu oturumda yalnızca kırpma, fade, tepe -2.5 dBFS normalizasyonu, ogg dönüşümü ve (drill_loop*) çapraz karartmalı döngü uygulandı; hiçbir ses sentezlenmedi.
+- Dikkat: `drill_loop.ogg` artık CC-BY (dklon) değil, Sonniss/RedSonic kaynaklıdır; önceki atıf gerekliliği ortadan kalktı.

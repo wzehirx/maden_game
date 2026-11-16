@@ -9,9 +9,9 @@ namespace Maden.Game
             "Önemli: oyun sırasında ekran okuyucu TalkBack kapalı olmalı. Oyun kendi sesiyle konuşur.",
             "Ekrana tek dokun: kazarsın. Hızlı iki kez dokunursan iki kez kazarsın.",
             "Parmağını aşağı kaydır: çantadaki her şeyi satarsın.",
-            "Parmağını yukarı kaydır: dükkân açılır. Dükkânda sola ve sağa kaydırarak ürünleri gezersin. Çift dokunarak satın alırsın. Tekrar yukarı kaydırırsan dükkân kapanır.",
+            "Parmağını yukarı kaydır: dükkân açılır. Dükkânda sola ve sağa kaydırarak ürünleri gezersin. İki parmakla sola veya sağa kaydırırsan kategori değişir: kazma, vuruş, çanta, makineler. Çift dokunarak satın alırsın. Tekrar yukarı kaydırırsan dükkân kapanır.",
             "İki parmakla dokunursan durumunu söylerim.",
-            "Üç parmakla dokunursan ayarlar açılır. Müziği, sesi, konuşma hızını ve titreşimi oradan değiştirirsin.",
+            "Üç parmakla dokunursan ayarlar açılır. Müziği, sesi, konuşma hızını, konuşma sesini ve titreşimi oradan değiştirirsin.",
             "Sen yokken de oyun ilerler. Geri döndüğünde ne kazandığını söylerim.",
             "İyi kazılar."
         };

@@ -178,5 +178,51 @@ namespace Maden.Core.Tests
             Assert.Equal(63f, g.TapSlopPx, 3);
             Assert.Equal(224f, g.SwipeMinPx, 2); // max(196, 224)
         }
+
+        [Fact]
+        public void TwoFingerSwipeLeftRight_IsNowTwoFingerSwipe()
+        {
+            var g = Make(out var log);
+            // iki parmak birlikte sola kaydır
+            Down(g, 1, 700, 900, 0); Down(g, 2, 760, 900, 0.01);
+            Move(g, 1, 500, 900, 0.1); Move(g, 2, 560, 900, 0.1);
+            Up(g, 1, 400, 900, 0.2); Up(g, 2, 460, 900, 0.2);
+            Assert.Equal(new[] { Gesture.TwoFingerSwipeLeft }, log);
+            log.Clear();
+            Down(g, 1, 300, 900, 1.0); Down(g, 2, 360, 900, 1.01);
+            Move(g, 1, 500, 900, 1.1); Move(g, 2, 560, 900, 1.1);
+            Up(g, 1, 600, 900, 1.2); Up(g, 2, 660, 900, 1.2);
+            Assert.Equal(new[] { Gesture.TwoFingerSwipeRight }, log);
+        }
+
+        [Fact]
+        public void TwoFingerVerticalSwipe_IsIgnored()
+        {
+            var g = Make(out var log);
+            Down(g, 1, 500, 1200, 0); Down(g, 2, 560, 1200, 0.01);
+            Move(g, 1, 500, 900, 0.1); Move(g, 2, 560, 900, 0.1);
+            Up(g, 1, 500, 700, 0.2); Up(g, 2, 560, 700, 0.2);
+            Assert.Empty(log);
+        }
+
+        [Fact]
+        public void TwoFingerTapStillWorks_AndSingleFingerSwipeUnchanged()
+        {
+            var g = Make(out var log);
+            Down(g, 1, 500, 900, 0); Down(g, 2, 600, 900, 0.01);
+            Up(g, 1, 500, 900, 0.1); Up(g, 2, 600, 900, 0.11);
+            Swipe(g, 700, 900, 300, 900, 1.0);
+            Assert.Equal(new[] { Gesture.TwoFingerTap, Gesture.SwipeLeft }, log);
+        }
+
+        [Fact]
+        public void SingleTapEmitsImmediately_NoWaitingForDoubleTapWindow()
+        {
+            var g = Make(out var log);
+            Down(g, 1, 500, 900, 0);
+            Up(g, 1, 500, 900, 0.05);
+            // Tap, parmak kalkar kalkmaz (başka olay beklemeden) yayılmış olmalı.
+            Assert.Equal(new[] { Gesture.Tap }, log);
+        }
     }
 }

@@ -15,6 +15,21 @@ namespace Maden.Core
         public long Cost;
         public int Level;
         public int MaxLevel;
+        /// <summary>Kategori numarası (GameSession.ShopCategoryNames dizinine karşılık gelir).</summary>
+        public int Category;
+    }
+
+    /// <summary>Dükkânın o anki görünümü (ekran ve konuşma için).</summary>
+    public sealed class ShopView
+    {
+        public ShopEntry Entry;          // null: kategori boş / dükkânda bir şey yok
+        public string CategoryName;
+        public int CategoryPos;          // boş olmayan kategoriler arasında 1 tabanlı
+        public int CategoryCount;        // boş olmayan kategori sayısı
+        public int Pos;                  // kategori içinde 1 tabanlı sıra
+        public int Total;                // kategori içindeki öğe sayısı
+        public bool Affordable;
+        public long Shortfall;
     }
 
     public sealed class GameSession
@@ -26,7 +41,8 @@ namespace Maden.Core
         private readonly IRandom rng;
         private bool silent;
         private bool shopOpen;
-        private int shopIndex;
+        private int shopIndex;      // seçili kategorinin içindeki sıra
+        private int shopCategory;   // seçili kategori
         private int drillBlocks;
         private long drillValue;
         private double drillClock;
@@ -35,6 +51,15 @@ namespace Maden.Core
         public GameState State { get; private set; }
         public EconomyConfig Config { get { return cfg; } }
         public bool ShopOpen { get { return shopOpen; } }
+
+        public static readonly string[] ShopCategoryNames = { "Kazma", "Vuruş", "Çanta", "Makineler" };
+
+        private static int CategoryOfKind(string kind)
+        {
+            if (kind == "bag" || kind == "autosell" || kind == "sellBonus") return 2;
+            if (IsMachineKind(kind)) return 3;
+            return 1; // power, crit, rareChance ve bilinmeyenler
+        }
 
         public GameSession(EconomyConfig cfg, GameState state, IRandom rng)
         {
@@ -304,7 +329,7 @@ namespace Maden.Core
                 if (p.MinLayer <= layer)
                     list.Add(new ShopEntry
                     {
-                        Kind = ShopKind.Pickaxe, Id = "pickaxe", Name = p.Name, Cost = p.Cost,
+                        Kind = ShopKind.Pickaxe, Category = 0, Id = "pickaxe", Name = p.Name, Cost = p.Cost,
                         Desc = "Vuruş gücü " + NumberFormat.Dec(p.Power), Level = State.PickaxeTier + 1, MaxLevel = cfg.Pickaxes.Count - 1
                     });
             }
@@ -315,7 +340,7 @@ namespace Maden.Core
                 if (IsMachineKind(u.Kind) && !State.OwnsMachine(MachineOfKind(u.Kind))) continue;
                 list.Add(new ShopEntry
                 {
-                    Kind = ShopKind.Upgrade, Id = u.Id, Name = u.Name, Desc = u.Desc,
+                    Kind = ShopKind.Upgrade, Category = CategoryOfKind(u.Kind), Id = u.Id, Name = u.Name, Desc = u.Desc,
                     Cost = UpgradeCost(u, lv), Level = lv, MaxLevel = u.MaxLevel
                 });
             }
@@ -324,7 +349,7 @@ namespace Maden.Core
                 if (State.OwnsMachine(m.Id) || m.MinLayer > layer) continue;
                 list.Add(new ShopEntry
                 {
-                    Kind = ShopKind.Machine, Id = m.Id, Name = m.Name,
+                    Kind = ShopKind.Machine, Category = 3, Id = m.Id, Name = m.Name,
                     Desc = (m.Kind == "drill" ? "Matkap" : "Dinamit") + ", " + NumberFormat.Dec(m.IntervalSec) + " saniyede bir, güç " + NumberFormat.Dec(m.Power),
                     Cost = m.UnlockCost, Level = 0, MaxLevel = 1
                 });
@@ -344,13 +369,73 @@ namespace Maden.Core
             return null;
         }
 
+        public List<ShopEntry> GetCategoryEntries(int category)
+        {
+            var res = new List<ShopEntry>();
+            foreach (var e in GetShopEntries()) if (e.Category == category) res.Add(e);
+            return res;
+        }
+
+        private int NonEmptyCategoryCount()
+        {
+            var all = GetShopEntries();
+            bool[] has = new bool[ShopCategoryNames.Length];
+            foreach (var e in all) has[e.Category] = true;
+            int n = 0;
+            foreach (var h in has) if (h) n++;
+            return n;
+        }
+
+        /// <summary>Seçili kategori boşsa (veya dizin taşmışsa) geçerli bir konuma getirir.</summary>
+        private void FixShopPosition()
+        {
+            var all = GetShopEntries();
+            int n = ShopCategoryNames.Length;
+            if (shopCategory < 0 || shopCategory >= n) shopCategory = 0;
+            for (int k = 0; k < n; k++)
+            {
+                int c = (shopCategory + k) % n;
+                int count = 0;
+                foreach (var e in all) if (e.Category == c) count++;
+                if (count > 0)
+                {
+                    if (c != shopCategory) { shopCategory = c; shopIndex = 0; }
+                    if (shopIndex >= count) shopIndex = count - 1;
+                    if (shopIndex < 0) shopIndex = 0;
+                    return;
+                }
+            }
+            shopIndex = 0;
+        }
+
         private ShopEntry CurrentEntry()
         {
-            var l = GetShopEntries();
+            FixShopPosition();
+            var l = GetCategoryEntries(shopCategory);
             if (l.Count == 0) return null;
-            if (shopIndex >= l.Count) shopIndex = l.Count - 1;
-            if (shopIndex < 0) shopIndex = 0;
             return l[shopIndex];
+        }
+
+        public ShopView GetShopView()
+        {
+            FixShopPosition();
+            var v = new ShopView();
+            var l = GetCategoryEntries(shopCategory);
+            v.CategoryName = ShopCategoryNames[shopCategory];
+            v.CategoryCount = NonEmptyCategoryCount();
+            int pos = 0;
+            for (int c = 0; c <= shopCategory; c++)
+                if (GetCategoryEntries(c).Count > 0) pos++;
+            v.CategoryPos = pos;
+            v.Total = l.Count;
+            if (l.Count > 0)
+            {
+                v.Entry = l[shopIndex];
+                v.Pos = shopIndex + 1;
+                v.Affordable = State.Money >= v.Entry.Cost;
+                v.Shortfall = v.Affordable ? 0 : v.Entry.Cost - State.Money;
+            }
+            return v;
         }
 
         public void ToggleShop()
@@ -358,7 +443,7 @@ namespace Maden.Core
             shopOpen = !shopOpen;
             if (shopOpen)
             {
-                shopIndex = 0;
+                shopIndex = 0; shopCategory = 0;
                 Emit(EventKind.ShopOpened, "Dükkân açıldı. " + ReadShopItem());
             }
             else Emit(EventKind.ShopClosed, "Dükkân kapandı.");
@@ -366,13 +451,32 @@ namespace Maden.Core
 
         public void ShopNext() { MoveShop(1); }
         public void ShopPrev() { MoveShop(-1); }
+        public void ShopNextCategory() { MoveCategory(1); }
+        public void ShopPrevCategory() { MoveCategory(-1); }
 
         private void MoveShop(int d)
         {
             if (!shopOpen) { Emit(EventKind.Error, "Dükkân kapalı."); return; }
-            var l = GetShopEntries();
-            if (l.Count > 0) shopIndex = ((shopIndex + d) % l.Count + l.Count) % l.Count;
+            FixShopPosition();
+            int count = GetCategoryEntries(shopCategory).Count;
+            if (count > 0) shopIndex = ((shopIndex + d) % count + count) % count;
             Emit(EventKind.ShopItemChanged, ReadShopItem());
+        }
+
+        private void MoveCategory(int d)
+        {
+            if (!shopOpen) { Emit(EventKind.Error, "Dükkân kapalı."); return; }
+            FixShopPosition();
+            int n = ShopCategoryNames.Length;
+            int c = shopCategory;
+            for (int k = 0; k < n; k++)
+            {
+                c = ((c + d) % n + n) % n;
+                if (GetCategoryEntries(c).Count > 0) { shopCategory = c; shopIndex = 0; break; }
+            }
+            var v = GetShopView();
+            Emit(EventKind.ShopItemChanged,
+                "Kategori " + v.CategoryName + ", " + v.Total + " öğe. " + ReadShopItem());
         }
 
         public string ReadShopItem()
@@ -384,6 +488,8 @@ namespace Maden.Core
             if (e.Kind == ShopKind.Upgrade) sb.Append(". Seviye ").Append(e.Level).Append(" / ").Append(e.MaxLevel);
             sb.Append(". Fiyat ").Append(NumberFormat.Lira(e.Cost)).Append('.');
             if (State.Money < e.Cost) sb.Append(" Yetmiyor, ").Append(NumberFormat.Lira(e.Cost - State.Money)).Append(" eksik.");
+            var v = GetShopView();
+            sb.Append(" ").Append(v.CategoryName).Append(", sıra ").Append(v.Pos).Append(" / ").Append(v.Total).Append('.');
             return sb.ToString();
         }
 
@@ -422,11 +528,7 @@ namespace Maden.Core
                     break;
             }
             Emit(EventKind.UpgradeBought, msg, Rarity.Common, e.Cost);
-            if (shopOpen)
-            {
-                var next = GetShopEntries();
-                if (shopIndex >= next.Count) shopIndex = Math.Max(0, next.Count - 1);
-            }
+            if (shopOpen) FixShopPosition();
             return true;
         }
 
@@ -583,7 +685,7 @@ namespace Maden.Core
             fresh.TotalTaps = taps; fresh.TotalItems = items; fresh.RareCount = rare;
             fresh.TotalEarned = earned; fresh.PlaySeconds = play;
             State = fresh;
-            shopOpen = false; shopIndex = 0;
+            shopOpen = false; shopIndex = 0; shopCategory = 0;
             Emit(EventKind.LayerChanged,
                 "Yeni oyun artı başladı. Kalıcı satış çarpanın " + NumberFormat.Dec(SellMultiplier) + " kat. Toprak katmanındasın.",
                 Rarity.Common, prestige, 0);

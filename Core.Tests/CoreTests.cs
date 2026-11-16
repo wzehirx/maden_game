@@ -199,7 +199,7 @@ namespace Maden.Core.Tests
             var s = T.Session(0.5, st);
             Assert.Equal(1.0, s.TapDamage);
             s.ToggleShop();
-            s.ShopNext(); // guc
+            s.ShopNextCategory(); // Vuruş kategorisi: ilk öğe guc
             // ilk öğe taş kazma (index 0) -> sonraki güç
             var e = s.GetShopEntries()[1];
             Assert.Equal("guc", e.Id);
@@ -452,13 +452,14 @@ namespace Maden.Core.Tests
             Assert.True(s.ShopOpen);
             Assert.Equal(EventKind.ShopOpened, log[0].Kind);
             Assert.StartsWith("Dükkân açıldı. Taş kazma", log[0].Speech);
+            s.ShopNextCategory(); // Kazma -> Vuruş (3 öğe)
             string first = s.ReadShopItem();
             s.ShopNext();
             Assert.Equal(EventKind.ShopItemChanged, log.Last().Kind);
             Assert.NotEqual(first, s.ReadShopItem());
             s.ShopPrev();
             Assert.Equal(first, s.ReadShopItem());
-            s.ShopPrev(); // başa sarar -> son öğe
+            s.ShopPrev(); // kategori içinde başa sarar -> son öğe
             Assert.NotEqual(first, s.ReadShopItem());
             s.ToggleShop();
             Assert.False(s.ShopOpen);
@@ -502,7 +503,7 @@ namespace Maden.Core.Tests
             Assert.Equal(10, GameSession.UpgradeCost(guc, 0));
             Assert.Equal(20, GameSession.UpgradeCost(guc, 1));
             Assert.Equal(40, GameSession.UpgradeCost(guc, 2));
-            s.ToggleShop(); s.ShopNext(); // guc
+            s.ToggleShop(); s.ShopNextCategory(); // Vuruş: guc
             s.ShopBuy(); s.ShopBuy();
             Assert.Equal(2, st.GetLevel("guc"));
             Assert.Equal(1000 - 10 - 20, st.Money);
@@ -834,6 +835,76 @@ namespace Maden.Core.Tests
             GameState s;
             Assert.True(SaveSystem.TryDeserialize("{\"version\":99,\"money\":7,\"yeniAlan\":{\"a\":[1]}}", cfg, out s));
             Assert.Equal(7, s.Money);
+        }
+    }
+
+    public class ShopCategoryTests
+    {
+        [Fact]
+        public void CategoriesGroupEntriesAndOpenOnFirst()
+        {
+            var s = T.Session(0.5, new GameState { Money = 0 });
+            s.ToggleShop();
+            var v = s.GetShopView();
+            Assert.Equal("Kazma", v.CategoryName);
+            Assert.Equal(1, v.Pos); Assert.Equal(1, v.Total);
+            Assert.Equal(4, v.CategoryCount);
+            Assert.All(s.GetShopEntries(), e => Assert.InRange(e.Category, 0, 3));
+            Assert.Equal(0, s.GetShopEntries().First(e => e.Id == "pickaxe").Category);
+            Assert.Equal(1, s.GetShopEntries().First(e => e.Id == "guc").Category);
+            Assert.Equal(2, s.GetShopEntries().First(e => e.Id == "canta").Category);
+            Assert.Equal(3, s.GetShopEntries().First(e => e.Id == "dynamite").Category);
+        }
+
+        [Fact]
+        public void CategorySwitchAnnouncesNameAndWraps()
+        {
+            var log = new List<GameEvent>();
+            var s = T.Session(0.5, new GameState(), null, log);
+            s.ToggleShop();
+            s.ShopNextCategory();
+            Assert.StartsWith("Kategori Vuruş, 3 öğe.", log.Last().Speech);
+            s.ShopNextCategory(); Assert.Equal("Çanta", s.GetShopView().CategoryName);
+            s.ShopNextCategory(); Assert.Equal("Makineler", s.GetShopView().CategoryName);
+            s.ShopNextCategory(); Assert.Equal("Kazma", s.GetShopView().CategoryName); // başa sarar
+            s.ShopPrevCategory(); Assert.Equal("Makineler", s.GetShopView().CategoryName);
+        }
+
+        [Fact]
+        public void ItemNavigationStaysInsideCategory()
+        {
+            var s = T.Session(0.5, new GameState());
+            s.ToggleShop(); s.ShopNextCategory(); // Vuruş: guc, krit, sans
+            for (int i = 0; i < 7; i++) { s.ShopNext(); Assert.Equal("Vuruş", s.GetShopView().CategoryName); }
+            Assert.Equal(3, s.GetShopView().Total);
+        }
+
+        [Fact]
+        public void ShopReadIncludesPosition()
+        {
+            var s = T.Session(0.5, new GameState());
+            s.ToggleShop(); s.ShopNextCategory(); s.ShopNext();
+            Assert.EndsWith("Vuruş, sıra 2 / 3.", s.ReadShopItem());
+        }
+
+        [Fact]
+        public void EmptyCategoriesAreSkipped()
+        {
+            var st = new GameState { Money = 100000 };
+            st.PickaxeTier = 1; // Kazma kategorisi boşalır (Small: 2 kazma)
+            var s = T.Session(0.5, st);
+            s.ToggleShop();
+            Assert.Equal("Vuruş", s.GetShopView().CategoryName);
+            Assert.Equal(3, s.GetShopView().CategoryCount);
+        }
+
+        [Fact]
+        public void NavigationWhenClosedIsErrorForCategoriesToo()
+        {
+            var log = new List<GameEvent>();
+            var s = T.Session(0.5, null, null, log);
+            s.ShopNextCategory(); s.ShopPrevCategory();
+            Assert.All(log, e => Assert.Equal(EventKind.Error, e.Kind));
         }
     }
 }

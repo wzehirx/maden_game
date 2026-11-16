@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Godot;
 
 namespace Maden.Game
@@ -6,8 +5,7 @@ namespace Maden.Game
     public enum HapticKind { Soft, Hard, Metal, Rare, Sell, Blast, Tick, Error }
 
     /// <summary>
-    /// Titreşim desenleri (Input.VibrateHandheld). Çok darbeli desenler _Process ile zamanlanır
-    /// (düşük kare hızında aralıklar kareye yuvarlanır).
+    /// Titreşim desenleri (Input.VibrateHandheld). İlk darbe anında; sonrakiler SceneTreeTimer ile zamanlanır.
     /// </summary>
     public partial class Haptics : Node
     {
@@ -46,9 +44,9 @@ namespace Maden.Game
             }
         }
 
-        readonly Queue<(double at, Pulse p)> _queue = new Queue<(double, Pulse)>();
+        int _gen; // yeni desen eskisini keser: bekleyen zamanlayıcılar kendi nesil numarasını kontrol eder
 
-        public override void _Ready() { Instance = this; }
+        public override void _Ready() { Instance = this; ProcessMode = ProcessModeEnum.Always; }
 
         public static void Play(HapticKind kind)
         {
@@ -59,24 +57,19 @@ namespace Maden.Game
         void Start(HapticKind kind)
         {
             var pulses = Get(kind);
-            _queue.Clear(); // yeni desen eskisini keser
-            double t = Time.GetTicksMsec() / 1000.0;
-            Fire(pulses[0]);
-            double end = t + pulses[0].Ms / 1000.0;
+            int gen = ++_gen;
+            Fire(pulses[0]); // ilk darbe dokunma anında, kareyi beklemeden
+            if (pulses.Length == 1) return;
+            // Sonraki darbeler _Process kuyruğuna değil, bağımsız zamanlayıcılara bağlanır (kare hızından bağımsız
+            // kuyruk yok; her darbe kendi bekleme süresiyle sıralanır).
+            double delay = pulses[0].Ms / 1000.0;
             for (int i = 1; i < pulses.Length; i++)
             {
-                double at = end + pulses[i].Gap / 1000.0;
-                _queue.Enqueue((at, pulses[i]));
-                end = at + pulses[i].Ms / 1000.0;
+                delay += pulses[i].Gap / 1000.0;
+                var p = pulses[i];
+                GetTree().CreateTimer(delay, true, false, true).Timeout += () => { if (gen == _gen) Fire(p); };
+                delay += p.Ms / 1000.0;
             }
-        }
-
-        public override void _Process(double delta)
-        {
-            if (_queue.Count == 0) return;
-            double now = Time.GetTicksMsec() / 1000.0;
-            while (_queue.Count > 0 && _queue.Peek().at <= now)
-                Fire(_queue.Dequeue().p);
         }
 
         static void Fire(Pulse p)

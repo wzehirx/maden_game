@@ -8,7 +8,9 @@ namespace Maden.Core
     {
         Tap, DoubleTap,
         SwipeUp, SwipeDown, SwipeLeft, SwipeRight,
-        TwoFingerTap, ThreeFingerTap
+        TwoFingerTap, ThreeFingerTap,
+        /// <summary>İki parmakla yatay kaydırma (dükkânda kategori değiştirme).</summary>
+        TwoFingerSwipeLeft, TwoFingerSwipeRight
     }
 
     public enum TouchPhase { Down, Move, Up, Cancel }
@@ -53,6 +55,7 @@ namespace Maden.Core
         private float lastX, lastY, startX, startY;
         private float maxDisp; // herhangi bir parmağın başlangıcından en büyük uzaklık
         private int maxCount;
+        private float sumDx, sumDy; private int upCount; // kalkan parmakların ortalama net yer değiştirmesi
         private bool lastTapValid;
         private double lastTapT;
 
@@ -82,7 +85,7 @@ namespace Maden.Core
                     pointers[t.Id] = new Pointer { StartX = t.X, StartY = t.Y, X = t.X, Y = t.Y };
                     if (!active)
                     {
-                        active = true; maxCount = 1; maxDisp = 0f;
+                        active = true; maxCount = 1; maxDisp = 0f; sumDx = 0f; sumDy = 0f; upCount = 0;
                         startT = t.Time;
                         startX = t.X; startY = t.Y;
                         lastX = t.X; lastY = t.Y;
@@ -103,6 +106,7 @@ namespace Maden.Core
                 case TouchPhase.Up:
                     if (!active || !pointers.TryGetValue(t.Id, out Pointer q)) return;
                     Track(q, t);
+                    sumDx += q.X - q.StartX; sumDy += q.Y - q.StartY; upCount++;
                     pointers.Remove(t.Id);
                     if (pointers.Count == 0)
                     {
@@ -132,11 +136,19 @@ namespace Maden.Core
         {
             double dur = lastT - startT;
             float dx = lastX - startX, dy = lastY - startY;
+            float mdx = upCount > 0 ? sumDx / upCount : 0f, mdy = upCount > 0 ? sumDy / upCount : 0f;
             float dist = maxCount == 1 ? (float)Math.Sqrt(dx * dx + dy * dy) : maxDisp;
 
             if (maxCount >= 2)
             {
                 lastTapValid = false;
+                if (maxCount == 2 && dist > SwipeMinPx && dur <= 1.2)
+                {
+                    // İki parmakla kaydırma: yalnızca belirgin yatay hareket sayılır; dikey yok sayılır.
+                    if (Math.Abs(mdx) > Math.Abs(mdy) * 1.5f && Math.Abs(mdx) >= SwipeMinPx)
+                        Emit(mdx < 0f ? Gesture.TwoFingerSwipeLeft : Gesture.TwoFingerSwipeRight);
+                    return;
+                }
                 if (dur > MultiTapMaxSeconds || dist > SwipeMinPx) return;
                 Emit(maxCount >= 3 ? Gesture.ThreeFingerTap : Gesture.TwoFingerTap);
                 return;

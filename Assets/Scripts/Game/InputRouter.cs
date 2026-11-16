@@ -7,7 +7,7 @@ namespace Maden.Game
     /// <summary>
     /// Godot dokunma/fare/klavye olaylarını ham RawTouch'a çevirip saf C# GestureRecognizer'a besler.
     /// Masaüstü yedeği: sol fare = parmak, sağ fare = 2 parmak dokunuş, orta fare = 3 parmak dokunuş;
-    /// Space = kaz, S = sat, B = dükkân, oklar = kaydırma, Enter = çift dokunuş, 2 / 3 = çok parmak.
+    /// Space = kaz, S = sat, B = dükkân, oklar = kaydırma, Enter = çift dokunuş, 2 / 3 = çok parmak, Q / E = 2 parmakla sol/sağ kaydırma (dükkânda kategori).
     /// </summary>
     public partial class InputRouter : Node
     {
@@ -43,6 +43,8 @@ namespace Maden.Game
 
         public override void _Input(InputEvent ev)
         {
+            // Giriş anında ekran hızını yükselt (boştayken düşük kare hızı gecikme yaratmasın).
+            if (!(ev is InputEventMouseMotion mm0 && mm0.ButtonMask == 0)) Main.Poke();
             switch (ev)
             {
                 case InputEventScreenTouch st:
@@ -92,6 +94,8 @@ namespace Maden.Game
                 case Key.Right: Emit(Gesture.SwipeRight); break;
                 case Key.Key2: Emit(Gesture.TwoFingerTap); break;
                 case Key.Key3: Emit(Gesture.ThreeFingerTap); break;
+                case Key.Q: Emit(Gesture.TwoFingerSwipeLeft); break;
+                case Key.E: Emit(Gesture.TwoFingerSwipeRight); break;
             }
         }
 

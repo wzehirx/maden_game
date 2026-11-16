@@ -16,6 +16,10 @@ namespace Maden.Game
         public Speech Speech;
         public SoundPlayer Sound;
 
+        public GameSession Session => _session;
+        /// <summary>Ekran (HUD) yeniden çizilmeli mi: hareket/olay sonrası true olur, Main temizler.</summary>
+        public bool HudDirty;
+
         const double AutoSaveSeconds = 30.0;
         const double OfflineMinSeconds = 20.0;
         const double ResumeMinSeconds = 5.0;
@@ -225,6 +229,7 @@ namespace Maden.Game
         void HandleGesture(Gesture g)
         {
             if (_session == null || _failed) return;
+            HudDirty = true;
             try
             {
                 if (_tutorialPlaying)
@@ -251,13 +256,17 @@ namespace Maden.Game
                         else _session.Tap();
                         break;
                     case Gesture.DoubleTap:
-                        if (shop) _session.ShopBuy(); // dükkân dışında zaten 2 kaz sayıldı
+                        // Dükkân dışında gecikme/ek eylem yok: iki dokunuş zaten iki kez kazdı (Tap anında tetiklenir).
+                        // Dükkânda: önceki okumayı kes, satın alma sonucu hemen söylensin.
+                        if (shop) { Speech.Stop(); _session.ShopBuy(); }
                         break;
                     case Gesture.SwipeDown: _session.SellAll(); break;
-                    case Gesture.SwipeUp: _session.ToggleShop(); break;
+                    case Gesture.SwipeUp: _session.ToggleShop(); break; // dükkân içinde de: kapatır
                     case Gesture.SwipeLeft: if (shop) _session.ShopPrev(); break;
                     case Gesture.SwipeRight: if (shop) _session.ShopNext(); break;
                     case Gesture.TwoFingerTap: SpeakResult(_session.ReadStatus()); break;
+                    case Gesture.TwoFingerSwipeLeft: if (shop) _session.ShopPrevCategory(); break;
+                    case Gesture.TwoFingerSwipeRight: if (shop) _session.ShopNextCategory(); break;
                     case Gesture.ThreeFingerTap: _settings.Open(); break;
                 }
             }
@@ -278,6 +287,7 @@ namespace Maden.Game
         void HandleEvent(GameEvent ev)
         {
             if (ev == null) return;
+            HudDirty = true;
             try { Dispatch(ev); }
             catch (Exception e) { GD.PushError(e.ToString()); }
         }
@@ -302,7 +312,7 @@ namespace Maden.Game
                     return; // kazma vuruşlarında konuşma yok
 
                 case EventKind.ItemFound:
-                    Haptics.Play(HapticKind.Tick);
+                    // Titreşim yok: vuruş titreşimini ezmesin. Konuşma yalnızca kuyruk boşken (Speech kuralı).
                     Speech.Say(ev.Speech, SpeechPriority.Normal);
                     return;
 
