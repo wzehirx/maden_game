@@ -26,6 +26,7 @@ namespace Maden.Sim
             public bool Finished;
             public double FinishSeconds;
             public double[] LayerArrival;
+            public double[] LayerIncome;
             public PurchaseGap Longest;
             public List<PurchaseGap> AllGaps = new List<PurchaseGap>();
             public int Purchases;
@@ -85,8 +86,12 @@ namespace Maden.Sim
             Console.WriteLine(r.Finished ? "Bitiş süresi: {0:F2} saat" : "BİTMEDİ (sınır {0:F0} saat)", r.Finished ? r.FinishSeconds / 3600.0 : MaxHours);
             Console.WriteLine("Katman varış zamanları:");
             for (int i = 0; i < cfg.Layers.Count; i++)
-                Console.WriteLine("  {0,2} {1,-16} {2}", i + 1, cfg.Layers[i].Name,
-                    double.IsNaN(r.LayerArrival[i]) ? "-" : (r.LayerArrival[i] / 3600.0).ToString("F2", CultureInfo.InvariantCulture) + " sa");
+                Console.WriteLine("  {0,2} {1,-16} {2}  (gelir ~{3}/sn)", i + 1, cfg.Layers[i].Name,
+                    double.IsNaN(r.LayerArrival[i]) ? "-" : (r.LayerArrival[i] / 3600.0).ToString("F2", CultureInfo.InvariantCulture) + " sa",
+                    NumberFormat.Short((long)r.LayerIncome[i]));
+            if (Environment.GetEnvironmentVariable("SIM_RAW") == "1")
+                for (int i = 0; i < cfg.Layers.Count; i++)
+                    Console.WriteLine("RAW {0} {1} {2}", i, r.LayerArrival[i].ToString("R", CultureInfo.InvariantCulture), r.LayerIncome[i].ToString("R", CultureInfo.InvariantCulture));
             Console.WriteLine("Satın alma sayısı: {0}, toplam kazanç: {1}", r.Purchases, NumberFormat.Short(r.TotalEarned));
             if (r.Longest != null)
                 Console.WriteLine("En uzun bekleme: {0:F0} sn ({1:F1} dk) -> '{2}' alınmadan önce, katman {3} ({4}), t={5:F2} sa",
@@ -146,7 +151,8 @@ namespace Maden.Sim
             var state = new GameState();
             var rng = new SystemRandom(seed);
             var s = new GameSession(cfg, state, rng);
-            var rep = new Report { LayerArrival = new double[cfg.Layers.Count] };
+            var rep = new Report { LayerArrival = new double[cfg.Layers.Count], LayerIncome = new double[cfg.Layers.Count] };
+            var earnedAt = new long[cfg.Layers.Count];
             for (int i = 0; i < rep.LayerArrival.Length; i++) rep.LayerArrival[i] = double.NaN;
             rep.LayerArrival[0] = 0;
 
@@ -170,7 +176,10 @@ namespace Maden.Sim
                     s.SellAll();
                     pause = (int)Math.Round(SellPauseSec / Dt);
                 }
-                if (double.IsNaN(rep.LayerArrival[state.LayerIndex])) rep.LayerArrival[state.LayerIndex] = t;
+                if (double.IsNaN(rep.LayerArrival[state.LayerIndex])) { rep.LayerArrival[state.LayerIndex] = t; earnedAt[state.LayerIndex] = state.TotalEarned; }
+                for (int li = 0; li <= state.LayerIndex; li++)
+                    if (rep.LayerIncome[li] == 0 && !double.IsNaN(rep.LayerArrival[li]) && t >= rep.LayerArrival[li] + 600)
+                        rep.LayerIncome[li] = (state.TotalEarned - earnedAt[li]) / 600.0;
                 if (t >= nextDecision)
                 {
                     nextDecision = t + 1.0;
