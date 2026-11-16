@@ -12,7 +12,7 @@
   {
    "id": "toprak",
    "name": "Toprak",
-   "depthBlocks": 2162,
+   "depthBlocks": 2164,
    "blockHp": 8,
    "items": [
     {
@@ -62,7 +62,7 @@
   {
    "id": "kil",
    "name": "Kil",
-   "depthBlocks": 15609,
+   "depthBlocks": 14713,
    "blockHp": 40,
    "items": [
     {
@@ -112,7 +112,7 @@
   {
    "id": "tas",
    "name": "Taş",
-   "depthBlocks": 58142,
+   "depthBlocks": 57747,
    "blockHp": 200,
    "items": [
     {
@@ -162,7 +162,7 @@
   {
    "id": "komur",
    "name": "Kömür",
-   "depthBlocks": 100008,
+   "depthBlocks": 100014,
    "blockHp": 1000,
    "items": [
     {
@@ -212,7 +212,7 @@
   {
    "id": "demir",
    "name": "Demir",
-   "depthBlocks": 151926,
+   "depthBlocks": 155301,
    "blockHp": 5000,
    "items": [
     {
@@ -262,7 +262,7 @@
   {
    "id": "gumus",
    "name": "Gümüş",
-   "depthBlocks": 236240,
+   "depthBlocks": 237688,
    "blockHp": 25000,
    "items": [
     {
@@ -312,7 +312,7 @@
   {
    "id": "altin",
    "name": "Altın",
-   "depthBlocks": 368025,
+   "depthBlocks": 372017,
    "blockHp": 125000,
    "items": [
     {
@@ -362,7 +362,7 @@
   {
    "id": "kristal",
    "name": "Kristal",
-   "depthBlocks": 740861,
+   "depthBlocks": 772628,
    "blockHp": 625000,
    "items": [
     {
@@ -412,7 +412,7 @@
   {
    "id": "elmas",
    "name": "Elmas",
-   "depthBlocks": 1857314,
+   "depthBlocks": 3259308,
    "blockHp": 3125000,
    "items": [
     {
@@ -462,7 +462,7 @@
   {
    "id": "kadim",
    "name": "Kadim Hazine",
-   "depthBlocks": 6475733,
+   "depthBlocks": 7589996,
    "blockHp": 15625000,
    "items": [
     {
