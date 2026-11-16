@@ -23,3 +23,26 @@ Tüm ses dosyaları `Assets/Resources/Audio/sfx/` altındadır. Lisanslar, her k
 - CC-BY 3.0 ile lisanslanan `drill_loop.ogg` için yukarıdaki atıf (dklon, Drill 1, CC-BY 3.0) oyunda gösterilmelidir.
 - `menu_close.ogg`, `menu_open.ogg` dosyasının zaman tersine çevrilmiş halidir.
 - `error.ogg` (düşük buzz) için uygun CC0/CC-BY aday bulunamadı; kodla sentezlenecek.
+
+## Müzik ve Ortam Sesleri
+
+Dosyalar `Assets/Resources/Audio/music/` ve `Assets/Resources/Audio/ambient/` altındadır (.ogg, libvorbis q4). Lisanslar kaynak sayfalarında (opengameart.org) doğrulanmıştır.
+
+| Dosya | Başlık | Yazar | Kaynak URL | Lisans |
+|---|---|---|---|---|
+| music/ambient1.ogg | Biolumina (312 sn) | Tsorthan Grove | https://opengameart.org/content/biolumina | CC0 |
+| music/ambient2.ogg | Dark Ambient Drone (loop, 307 sn) | Tsorthan Grove | https://opengameart.org/content/dark-ambient-drone | CC0 |
+| music/ambient3.ogg | Drifting Through the Nebula (Ambient) (192 sn) | Hitctrl, mo-official | https://opengameart.org/content/drifting-through-the-nebula-ambient | CC-BY 3.0 (atıf zorunlu) |
+| music/ambient4.ogg | Manaos Drones (145 sn) | Tozan | https://opengameart.org/content/manaos-drones | CC0 |
+| ambient/layer_1.ogg | windy ambient noise (windy_ambiance_0.ogg, 171 sn) | Some Weirdo | https://opengameart.org/content/windy-ambient-noise | CC0 (döngü dikişi doğrulanmadı) |
+| ambient/layer_2.ogg | Dripping water loop (atmosbasement, 20 sn) | qubodup, supergamez2014 | https://opengameart.org/content/dripping-water-loop | CC0 |
+| ambient/layer_3.ogg | Background Drones Vol 1 (temple_of_the_digital_monk_loop, 154 sn) | Tsorthan Grove | https://opengameart.org/content/background-drones-vol-1 | CC0 |
+| ambient/layer_4.ogg | Background Drones Vol 1 (light_through_a_pale_window_loop, 154 sn) | Tsorthan Grove | https://opengameart.org/content/background-drones-vol-1 | CC0 (kristal değil, yumuşak tınlayan drone) |
+| ambient/layer_5.ogg | Dark Ambient Drone #2 (loop, 307 sn) | Tsorthan Grove | https://opengameart.org/content/dark-ambient-drone-2 | CC0 |
+
+## Müzik ve Ortam Notları
+
+- CC-BY 3.0 ile lisanslanan `music/ambient3.ogg` için atıf: "Drifting Through the Nebula (Ambient)" by Hitctrl and mo-official, CC BY 3.0, https://opengameart.org/content/drifting-through-the-nebula-ambient . Oyunda gösterilmelidir.
+- Kristal/çan tınlaması (layer_4 için): BULUNAMADI. CC0/CC-BY olarak bulunan kristal adayları (ör. "Crystal voices", Spellweaver) CC-BY-SA lisanslı olduğu için kullanılmadı; layer_4 yerine yumuşak tınlayan CC0 drone kullanıldı.
+- Kevin MacLeod (incompetech) parçaları bu turda kullanılmadı; müzik için yeterli CC0/CC-BY aday OpenGameArt'ta bulundu.
+- OpenGameArt'ta "loop" olarak etiketlenen dosyalar: layer_2, layer_3, layer_5, music/ambient2. Diğerleri (music/ambient1, ambient3, ambient4, layer_1, layer_4) "loop" etiketi taşımıyor; döngü dikişi doğrulanmadı, oyunda kontrol edilmeli.
