@@ -17,6 +17,7 @@ namespace Maden.Sim
         const double TapsPerSec = 3.0;
         const double SellPauseSec = 1.0;
         const double MaxWaitForTarget = 90.0;
+        const double MaxIdleWithMoney = 100.0; // elinde alınabilir bir şey varken en fazla bu kadar bekler
         const double MaxHours = 40;
 
         public class PurchaseGap { public double Start, End; public string Item; public int Layer; public double Gap { get { return End - Start; } } }
@@ -224,7 +225,7 @@ namespace Maden.Sim
             else
             {
                 double wait = (target.Cost - s.State.Money) / Math.Max(1e-9, baseRate);
-                if (bestAff != null && (wait > MaxWaitForTarget || affPb <= 2 * targetPb)) pick = bestAff;
+                if (bestAff != null && (wait > MaxWaitForTarget || affPb <= 2 * targetPb || t - lastPurchase > MaxIdleWithMoney)) pick = bestAff;
             }
             if (pick == null) return false;
             int layer = s.State.LayerIndex;
