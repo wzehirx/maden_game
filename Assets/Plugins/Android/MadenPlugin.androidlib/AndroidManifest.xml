@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Android 11+ paket görünürlüğü: TextToSpeech motorunu bulabilmek için gerekli. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+    <!--
+      MadenActivity burada başlatıcı olarak bildirilmez: ana manifestteki com.unity3d.player.UnityPlayerActivity
+      girdisi derleme sonrası Assets/Editor/AndroidManifestPatcher.cs ile com.maden.oyun.MadenActivity olarak değiştirilir.
+    -->
+</manifest>

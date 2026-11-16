@@ -1,0 +1,51 @@
+# Maden - GitHub Actions ile Android APK derlemesi (game-ci/unity-builder@v4).
+#
+# GEREKLİ GİZLİLER (Settings > Secrets and variables > Actions):
+#   UNITY_LICENSE  : Kişisel lisans .ulf dosyasının TÜM içeriği (game-ci "activation" yöntemiyle alınır).
+#   UNITY_EMAIL    : Unity hesabı e-postası.
+#   UNITY_PASSWORD : Unity hesabı parolası.
+# Lisans alma adımları: https://game.ci/docs/github/activation
+# Not: Bu iş akışı bu depoda henüz çalıştırılıp doğrulanmadı.
+name: Android APK derle
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    name: Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-Android-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-Android-
+
+      - uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          unityVersion: 6000.3.28f1
+          targetPlatform: Android
+          buildMethod: MadenBuild.BuildAndroid
+          customParameters: -customBuildPath build/Android/Maden.apk
+          androidExportType: androidPackage
+          allowDirtyBuild: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Maden-apk
+          path: |
+            build/Android/Maden.apk
+            Builds/Maden.apk
+          if-no-files-found: error

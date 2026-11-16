@@ -1,0 +1,20 @@
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'com.maden.oyun.plugin'
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 26
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    // Unity'nin ürettiği Gradle projesinde unity-classes.jar, unityLibrary/libs altındadır.
+    compileOnly fileTree(dir: "${rootProject.projectDir}/unityLibrary/libs", include: ['unity-classes.jar'])
+}

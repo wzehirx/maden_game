@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Unity OLMADAN sözdizimi/tip denetimi. Kullanım (repo kökünden):
+      dotnet build tools/stubs/Stubs.csproj -p:Variant=Editor
+      dotnet build tools/stubs/Stubs.csproj -p:Variant=Android
+    Variant=Editor : UNITY_EDITOR dalları (Android'e özel kod devre dışı)
+    Variant=Android: UNITY_ANDROID dalları (AndroidJavaObject kodu derlenir)
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <OutputType>Library</OutputType>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <Variant Condition="'$(Variant)'==''">Editor</Variant>
+    <DefineConstants>ENABLE_LEGACY_INPUT_MANAGER;UNITY_STANDALONE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Variant)'=='Editor'">
+    <DefineConstants>$(DefineConstants);UNITY_EDITOR</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Variant)'=='Android'">
+    <DefineConstants>$(DefineConstants);UNITY_ANDROID</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="UnityStubs.cs" />
+    <Compile Include="../../Assets/Scripts/Core/**/*.cs" />
+    <Compile Include="../../Assets/Scripts/Runtime/**/*.cs" />
+  </ItemGroup>
+</Project>

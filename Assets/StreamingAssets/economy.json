@@ -1,0 +1,900 @@
+{
+ "offlineCapSeconds": 7200,
+ "autosaveSeconds": 30,
+ "bagBase": 20,
+ "critBase": 0.05,
+ "critMultiplier": 3,
+ "critCap": 0.75,
+ "prestigeBonusPerRun": 0.5,
+ "drillReportSeconds": 6,
+ "treasureName": "Kadim hazine sandığı",
+ "layers": [
+  {
+   "id": "toprak",
+   "name": "Toprak",
+   "depthBlocks": 2500,
+   "blockHp": 17.34,
+   "items": [
+    {
+     "name": "Paslı çivi",
+     "value": 1,
+     "rarity": "common",
+     "weight": 50
+    },
+    {
+     "name": "Eski düğme",
+     "value": 2,
+     "rarity": "common",
+     "weight": 40
+    },
+    {
+     "name": "Kırık çömlek",
+     "value": 2,
+     "rarity": "common",
+     "weight": 30
+    },
+    {
+     "name": "Solucan fosili",
+     "value": 3,
+     "rarity": "common",
+     "weight": 20
+    },
+    {
+     "name": "Eski anahtar",
+     "value": 8,
+     "rarity": "uncommon",
+     "weight": 8
+    },
+    {
+     "name": "Bronz kolye",
+     "value": 14,
+     "rarity": "uncommon",
+     "weight": 6
+    },
+    {
+     "name": "Gümüş sikke",
+     "value": 60,
+     "rarity": "rare",
+     "weight": 1.5
+    }
+   ]
+  },
+  {
+   "id": "kil",
+   "name": "Kil",
+   "depthBlocks": 3000,
+   "blockHp": 252.79,
+   "items": [
+    {
+     "name": "Kil parçası",
+     "value": 3,
+     "rarity": "common",
+     "weight": 50
+    },
+    {
+     "name": "Kırık tuğla",
+     "value": 5,
+     "rarity": "common",
+     "weight": 40
+    },
+    {
+     "name": "Çatlak vazo",
+     "value": 7,
+     "rarity": "common",
+     "weight": 30
+    },
+    {
+     "name": "Deniz kabuğu",
+     "value": 10,
+     "rarity": "common",
+     "weight": 20
+    },
+    {
+     "name": "Pişmiş toprak heykelcik",
+     "value": 27,
+     "rarity": "uncommon",
+     "weight": 8
+    },
+    {
+     "name": "Antik mühür",
+     "value": 48,
+     "rarity": "uncommon",
+     "weight": 6
+    },
+    {
+     "name": "Eski altın küpe",
+     "value": 204,
+     "rarity": "rare",
+     "weight": 1.5
+    }
+   ]
+  },
+  {
+   "id": "tas",
+   "name": "Taş",
+   "depthBlocks": 3500,
+   "blockHp": 3175.35,
+   "items": [
+    {
+     "name": "Çakıl taşı",
+     "value": 12,
+     "rarity": "common",
+     "weight": 50
+    },
+    {
+     "name": "Mermer parçası",
+     "value": 17,
+     "rarity": "common",
+     "weight": 40
+    },
+    {
+     "name": "Fosil kabuğu",
+     "value": 23,
+     "rarity": "common",
+     "weight": 30
+    },
+    {
+     "name": "Kuvars parçası",
+     "value": 35,
+     "rarity": "common",
+     "weight": 20
+    },
+    {
+     "name": "Ametist parçası",
+     "value": 92,
+     "rarity": "uncommon",
+     "weight": 8
+    },
+    {
+     "name": "Obsidyen bıçak",
+     "value": 162,
+     "rarity": "uncommon",
+     "weight": 6
+    },
+    {
+     "name": "Akik taşı",
+     "value": 694,
+     "rarity": "rare",
+     "weight": 1.5
+    }
+   ]
+  },
+  {
+   "id": "komur",
+   "name": "Kömür",
+   "depthBlocks": 4000,
+   "blockHp": 29393.7,
+   "items": [
+    {
+     "name": "Kömür parçası",
+     "value": 39,
+     "rarity": "common",
+     "weight": 50
+    },
+    {
+     "name": "Kok kömürü",
+     "value": 59,
+     "rarity": "common",
+     "weight": 40
+    },
+    {
+     "name": "Antrasit",
+     "value": 79,
+     "rarity": "common",
+     "weight": 30
+    },
+    {
+     "name": "Kükürt",
+     "value": 118,
+     "rarity": "common",
+     "weight": 20
+    },
+    {
+     "name": "Parlak antrasit",
+     "value": 314,
+     "rarity": "uncommon",
+     "weight": 8
+    },
+    {
+     "name": "Kehribar",
+     "value": 550,
+     "rarity": "uncommon",
+     "weight": 6
+    },
+    {
+     "name": "Siyah elmas",
+     "value": 2358,
+     "rarity": "rare",
+     "weight": 1.5
+    }
+   ]
+  },
+  {
+   "id": "demir",
+   "name": "Demir",
+   "depthBlocks": 4500,
+   "blockHp": 84154.6,
+   "items": [
+    {
+     "name": "Demir cevheri",
+     "value": 134,
+     "rarity": "common",
+     "weight": 50
+    },
+    {
+     "name": "Hematit",
+     "value": 200,
+     "rarity": "common",
+     "weight": 40
+    },
+    {
+     "name": "Pas parçası",
+     "value": 267,
+     "rarity": "common",
+     "weight": 30
+    },
+    {
+     "name": "Manyetit",
+     "value": 401,
+     "rarity": "common",
+     "weight": 20
+    },
+    {
+     "name": "Çelik cevheri",
+     "value": 1069,
+     "rarity": "uncommon",
+     "weight": 8
+    },
+    {
+     "name": "Meteor parçası",
+     "value": 1871,
+     "rarity": "uncommon",
+     "weight": 6
+    },
+    {
+     "name": "Altın damarlı demir",
+     "value": 8018,
+     "rarity": "rare",
+     "weight": 1.5
+    }
+   ]
+  },
+  {
+   "id": "gumus",
+   "name": "Gümüş",
+   "depthBlocks": 5000,
+   "blockHp": 3698042.86,
+   "items": [
+    {
+     "name": "Gümüş cevheri",
+     "value": 454,
+     "rarity": "common",
+     "weight": 50
+    },
+    {
+     "name": "Gümüş tozu",
+     "value": 682,
+     "rarity": "common",
+     "weight": 40
+    },
+    {
+     "name": "Eski gümüş kaşık",
+     "value": 909,
+     "rarity": "common",
+     "weight": 30
+    },
+    {
+     "name": "Gümüş sikke",
+     "value": 1363,
+     "rarity": "common",
+     "weight": 20
+    },
+    {
+     "name": "Gümüş kolye",
+     "value": 3635,
+     "rarity": "uncommon",
+     "weight": 8
+    },
+    {
+     "name": "Saf gümüş külçe",
+     "value": 6361,
+     "rarity": "uncommon",
+     "weight": 6
+    },
+    {
+     "name": "Gümüş taç",
+     "value": 27261,
+     "rarity": "rare",
+     "weight": 1.5
+    }
+   ]
+  },
+  {
+   "id": "altin",
+   "name": "Altın",
+   "depthBlocks": 5500,
+   "blockHp": 5259624.67,
+   "items": [
+    {
+     "name": "Altın tozu",
+     "value": 1545,
+     "rarity": "common",
+     "weight": 50
+    },
+    {
+     "name": "Altın kırıntısı",
+     "value": 2317,
+     "rarity": "common",
+     "weight": 40
+    },
+    {
+     "name": "Altın taneciği",
+     "value": 3090,
+     "rarity": "common",
+     "weight": 30
+    },
+    {
+     "name": "Pirit",
+     "value": 4634,
+     "rarity": "common",
+     "weight": 20
+    },
+    {
+     "name": "Altın külçe",
+     "value": 12358,
+     "rarity": "uncommon",
+     "weight": 8
+    },
+    {
+     "name": "Altın sikke",
+     "value": 21627,
+     "rarity": "uncommon",
+     "weight": 6
+    },
+    {
+     "name": "Altın heykelcik",
+     "value": 92688,
+     "rarity": "rare",
+     "weight": 1.5
+    }
+   ]
+  },
+  {
+   "id": "kristal",
+   "name": "Kristal",
+   "depthBlocks": 6000,
+   "blockHp": 15252064.88,
+   "items": [
+    {
+     "name": "Kristal kırığı",
+     "value": 5252,
+     "rarity": "common",
+     "weight": 50
+    },
+    {
+     "name": "Kuvars kristali",
+     "value": 7879,
+     "rarity": "common",
+     "weight": 40
+    },
+    {
+     "name": "Mavi kristal",
+     "value": 10505,
+     "rarity": "common",
+     "weight": 30
+    },
+    {
+     "name": "Pembe kristal",
+     "value": 15757,
+     "rarity": "common",
+     "weight": 20
+    },
+    {
+     "name": "Parlayan kristal",
+     "value": 42019,
+     "rarity": "uncommon",
+     "weight": 8
+    },
+    {
+     "name": "Güç kristali",
+     "value": 73533,
+     "rarity": "uncommon",
+     "weight": 6
+    },
+    {
+     "name": "Kristal kalp",
+     "value": 315140,
+     "rarity": "rare",
+     "weight": 1.5
+    }
+   ]
+  },
+  {
+   "id": "elmas",
+   "name": "Elmas",
+   "depthBlocks": 6500,
+   "blockHp": 170196544.59,
+   "items": [
+    {
+     "name": "Ham elmas",
+     "value": 17858,
+     "rarity": "common",
+     "weight": 50
+    },
+    {
+     "name": "Elmas tozu",
+     "value": 26787,
+     "rarity": "common",
+     "weight": 40
+    },
+    {
+     "name": "Küçük elmas",
+     "value": 35716,
+     "rarity": "common",
+     "weight": 30
+    },
+    {
+     "name": "Pırlanta kırığı",
+     "value": 53574,
+     "rarity": "common",
+     "weight": 20
+    },
+    {
+     "name": "Mücevher",
+     "value": 142864,
+     "rarity": "uncommon",
+     "weight": 8
+    },
+    {
+     "name": "Safir",
+     "value": 250011,
+     "rarity": "uncommon",
+     "weight": 6
+    },
+    {
+     "name": "Kraliyet elması",
+     "value": 1071476,
+     "rarity": "rare",
+     "weight": 1.5
+    }
+   ]
+  },
+  {
+   "id": "kadim",
+   "name": "Kadim Hazine",
+   "depthBlocks": 7000,
+   "blockHp": 300002399.41,
+   "items": [
+    {
+     "name": "Kadim sikke",
+     "value": 60717,
+     "rarity": "common",
+     "weight": 50
+    },
+    {
+     "name": "Eski tapınak parçası",
+     "value": 91075,
+     "rarity": "common",
+     "weight": 40
+    },
+    {
+     "name": "Kadim tılsım",
+     "value": 121434,
+     "rarity": "common",
+     "weight": 30
+    },
+    {
+     "name": "Unutulmuş yüzük",
+     "value": 182151,
+     "rarity": "common",
+     "weight": 20
+    },
+    {
+     "name": "Kadim mücevher",
+     "value": 485736,
+     "rarity": "uncommon",
+     "weight": 8
+    },
+    {
+     "name": "Altın tablet",
+     "value": 850038,
+     "rarity": "uncommon",
+     "weight": 6
+    },
+    {
+     "name": "Kadim taç",
+     "value": 3643020,
+     "rarity": "rare",
+     "weight": 1.5
+    }
+   ]
+  }
+ ],
+ "pickaxes": [
+  {
+   "name": "Tahta kazma",
+   "power": 1,
+   "cost": 0,
+   "minLayer": 0
+  },
+  {
+   "name": "Taş kazma",
+   "power": 3,
+   "cost": 1632,
+   "minLayer": 1
+  },
+  {
+   "name": "Demir kazma",
+   "power": 9,
+   "cost": 18866,
+   "minLayer": 3
+  },
+  {
+   "name": "Çelik kazma",
+   "power": 27,
+   "cost": 218090,
+   "minLayer": 5
+  },
+  {
+   "name": "Elmas kazma",
+   "power": 80,
+   "cost": 2521121,
+   "minLayer": 7
+  }
+ ],
+ "upgrades": [
+  {
+   "id": "guc1",
+   "name": "Güçlü Kollar",
+   "desc": "Vuruş gücü her seviyede yüzde 7 artar",
+   "baseCost": 15,
+   "costMult": 1.18,
+   "maxLevel": 60,
+   "effectPerLevel": 0.07,
+   "kind": "power",
+   "minLayer": 0
+  },
+  {
+   "id": "guc2",
+   "name": "Çelik Bilek",
+   "desc": "Vuruş gücü her seviyede yüzde 3 artar",
+   "baseCost": 173,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.03,
+   "kind": "power",
+   "minLayer": 2
+  },
+  {
+   "id": "guc3",
+   "name": "Titan Kasları",
+   "desc": "Vuruş gücü her seviyede yüzde 3 artar",
+   "baseCost": 6815,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.03,
+   "kind": "power",
+   "minLayer": 5
+  },
+  {
+   "id": "guc4",
+   "name": "Kadim Güç",
+   "desc": "Vuruş gücü her seviyede yüzde 3 artar",
+   "baseCost": 267869,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.03,
+   "kind": "power",
+   "minLayer": 8
+  },
+  {
+   "id": "krit1",
+   "name": "Keskin Göz",
+   "desc": "Kritik vuruş şansı yüzde 2 artar",
+   "baseCost": 36,
+   "costMult": 1.3,
+   "maxLevel": 15,
+   "effectPerLevel": 0.02,
+   "kind": "crit",
+   "minLayer": 0
+  },
+  {
+   "id": "krit2",
+   "name": "Usta Vuruş",
+   "desc": "Kritik vuruş şansı yüzde 3 artar",
+   "baseCost": 4811,
+   "costMult": 1.3,
+   "maxLevel": 10,
+   "effectPerLevel": 0.03,
+   "kind": "crit",
+   "minLayer": 4
+  },
+  {
+   "id": "sans1",
+   "name": "Şans Tılsımı",
+   "desc": "Nadir eşya şansı artar",
+   "baseCost": 30,
+   "costMult": 1.2,
+   "maxLevel": 30,
+   "effectPerLevel": 0.15,
+   "kind": "rareChance",
+   "minLayer": 0
+  },
+  {
+   "id": "sans2",
+   "name": "Define Haritası",
+   "desc": "Nadir eşya şansı çok artar",
+   "baseCost": 13631,
+   "costMult": 1.2,
+   "maxLevel": 30,
+   "effectPerLevel": 0.4,
+   "kind": "rareChance",
+   "minLayer": 5
+  },
+  {
+   "id": "canta1",
+   "name": "Sırt Çantası",
+   "desc": "Çanta 10 eşya büyür",
+   "baseCost": 18,
+   "costMult": 1.2,
+   "maxLevel": 30,
+   "effectPerLevel": 10,
+   "kind": "bag",
+   "minLayer": 0
+  },
+  {
+   "id": "canta2",
+   "name": "Büyük Çanta",
+   "desc": "Çanta 40 eşya büyür",
+   "baseCost": 943,
+   "costMult": 1.2,
+   "maxLevel": 30,
+   "effectPerLevel": 40,
+   "kind": "bag",
+   "minLayer": 3
+  },
+  {
+   "id": "canta3",
+   "name": "Yük Arabası",
+   "desc": "Çanta 200 eşya büyür",
+   "baseCost": 37075,
+   "costMult": 1.2,
+   "maxLevel": 30,
+   "effectPerLevel": 200,
+   "kind": "bag",
+   "minLayer": 6
+  },
+  {
+   "id": "otosat",
+   "name": "Otomatik Satış",
+   "desc": "Çanta dolunca kendiliğinden satar",
+   "baseCost": 2081,
+   "costMult": 2,
+   "maxLevel": 1,
+   "effectPerLevel": 1,
+   "kind": "autosell",
+   "minLayer": 2
+  },
+  {
+   "id": "pazar1",
+   "name": "Pazarlık Ustalığı",
+   "desc": "Satış geliri her seviyede yüzde 6 artar",
+   "baseCost": 48,
+   "costMult": 1.18,
+   "maxLevel": 60,
+   "effectPerLevel": 0.059500000000000004,
+   "kind": "sellBonus",
+   "minLayer": 0
+  },
+  {
+   "id": "pazar2",
+   "name": "Tüccar Ağı",
+   "desc": "Satış geliri her seviyede yüzde 3 artar",
+   "baseCost": 6414,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.03,
+   "kind": "sellBonus",
+   "minLayer": 4
+  },
+  {
+   "id": "pazar3",
+   "name": "Kadim Tüccar",
+   "desc": "Satış geliri her seviyede yüzde 3 artar",
+   "baseCost": 252112,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.03,
+   "kind": "sellBonus",
+   "minLayer": 7
+  },
+  {
+   "id": "dynamitePower",
+   "name": "Dinamit Gücü",
+   "desc": "Gücü her seviyede yüzde 4 artar",
+   "baseCost": 163,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.039,
+   "kind": "dynamitePower",
+   "minLayer": 1
+  },
+  {
+   "id": "dynamiteSpeed",
+   "name": "Dinamit Hızı",
+   "desc": "Hızı her seviyede yüzde 2,5 artar",
+   "baseCost": 245,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.024,
+   "kind": "dynamiteSpeed",
+   "minLayer": 1
+  },
+  {
+   "id": "drillPower",
+   "name": "Matkap Gücü",
+   "desc": "Gücü her seviyede yüzde 4 artar",
+   "baseCost": 555,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.039,
+   "kind": "drillPower",
+   "minLayer": 2
+  },
+  {
+   "id": "drillSpeed",
+   "name": "Matkap Hızı",
+   "desc": "Hızı her seviyede yüzde 2,5 artar",
+   "baseCost": 832,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.024,
+   "kind": "drillSpeed",
+   "minLayer": 2
+  },
+  {
+   "id": "dynamite2Power",
+   "name": "Güçlü Dinamit Gücü",
+   "desc": "Gücü her seviyede yüzde 4 artar",
+   "baseCost": 6414,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.039,
+   "kind": "dynamite2Power",
+   "minLayer": 4
+  },
+  {
+   "id": "dynamite2Speed",
+   "name": "Güçlü Dinamit Hızı",
+   "desc": "Hızı her seviyede yüzde 2,5 artar",
+   "baseCost": 9622,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.024,
+   "kind": "dynamite2Speed",
+   "minLayer": 4
+  },
+  {
+   "id": "drill2Power",
+   "name": "Güçlü Matkap Gücü",
+   "desc": "Gücü her seviyede yüzde 4 artar",
+   "baseCost": 21809,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.039,
+   "kind": "drill2Power",
+   "minLayer": 5
+  },
+  {
+   "id": "drill2Speed",
+   "name": "Güçlü Matkap Hızı",
+   "desc": "Hızı her seviyede yüzde 2,5 artar",
+   "baseCost": 32714,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.024,
+   "kind": "drill2Speed",
+   "minLayer": 5
+  },
+  {
+   "id": "dynamite3Power",
+   "name": "Mega Dinamit Gücü",
+   "desc": "Gücü her seviyede yüzde 4 artar",
+   "baseCost": 252112,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.039,
+   "kind": "dynamite3Power",
+   "minLayer": 7
+  },
+  {
+   "id": "dynamite3Speed",
+   "name": "Mega Dinamit Hızı",
+   "desc": "Hızı her seviyede yüzde 2,5 artar",
+   "baseCost": 378168,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.024,
+   "kind": "dynamite3Speed",
+   "minLayer": 7
+  },
+  {
+   "id": "drill3Power",
+   "name": "Elmas Matkap Gücü",
+   "desc": "Gücü her seviyede yüzde 4 artar",
+   "baseCost": 857181,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.039,
+   "kind": "drill3Power",
+   "minLayer": 8
+  },
+  {
+   "id": "drill3Speed",
+   "name": "Elmas Matkap Hızı",
+   "desc": "Hızı her seviyede yüzde 2,5 artar",
+   "baseCost": 1285772,
+   "costMult": 1.12,
+   "maxLevel": 100,
+   "effectPerLevel": 0.024,
+   "kind": "drill3Speed",
+   "minLayer": 8
+  }
+ ],
+ "machines": [
+  {
+   "id": "dynamite",
+   "name": "Dinamit",
+   "kind": "dynamite",
+   "unlockCost": 816,
+   "minLayer": 1,
+   "intervalSec": 20,
+   "power": 40
+  },
+  {
+   "id": "drill",
+   "name": "Matkap",
+   "kind": "drill",
+   "unlockCost": 2774,
+   "minLayer": 2,
+   "intervalSec": 2,
+   "power": 3
+  },
+  {
+   "id": "dynamite2",
+   "name": "Güçlü Dinamit",
+   "kind": "dynamite",
+   "unlockCost": 32072,
+   "minLayer": 4,
+   "intervalSec": 16.0,
+   "power": 800
+  },
+  {
+   "id": "drill2",
+   "name": "Güçlü Matkap",
+   "kind": "drill",
+   "unlockCost": 109045,
+   "minLayer": 5,
+   "intervalSec": 1.6,
+   "power": 60
+  },
+  {
+   "id": "dynamite3",
+   "name": "Mega Dinamit",
+   "kind": "dynamite",
+   "unlockCost": 1260560,
+   "minLayer": 7,
+   "intervalSec": 12.0,
+   "power": 16000
+  },
+  {
+   "id": "drill3",
+   "name": "Elmas Matkap",
+   "kind": "drill",
+   "unlockCost": 4285905,
+   "minLayer": 8,
+   "intervalSec": 1.2,
+   "power": 1200
+  }
+ ]
+}

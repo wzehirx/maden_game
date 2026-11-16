@@ -1,0 +1,24 @@
+# Unity
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uilds/
+/[Bb]uild/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/.vs/
+/.idea/
+*.user
+*.log
+build.log
+*.apk
+*.aab
+# .NET
+bin/
+obj/
+# Android Studio / Gradle
+.gradle/
+local.properties
+# Unity'nin ürettiği proje dosyaları (Unity klasörü kökünde); dotnet projeleri Core/ Sim/ tools altında kalır
+/Assembly-CSharp*.csproj
+/Maden.sln
