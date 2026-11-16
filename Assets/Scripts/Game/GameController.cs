@@ -307,7 +307,7 @@ namespace Maden.Game
             {
                 case EventKind.Hit:
                     bool crit = ev.Rarity != Rarity.Common; // Core: kritik vuruş = Uncommon
-                    Sound.PlayHit(ev.Layer, crit ? 1.25f : 1f);
+                    Sound.PlayHit(ev.Layer, crit ? 1.08f : 1f);
                     Haptics.Play(crit ? HapticKind.Hard : Haptics.ForHitGroup(SoundPlayer.GroupOf(ev.Layer)));
                     return; // kazma vuruşlarında konuşma yok
 

@@ -45,3 +45,11 @@ Neden: Unity Personal lisansı başsız etkinleştirilemedi (manuel etkinleştir
 - AÇIK RİSK 1: Godot şablonu net9.0 bekliyor, oyun net8.0 ile paketli (gradle yolu). Cihazda açılışta çökebilir. Düzeltme: .NET 9 SDK kur + csproj TargetFramework=net9.0 (bu oturumda kurulum izni reddedildi).
 - AÇIK RİSK 2: TTS, dokunma, titreşim cihazda test edilmedi.
 - Sıradaki: Synth yok (Unity silindi); büyük sayı/dükkân listesi iyileştirmesi; son erişilebilirlik denetimi; kullanıcı kurulum tarifi (tools/KURULUM_TR.md hazır).
+
+## OTURUM KESİNTİSİ (kullanım sınırı, 18:40 UTC'ye kadar) — KALDIĞIMIZ YER
+Kullanıcı telefonda APK'yı denedi: oyun açılıyor ama (1) aşırı hantal, (2) konuşma Microsoft sesi (ÇÖZÜM: telefonun VARSAYILAN TTS motoru/sesi, voice id boş), (3) dükkân yazısı çok küçük (büyüt + kategori gruplama), (4) sesler çok sentetik/gerçekçi değil.
+- release/Maden.apk (66 MB) = ilk sürüm (hantal/sentetik). Yeni sürüm bekleniyor.
+- Ses: 31 dosya Sonniss GDC foley (archive.org aynası, lisans License.pdf, atıfsız) ile değiştirildi; KALAN sentetik/OGA: numarasız eski dosyalar (dirt_hit.ogg, stone_hit.ogg, metal_hit.ogg, crystal_hit.ogg, rare_find.ogg, sell.ogg, buy.ogg, dynamite.ogg) -> kod ajanı bitince SİL; ayrıca legend_find_1/2, fuse, upgrade, error, menu_open/close, fanfare (gerçek kayıt aranacak), ambient/layer_1..5, müzik. Hiçbir ses sentez olmayacak. Freesound bu kutudan erişilemez.
+- Kod ajanı (aea579ca) hantallık/TTS/dükkân/ses seviyesi işini yapıyordu; durumu belirsiz. Sıradaki: git diff'e bak, testleri (dotnet test Core.Tests, Sim, godot --selftest) çalıştır, tools/build_android.sh ile APK, release/Maden.apk'ya `git add -f`, kullanıcıya link ver: https://github.com/wzehirx/maden_game/raw/claude/kind-bell-sp5vys/release/Maden.apk
+- Ortam sıfırlanırsa: Godot 4.7.2 mono + export şablonları (downloads.godotengine.org), .NET 8 (/opt/dotnet), Android SDK (/opt/android-sdk), JDK17 (/opt/jdk17, chmod +x lib/jspawnhelper) yeniden kurulmalı.
+- Güvenlik: kullanıcı Freesound API anahtarını ve Unity bilgilerini sohbette paylaştı -> yenilemesi önerildi.
