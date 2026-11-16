@@ -27,3 +27,10 @@ Yerel Android (Kotlin) denemesi kullanıcı isteğiyle İPTAL edildi ve silindi.
 - Açık: blok/para sayıları çok büyük (katrilyon); dükkân listesi uzun (44 öğe); Sim çevrimdışı/NG+ ölçmüyor.
 - Unity: Editor+Android modülü bu kutuya kuruldu (/opt/unity) ama Personal lisans başsız etkinleştirilemiyor -> APK derlenemiyor.
 - BEKLEYEN KARAR: motor (Unity+PC derleme / Godot 4 .NET / yerel Android). Öneri: Godot 4 .NET.
+
+## KARAR (SON): GODOT 4.7.2 (.NET) — Unity bırakıldı
+Neden: Unity Personal lisansı başsız etkinleştirilemedi (manuel etkinleştirme kapalı; kullanıcının Unity hesapları askıya alındı). Godot: lisans yok, APK burada derlenir.
+- Araçlar (kutu): /opt/godot, /opt/dotnet, /opt/android-sdk, /opt/jdk17. Ortam yeni oturumda sıfırlanır; kurulum tarifi tools/ altında olacak.
+- Core (C#), economy.json, testler, Sim, sesler aynen kalır. Unity katmanı Godot'ya taşınıyor (ajan çalışıyor).
+- Ağ: ortam 'unrestricted'. Freesound bu ortamdan erişilemiyor.
+- Güvenlik notu: kullanıcı Unity hesap bilgisini sohbette paylaştı; şifresini değiştirmesi önerildi.
