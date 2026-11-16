@@ -12,7 +12,7 @@
   {
    "id": "toprak",
    "name": "Toprak",
-   "depthBlocks": 13593,
+   "depthBlocks": 2162,
    "blockHp": 8,
    "items": [
     {
@@ -62,7 +62,7 @@
   {
    "id": "kil",
    "name": "Kil",
-   "depthBlocks": 37490,
+   "depthBlocks": 15609,
    "blockHp": 40,
    "items": [
     {
@@ -112,7 +112,7 @@
   {
    "id": "tas",
    "name": "Taş",
-   "depthBlocks": 87215,
+   "depthBlocks": 58142,
    "blockHp": 200,
    "items": [
     {
@@ -162,7 +162,7 @@
   {
    "id": "komur",
    "name": "Kömür",
-   "depthBlocks": 58030,
+   "depthBlocks": 100008,
    "blockHp": 1000,
    "items": [
     {
@@ -212,7 +212,7 @@
   {
    "id": "demir",
    "name": "Demir",
-   "depthBlocks": 101959,
+   "depthBlocks": 151926,
    "blockHp": 5000,
    "items": [
     {
@@ -262,7 +262,7 @@
   {
    "id": "gumus",
    "name": "Gümüş",
-   "depthBlocks": 62362,
+   "depthBlocks": 236240,
    "blockHp": 25000,
    "items": [
     {
@@ -312,7 +312,7 @@
   {
    "id": "altin",
    "name": "Altın",
-   "depthBlocks": 85398,
+   "depthBlocks": 368025,
    "blockHp": 125000,
    "items": [
     {
@@ -362,7 +362,7 @@
   {
    "id": "kristal",
    "name": "Kristal",
-   "depthBlocks": 161773,
+   "depthBlocks": 740861,
    "blockHp": 625000,
    "items": [
     {
@@ -412,7 +412,7 @@
   {
    "id": "elmas",
    "name": "Elmas",
-   "depthBlocks": 726479,
+   "depthBlocks": 1857314,
    "blockHp": 3125000,
    "items": [
     {
@@ -462,7 +462,7 @@
   {
    "id": "kadim",
    "name": "Kadim Hazine",
-   "depthBlocks": 211013,
+   "depthBlocks": 6475733,
    "blockHp": 15625000,
    "items": [
     {
@@ -520,25 +520,25 @@
   {
    "name": "Taş kazma",
    "power": 3,
-   "cost": 750,
+   "cost": 1158,
    "minLayer": 0
   },
   {
    "name": "Demir kazma",
    "power": 9,
-   "cost": 412821,
+   "cost": 859453,
    "minLayer": 2
   },
   {
    "name": "Çelik kazma",
    "power": 27,
-   "cost": 82720388,
+   "cost": 318998427,
    "minLayer": 4
   },
   {
    "name": "Elmas kazma",
    "power": 80,
-   "cost": 16575380836,
+   "cost": 118400858835,
    "minLayer": 6
   }
  ],
@@ -547,7 +547,7 @@
    "id": "guc1",
    "name": "Güçlü Kollar",
    "desc": "Vuruş gücü her seviyede yüzde 4,5 artar",
-   "baseCost": 18,
+   "baseCost": 60,
    "costMult": 1.12,
    "maxLevel": 40,
    "effectPerLevel": 0.045,
@@ -558,7 +558,7 @@
    "id": "pazar1",
    "name": "Pazarlık Ustalığı",
    "desc": "Satış geliri her seviyede yüzde 1,5 artar",
-   "baseCost": 56,
+   "baseCost": 192,
    "costMult": 1.12,
    "maxLevel": 20,
    "effectPerLevel": 0.015,
@@ -569,7 +569,7 @@
    "id": "guc2",
    "name": "Sağlam Eldiven",
    "desc": "Vuruş gücü her seviyede yüzde 2,5 artar",
-   "baseCost": 750,
+   "baseCost": 1158,
    "costMult": 1.08,
    "maxLevel": 40,
    "effectPerLevel": 0.025,
@@ -579,22 +579,22 @@
   {
    "id": "guc3",
    "name": "Çelik Bilek",
-   "desc": "Vuruş gücü her seviyede yüzde 2,5 artar",
-   "baseCost": 14582,
-   "costMult": 1.08,
-   "maxLevel": 40,
-   "effectPerLevel": 0.025,
+   "desc": "Vuruş gücü her seviyede yüzde 3 artar",
+   "baseCost": 22305,
+   "costMult": 1.06,
+   "maxLevel": 45,
+   "effectPerLevel": 0.03,
    "kind": "power",
    "minLayer": 1
   },
   {
    "id": "guc4",
    "name": "Demir Yumruk",
-   "desc": "Vuruş gücü her seviyede yüzde 2,5 artar",
-   "baseCost": 206410,
-   "costMult": 1.08,
-   "maxLevel": 40,
-   "effectPerLevel": 0.025,
+   "desc": "Vuruş gücü her seviyede yüzde 3 artar",
+   "baseCost": 429726,
+   "costMult": 1.06,
+   "maxLevel": 45,
+   "effectPerLevel": 0.03,
    "kind": "power",
    "minLayer": 2
   },
@@ -602,8 +602,8 @@
    "id": "pazar4",
    "name": "Tüccar Ağı",
    "desc": "Satış geliri her seviyede yüzde 1,5 artar",
-   "baseCost": 660514,
-   "costMult": 1.08,
+   "baseCost": 1375125,
+   "costMult": 1.06,
    "maxLevel": 20,
    "effectPerLevel": 0.015,
    "kind": "sellBonus",
@@ -612,33 +612,33 @@
   {
    "id": "guc5",
    "name": "Maden Ustası",
-   "desc": "Vuruş gücü her seviyede yüzde 2,5 artar",
-   "baseCost": 2921844,
-   "costMult": 1.08,
-   "maxLevel": 40,
-   "effectPerLevel": 0.025,
+   "desc": "Vuruş gücü her seviyede yüzde 3 artar",
+   "baseCost": 8278952,
+   "costMult": 1.06,
+   "maxLevel": 45,
+   "effectPerLevel": 0.03,
    "kind": "power",
    "minLayer": 3
   },
   {
    "id": "guc6",
    "name": "Kaya Kırıcı",
-   "desc": "Vuruş gücü her seviyede yüzde 2,5 artar",
-   "baseCost": 41360194,
-   "costMult": 1.08,
-   "maxLevel": 40,
-   "effectPerLevel": 0.025,
+   "desc": "Vuruş gücü her seviyede yüzde 3 artar",
+   "baseCost": 159499214,
+   "costMult": 1.06,
+   "maxLevel": 45,
+   "effectPerLevel": 0.03,
    "kind": "power",
    "minLayer": 4
   },
   {
    "id": "guc7",
    "name": "Kristal Vuruş",
-   "desc": "Vuruş gücü her seviyede yüzde 2,5 artar",
-   "baseCost": 585474580,
-   "costMult": 1.08,
-   "maxLevel": 40,
-   "effectPerLevel": 0.025,
+   "desc": "Vuruş gücü her seviyede yüzde 3 artar",
+   "baseCost": 3072852410,
+   "costMult": 1.06,
+   "maxLevel": 45,
+   "effectPerLevel": 0.03,
    "kind": "power",
    "minLayer": 5
   },
@@ -646,8 +646,8 @@
    "id": "pazar7",
    "name": "Altın Borsası",
    "desc": "Satış geliri her seviyede yüzde 1,5 artar",
-   "baseCost": 1873518655,
-   "costMult": 1.08,
+   "baseCost": 9833127710,
+   "costMult": 1.06,
    "maxLevel": 20,
    "effectPerLevel": 0.015,
    "kind": "sellBonus",
@@ -656,11 +656,11 @@
   {
    "id": "guc8",
    "name": "Titan Kasları",
-   "desc": "Vuruş gücü her seviyede yüzde 2,5 artar",
-   "baseCost": 8287690418,
-   "costMult": 1.08,
-   "maxLevel": 40,
-   "effectPerLevel": 0.025,
+   "desc": "Vuruş gücü her seviyede yüzde 3 artar",
+   "baseCost": 59200429418,
+   "costMult": 1.06,
+   "maxLevel": 45,
+   "effectPerLevel": 0.03,
    "kind": "power",
    "minLayer": 6
   },
@@ -668,9 +668,9 @@
    "id": "guc9",
    "name": "Elmas Darbe",
    "desc": "Vuruş gücü her seviyede yüzde 4 artar",
-   "baseCost": 117316472569,
-   "costMult": 1.045,
-   "maxLevel": 60,
+   "baseCost": 1140533411972,
+   "costMult": 1.05,
+   "maxLevel": 80,
    "effectPerLevel": 0.04,
    "kind": "power",
    "minLayer": 7
@@ -679,8 +679,8 @@
    "id": "pazar9",
    "name": "Kadim Tüccar",
    "desc": "Satış geliri her seviyede yüzde 1,5 artar",
-   "baseCost": 375412712222,
-   "costMult": 1.045,
+   "baseCost": 3649706918312,
+   "costMult": 1.05,
    "maxLevel": 20,
    "effectPerLevel": 0.015,
    "kind": "sellBonus",
@@ -690,9 +690,9 @@
    "id": "guc10",
    "name": "Kadim Güç",
    "desc": "Vuruş gücü her seviyede yüzde 4 artar",
-   "baseCost": 1660674330408,
-   "costMult": 1.045,
-   "maxLevel": 60,
+   "baseCost": 21973091692450,
+   "costMult": 1.05,
+   "maxLevel": 80,
    "effectPerLevel": 0.04,
    "kind": "power",
    "minLayer": 8
@@ -701,7 +701,7 @@
    "id": "krit1",
    "name": "Keskin Göz",
    "desc": "Kritik vuruş şansı yüzde 2 artar",
-   "baseCost": 42,
+   "baseCost": 144,
    "costMult": 1.3,
    "maxLevel": 15,
    "effectPerLevel": 0.02,
@@ -712,7 +712,7 @@
    "id": "krit2",
    "name": "Usta Vuruş",
    "desc": "Kritik vuruş şansı yüzde 3 artar",
-   "baseCost": 7012427,
+   "baseCost": 19869486,
    "costMult": 1.3,
    "maxLevel": 10,
    "effectPerLevel": 0.03,
@@ -723,7 +723,7 @@
    "id": "sans1",
    "name": "Şans Tılsımı",
    "desc": "Nadir eşya şansı artar",
-   "baseCost": 35,
+   "baseCost": 120,
    "costMult": 1.2,
    "maxLevel": 30,
    "effectPerLevel": 0.15,
@@ -734,7 +734,7 @@
    "id": "sans2",
    "name": "Define Haritası",
    "desc": "Nadir eşya şansı çok artar",
-   "baseCost": 82720388,
+   "baseCost": 318998427,
    "costMult": 1.2,
    "maxLevel": 30,
    "effectPerLevel": 0.4,
@@ -745,7 +745,7 @@
    "id": "canta1",
    "name": "Sırt Çantası",
    "desc": "Çanta 10 eşya büyür",
-   "baseCost": 21,
+   "baseCost": 72,
    "costMult": 1.2,
    "maxLevel": 30,
    "effectPerLevel": 10,
@@ -756,7 +756,7 @@
    "id": "canta2",
    "name": "Büyük Çanta",
    "desc": "Çanta 40 eşya büyür",
-   "baseCost": 330257,
+   "baseCost": 687562,
    "costMult": 1.2,
    "maxLevel": 30,
    "effectPerLevel": 40,
@@ -767,7 +767,7 @@
    "id": "canta3",
    "name": "Yük Arabası",
    "desc": "Çanta 200 eşya büyür",
-   "baseCost": 936759328,
+   "baseCost": 4916563855,
    "costMult": 1.2,
    "maxLevel": 30,
    "effectPerLevel": 200,
@@ -778,7 +778,7 @@
    "id": "otosat",
    "name": "Otomatik Satış",
    "desc": "Çanta dolunca kendiliğinden satar",
-   "baseCost": 174981,
+   "baseCost": 267663,
    "costMult": 2,
    "maxLevel": 1,
    "effectPerLevel": 1,
@@ -789,7 +789,7 @@
    "id": "dynamitePower",
    "name": "Dinamit Gücü",
    "desc": "Gücü her seviyede yüzde 6 artar",
-   "baseCost": 2400,
+   "baseCost": 3704,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.03,
@@ -800,7 +800,7 @@
    "id": "dynamiteSpeed",
    "name": "Dinamit Hızı",
    "desc": "Hızı her seviyede yüzde 4 artar",
-   "baseCost": 3600,
+   "baseCost": 5556,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.02,
@@ -811,7 +811,7 @@
    "id": "drillPower",
    "name": "Matkap Gücü",
    "desc": "Gücü her seviyede yüzde 6 artar",
-   "baseCost": 46662,
+   "baseCost": 71377,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.03,
@@ -822,7 +822,7 @@
    "id": "drillSpeed",
    "name": "Matkap Hızı",
    "desc": "Hızı her seviyede yüzde 4 artar",
-   "baseCost": 69992,
+   "baseCost": 107065,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.02,
@@ -833,7 +833,7 @@
    "id": "dynamite2Power",
    "name": "Güçlü Dinamit Gücü",
    "desc": "Gücü her seviyede yüzde 6 artar",
-   "baseCost": 9349902,
+   "baseCost": 26492648,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.03,
@@ -844,7 +844,7 @@
    "id": "dynamite2Speed",
    "name": "Güçlü Dinamit Hızı",
    "desc": "Hızı her seviyede yüzde 4 artar",
-   "baseCost": 14024854,
+   "baseCost": 39738972,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.02,
@@ -855,7 +855,7 @@
    "id": "drill2Power",
    "name": "Güçlü Matkap Gücü",
    "desc": "Gücü her seviyede yüzde 6 artar",
-   "baseCost": 132352621,
+   "baseCost": 510397483,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.03,
@@ -866,7 +866,7 @@
    "id": "drill2Speed",
    "name": "Güçlü Matkap Hızı",
    "desc": "Hızı her seviyede yüzde 4 artar",
-   "baseCost": 198528931,
+   "baseCost": 765596225,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.02,
@@ -877,7 +877,7 @@
    "id": "dynamite3Power",
    "name": "Mega Dinamit Gücü",
    "desc": "Gücü her seviyede yüzde 6 artar",
-   "baseCost": 26520609338,
+   "baseCost": 189441374136,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.03,
@@ -888,7 +888,7 @@
    "id": "dynamite3Speed",
    "name": "Mega Dinamit Hızı",
    "desc": "Hızı her seviyede yüzde 4 artar",
-   "baseCost": 39780914008,
+   "baseCost": 284162061204,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.02,
@@ -899,7 +899,7 @@
    "id": "drill3Power",
    "name": "Elmas Matkap Gücü",
    "desc": "Gücü her seviyede yüzde 6 artar",
-   "baseCost": 375412712222,
+   "baseCost": 3649706918312,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.03,
@@ -910,7 +910,7 @@
    "id": "drill3Speed",
    "name": "Elmas Matkap Hızı",
    "desc": "Hızı her seviyede yüzde 4 artar",
-   "baseCost": 563119068332,
+   "baseCost": 5474560377468,
    "costMult": 1.08,
    "maxLevel": 10,
    "effectPerLevel": 0.02,
@@ -923,7 +923,7 @@
    "id": "dynamite",
    "name": "Dinamit",
    "kind": "dynamite",
-   "unlockCost": 12000,
+   "unlockCost": 18520,
    "minLayer": 0,
    "intervalSec": 20,
    "power": 40
@@ -932,7 +932,7 @@
    "id": "drill",
    "name": "Matkap",
    "kind": "drill",
-   "unlockCost": 233308,
+   "unlockCost": 356884,
    "minLayer": 1,
    "intervalSec": 2,
    "power": 3
@@ -941,7 +941,7 @@
    "id": "dynamite2",
    "name": "Güçlü Dinamit",
    "kind": "dynamite",
-   "unlockCost": 46749512,
+   "unlockCost": 132463240,
    "minLayer": 3,
    "intervalSec": 16.0,
    "power": 320
@@ -950,7 +950,7 @@
    "id": "drill2",
    "name": "Güçlü Matkap",
    "kind": "drill",
-   "unlockCost": 661763104,
+   "unlockCost": 2551987416,
    "minLayer": 4,
    "intervalSec": 1.6,
    "power": 24
@@ -959,7 +959,7 @@
    "id": "dynamite3",
    "name": "Mega Dinamit",
    "kind": "dynamite",
-   "unlockCost": 132603046692,
+   "unlockCost": 947206870680,
    "minLayer": 6,
    "intervalSec": 12.0,
    "power": 2560
@@ -968,7 +968,7 @@
    "id": "drill3",
    "name": "Elmas Matkap",
    "kind": "drill",
-   "unlockCost": 1877063561108,
+   "unlockCost": 18248534591560,
    "minLayer": 7,
    "intervalSec": 1.2,
    "power": 192

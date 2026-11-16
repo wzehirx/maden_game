@@ -16,7 +16,7 @@ namespace Maden.Sim
         const double Dt = 1.0 / 3.0;
         const double TapsPerSec = 3.0;
         const double SellPauseSec = 1.0;
-        const double MaxWaitForTarget = 90.0;
+        const double MaxWaitForTarget = 25.0;
         const double MaxIdleWithMoney = 100.0; // elinde alınabilir bir şey varken en fazla bu kadar bekler
         const double MaxHours = 40;
 
@@ -134,6 +134,19 @@ namespace Maden.Sim
             return (tapEff + machBps) * ev;
         }
 
+        static bool SellRequested;
+
+        static long BagValue(GameSession s)
+        {
+            double total = 0;
+            foreach (var kv in s.State.Bag)
+            {
+                var parts = kv.Key.Split(':');
+                total += s.Config.Layers[int.Parse(parts[0])].Items[int.Parse(parts[1])].Value * kv.Value;
+            }
+            return (long)(total * s.SellMultiplier);
+        }
+
         static void Apply(GameSession s, ShopEntry e, int dir)
         {
             var st = s.State;
@@ -161,6 +174,7 @@ namespace Maden.Sim
             int pause = 0;
             double tapAcc = 0;
             int steps = 0;
+            double dbgFrom = double.Parse(Environment.GetEnvironmentVariable("SIM_DBG_FROM") ?? "0"), dbgTo = double.Parse(Environment.GetEnvironmentVariable("SIM_DBG_TO") ?? "0");
             while (!state.Finished && t < MaxHours * 3600)
             {
                 steps++;
@@ -181,11 +195,32 @@ namespace Maden.Sim
                 for (int li = 0; li <= state.LayerIndex; li++)
                     if (rep.LayerIncome[li] == 0 && !double.IsNaN(rep.LayerArrival[li]) && t >= rep.LayerArrival[li] + 600)
                         rep.LayerIncome[li] = (state.TotalEarned - earnedAt[li]) / 600.0;
+                if (dbgFrom > 0 && t >= dbgFrom && t <= dbgTo && steps % 90 == 0)
+                {
+                    var sl = s.GetShopEntries(); long cheapest = long.MaxValue; foreach (var e0 in sl) cheapest = Math.Min(cheapest, e0.Cost);
+                    Console.WriteLine("DBG t={0:F0} money={1} layer={2} bag={3}/{4} rate={5:F1} cheapest={6} blocks={7} dmg={8:F1} hp={9}", t, state.Money, state.LayerIndex + 1, state.BagCount, s.BagCapacity, Rate(s), cheapest, state.TotalBlocks, s.TapDamage, s.CurrentLayer.BlockHp);
+                }
                 if (t >= nextDecision)
                 {
                     nextDecision = t + 1.0;
+                    // Alınabilecek bir şey varsa (çanta satılırsa) önce sat.
+                    if (!s.AutoSell && state.BagCount > 0 && pause == 0)
+                    {
+                        long cheapest = long.MaxValue;
+                        foreach (var e0 in s.GetShopEntries()) cheapest = Math.Min(cheapest, e0.Cost);
+                        if (state.Money < cheapest && state.Money + BagValue(s) >= cheapest)
+                        {
+                            s.SellAll();
+                            pause = (int)Math.Round(SellPauseSec / Dt);
+                        }
+                    }
                     var bought = Decide(s, rep, t, ref lastPurchase);
                     if (bought) nextDecision = t;
+                    if (SellRequested)
+                    {
+                        SellRequested = false;
+                        if (pause == 0) { s.SellAll(); pause = (int)Math.Round(SellPauseSec / Dt); nextDecision = t + 0.5; }
+                    }
                 }
             }
             rep.Finished = state.Finished;
@@ -225,9 +260,13 @@ namespace Maden.Sim
             else
             {
                 double wait = (target.Cost - s.State.Money) / Math.Max(1e-9, baseRate);
-                if (bestAff != null && (wait > MaxWaitForTarget || affPb <= 2 * targetPb || t - lastPurchase > MaxIdleWithMoney)) pick = bestAff;
+                if (bestAff != null && (wait > MaxWaitForTarget || affPb <= 2 * targetPb)) pick = bestAff;
             }
-            if (pick == null) return false;
+            if (pick == null)
+            {
+                if (!s.AutoSell && s.State.BagCount > 0 && s.State.Money + BagValue(s) >= target.Cost) SellRequested = true;
+                return false;
+            }
             int layer = s.State.LayerIndex;
             if (!s.Buy(pick)) return false;
             rep.Purchases++;
