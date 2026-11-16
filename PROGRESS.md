@@ -14,10 +14,9 @@ Bu bulut kutusunda (Linux, 4 çekirdek, 15 GB RAM, ffmpeg + Java + Python 3.13 +
 ## Sıradaki adım
 Aşama 1: Haiku araştırmaları (erişilebilirlik/TTS/titreşim, Unity LTS, ses kaynakları).
 
-## KARAR (Aşama 3 sırasında): Unity BIRAKILDI -> yerel Android (Kotlin + Gradle)
-Neden: bu kutuda Android SDK + Gradle çalışıyor, APK GERÇEKTEN derlenip doğrulanabiliyor; TalkBack dokunma kontrolü doğrudan; pil düşük.
-- `android/` Gradle projesi: `core` (Kotlin JVM, C# Core'un portu), `app` (Activity + GameView).
-- Ses dosyaları tek kaynak: Assets/Resources/Audio (Gradle assets srcDir). Sentez ses YOK.
-- Eski Unity dosyaları (Assets/Scripts, Assets/Editor, Assets/Plugins, tools/stubs, workflow) taşıma bitince kaldırılacak. Assets/Scripts/Core (C#) denge simülasyonu için referans.
-- Freesound bu ortamdan erişilemiyor (ağ katmanı 403); kullanıcı PC'sinde tools/fetch_sounds.py ile eklenebilir.
-- Ağ: ortam 'limited' moda alındı, gerekli hostlar izinli.
+## KARAR (güncel): UNITY'DE KALINIYOR
+Yerel Android (Kotlin) denemesi kullanıcı isteğiyle İPTAL edildi ve silindi. Oyun Unity oyunu olarak kalır.
+- APK Unity ile derlenir: kullanıcı PC'sinde tools/build.bat veya GitHub Actions (game-ci). Bu kutuda Unity yok, APK burada derlenmez.
+- Sentez ses YOK: Synth.cs yedekleri kaldırılacak; eksik ses = sessiz.
+- Freesound bu ortamdan erişilemiyor (ağ katmanı 403); PC'de tools/fetch_sounds.py ile eklenebilir.
+- Ağ: ortam 'limited' moda alındı.
