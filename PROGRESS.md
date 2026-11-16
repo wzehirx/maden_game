@@ -20,3 +20,10 @@ Yerel Android (Kotlin) denemesi kullanıcı isteğiyle İPTAL edildi ve silindi.
 - Sentez ses YOK: Synth.cs yedekleri kaldırılacak; eksik ses = sessiz.
 - Freesound bu ortamdan erişilemiyor (ağ katmanı 403); PC'de tools/fetch_sounds.py ile eklenebilir.
 - Ağ: ortam 'limited' moda alındı.
+
+## Aşama 3-4-6 durumu (doğrulandı)
+- Core (C#) + economy.json + 71 xUnit testi: GEÇİYOR (orkestratör çalıştırdı).
+- Denge simülasyonu: bitiş 16.9-17.1 saat, en uzun bekleme ~235 sn (<5 dk) -> KABUL EVET.
+- Açık: blok/para sayıları çok büyük (katrilyon); dükkân listesi uzun (44 öğe); Sim çevrimdışı/NG+ ölçmüyor.
+- Unity: Editor+Android modülü bu kutuya kuruldu (/opt/unity) ama Personal lisans başsız etkinleştirilemiyor -> APK derlenemiyor.
+- BEKLEYEN KARAR: motor (Unity+PC derleme / Godot 4 .NET / yerel Android). Öneri: Godot 4 .NET.
