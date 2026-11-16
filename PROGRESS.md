@@ -34,3 +34,8 @@ Neden: Unity Personal lisansı başsız etkinleştirilemedi (manuel etkinleştir
 - Core (C#), economy.json, testler, Sim, sesler aynen kalır. Unity katmanı Godot'ya taşınıyor (ajan çalışıyor).
 - Ağ: ortam 'unrestricted'. Freesound bu ortamdan erişilemiyor.
 - Güvenlik notu: kullanıcı Unity hesap bilgisini sohbette paylaştı; şifresini değiştirmesi önerildi.
+
+## KARAR (güncel): GODOT 4.7.2 (.NET) - Unity BIRAKILDI
+- Unity dosyaları silindi (Runtime, Editor, Plugins, Packages, ProjectSettings, license, tools/stubs). Mantık Godot'ya taşındı (Assets/Scripts/Game).
+- Core + GestureRecognizer: Core.Tests 91 test geçiyor; Sim KABUL EVET.
+- Android: `tools/build_android.sh` ile Builds/Maden.apk üretildi (gradle yolu, arm64-v8a, imzalı). GERÇEK CİHAZDA DENENMEDİ: TTS, dokunma, titreşim, .NET çalışma zamanı.

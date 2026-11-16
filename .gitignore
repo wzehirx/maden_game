@@ -1,24 +1,24 @@
-# Unity
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uilds/
+# Godot
+.godot/
+.mono/
+data_*/
+*.translation
+export_credentials.cfg
+/Builds/
 /[Bb]uild/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
-/.vs/
-/.idea/
-*.user
-*.log
-build.log
 *.apk
 *.aab
+*.idsig
+*.keystore
+*.jks
+# Android gradle derlemesi (isteğe bağlı yol)
+/android/
 # .NET
 bin/
 obj/
-# Android Studio / Gradle
-.gradle/
+*.user
+*.log
+# Editör
+/.vs/
+/.idea/
 local.properties
-# Unity'nin ürettiği proje dosyaları (Unity klasörü kökünde); dotnet projeleri Core/ Sim/ tools altında kalır
-/Assembly-CSharp*.csproj
-/Maden.sln
