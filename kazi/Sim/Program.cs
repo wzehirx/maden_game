@@ -363,7 +363,11 @@ namespace Kazi.Sim
                 int k = 0;
                 foreach (var run in r.Runs) { k++; runs.Append(" #" + k + ":" + H(run.EndT - run.StartT) + "/" + run.Ab + "AB"); }
                 sb.AppendLine("  koşular:" + runs);
-                if (verbose && i == 1) foreach (var m in r.Marks) sb.AppendLine("    " + H(m.T) + " " + m.Label);
+                if (verbose && i == 1)
+                {
+                    for (int q = 1; q < r.Marks.Count; q++)
+                        if (r.Marks[q].T - r.Marks[q - 1].T >= 180) sb.AppendLine("    UZUN " + M(r.Marks[q].T - r.Marks[q - 1].T) + " @" + H(r.Marks[q - 1].T) + " " + r.Marks[q - 1].Label + " -> " + r.Marks[q].Label);
+                }
             }
             Console.Write(sb.ToString());
             Console.WriteLine("=== ÖZET (" + rs.Count + " tohum) ===");
