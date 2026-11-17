@@ -58,6 +58,8 @@ namespace Kazi.Core
             return Math.Max(MinRate, Math.Min(MaxRate, v));
         }
 
+        public int TotalLevels { get { int n = 0; foreach (var v in Upgrades.Values) n += v; return n; } }
+
         public int Level(string id) { int v; return Upgrades.TryGetValue(id, out v) ? v : 0; }
         public int NodeLevel(string id) { int v; return Nodes.TryGetValue(id, out v) ? v : 0; }
         public int PityOf(string id) { int v; return Pity.TryGetValue(id, out v) ? v : 0; }

@@ -18,7 +18,7 @@ namespace Kazi.Core
 
     public sealed class MultiplierDef { public double Mult; public double Weight; }
 
-    public sealed class CatalogDef { public int Id; public string Name; }
+    public sealed class CatalogDef { public int Id; public string Name; /** Bu kataloğun Son Şans kartının açılması için bu koşuda gereken toplam yükseltme seviyesi. */ public int GateLevels; }
 
     public sealed class CardTypeDef
     {
@@ -179,7 +179,7 @@ namespace Kazi.Core
             foreach (object o in cats)
             {
                 var co = MiniJson.AsObject(o);
-                Catalogs.Add(new CatalogDef { Id = MiniJson.GetInt(co, "id", Catalogs.Count + 1), Name = MiniJson.GetString(co, "name", "Katalog") });
+                Catalogs.Add(new CatalogDef { Id = MiniJson.GetInt(co, "id", Catalogs.Count + 1), Name = MiniJson.GetString(co, "name", "Katalog"), GateLevels = MiniJson.GetInt(co, "gateLevels", 0) });
             }
             var types = MiniJson.GetArray(d, "cardTypes");
             if (types == null || types.Count == 0) throw new FormatException("kart türü yok.");

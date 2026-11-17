@@ -2,23 +2,28 @@
  "catalogs": [
   {
    "id": 1,
-   "name": "Mahalle Bayii"
+   "name": "Mahalle Bayii",
+   "gateLevels": 60
   },
   {
    "id": 2,
-   "name": "Çarşı Pazarı"
+   "name": "Çarşı Pazarı",
+   "gateLevels": 135
   },
   {
    "id": 3,
-   "name": "Han Köşkü"
+   "name": "Han Köşkü",
+   "gateLevels": 185
   },
   {
    "id": 4,
-   "name": "Saray Köşkü"
+   "name": "Saray Köşkü",
+   "gateLevels": 225
   },
   {
    "id": 5,
-   "name": "Altın Köşk"
+   "name": "Altın Köşk",
+   "gateLevels": 255
   }
  ],
  "cardTypes": [
@@ -148,7 +153,7 @@
    "name": "Mahalle Son Şansı",
    "catalog": 1,
    "rule": "SonSans",
-   "price": 2730,
+   "price": 800,
    "symbols": [
     {
      "id": "anahtar",
@@ -346,7 +351,7 @@
    "name": "Çarşı Son Şansı",
    "catalog": 2,
    "rule": "SonSans",
-   "price": 5632143,
+   "price": 120000,
    "symbols": [
     {
      "id": "anahtar",
@@ -514,7 +519,7 @@
    "name": "Han Son Şansı",
    "catalog": 3,
    "rule": "SonSans",
-   "price": 44913364008,
+   "price": 72000000,
    "symbols": [
     {
      "id": "anahtar",
@@ -758,7 +763,7 @@
    "name": "Saray Son Şansı",
    "catalog": 4,
    "rule": "SonSans",
-   "price": 10168809840367,
+   "price": 60000000000,
    "symbols": [
     {
      "id": "anahtar",
@@ -940,7 +945,7 @@
    "name": "Altın Bilet Son Şansı",
    "catalog": 5,
    "rule": "AltinBilet",
-   "price": 1347622831076143,
+   "price": 45000000000000,
    "symbols": [
     {
      "id": "anahtar",

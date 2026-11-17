@@ -34,7 +34,7 @@ namespace Kazi.Core
                 case 0:
                     foreach (var t in Config.CardTypes)
                         if (t.Catalog <= State.UnlockedCatalog)
-                            l.Add(new ShopItem { Kind = ShopItemKind.Card, Id = t.Id, Name = t.Name, Price = Stats.TicketPrice(t), Desc = RuleText(t) });
+                            l.Add(new ShopItem { Kind = ShopItemKind.Card, Id = t.Id, Name = t.Name, Price = Stats.TicketPrice(t), Desc = RuleText(t) + (GateLevelsLeft(t) > 0 ? " Kilitli, " + GateLevelsLeft(t) + " yükseltme daha lazım." : "") });
                     break;
                 case 1: AddUpgrades(l, "scratch"); break;
                 case 2:

@@ -64,6 +64,13 @@ namespace Kazi.Core
         // ---- kart alma ----
         public bool CanUseType(CardTypeDef t) { return t != null && t.Catalog <= State.UnlockedCatalog; }
 
+        /// <summary>Son Şans kartı için kalan gerekli yükseltme seviyesi (0 = açık).</summary>
+        public int GateLevelsLeft(CardTypeDef t)
+        {
+            if (t == null || !t.IsGate) return 0;
+            return Math.Max(0, Config.Catalogs[t.Catalog - 1].GateLevels - State.TotalLevels);
+        }
+
         public long TicketPrice(CardTypeDef t) { return Stats.TicketPrice(t); }
 
         internal Card CreateCard(CardTypeDef t)
@@ -82,6 +89,8 @@ namespace Kazi.Core
             CardTypeDef t;
             if (typeId == null || !Config.TypeById.TryGetValue(typeId, out t)) { Emit(EventKind.Error, "Böyle bir kart yok.", SpeechLevel.Info); return false; }
             if (!CanUseType(t)) { Emit(EventKind.Error, "Bu katalog henüz kilitli.", SpeechLevel.Info); return false; }
+            int need = GateLevelsLeft(t);
+            if (need > 0) { Emit(EventKind.Error, "Son Şans kilitli, " + need + " yükseltme daha lazım.", SpeechLevel.Info, need, t.Id); return false; }
             long price = Stats.TicketPrice(t);
             bool holding = State.Current != null && !State.Current.Done;
             if (holding && State.Bag.Count >= Stats.BagCap) { Emit(EventKind.BagFull, "Çanta dolu.", SpeechLevel.Info); return false; }

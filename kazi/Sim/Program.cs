@@ -209,6 +209,7 @@ namespace Kazi.Sim
             gate = b.Cfg.GateOfCatalog(s.State.UnlockedCatalog);
             if (gate == null) return false;
             if (s.State.PrestigeOffer) return false;
+            if (s.GateLevelsLeft(gate) > 0) return false;
             var cur = s.State.Current;
             if (cur != null && !cur.Done) return cur.Type == gate;
             return s.State.Money >= s.Stats.TicketPrice(gate) * b.St.GateMoneyFactor;
@@ -264,7 +265,7 @@ namespace Kazi.Sim
             double bankroll = Math.Max(st.Money, b.LastBuyCost);
             double inc0 = Income(b, s.Stats, st, bankroll);
             double gateNeed = 0;
-            { var gc = cfg.GateOfCatalog(st.UnlockedCatalog); if (gc != null && !st.PrestigeOffer) gateNeed = s.Stats.TicketPrice(gc) * b.St.GateMoneyFactor; }
+            { var gc = cfg.GateOfCatalog(st.UnlockedCatalog); if (gc != null && !st.PrestigeOffer && s.GateLevelsLeft(gc) == 0) gateNeed = s.Stats.TicketPrice(gc) * b.St.GateMoneyFactor; }
             Cand best = null, cheapest = null;
             foreach (var u in cfg.Upgrades)
             {
@@ -299,7 +300,7 @@ namespace Kazi.Sim
             // Son Şans için bakiye ayır
             var gateC = cfg.GateOfCatalog(st.UnlockedCatalog);
             double reserve = 0;
-            if (gateC != null && !st.PrestigeOffer)
+            if (gateC != null && !st.PrestigeOffer && s.GateLevelsLeft(gateC) == 0)
             {
                 double need = s.Stats.TicketPrice(gateC) * b.St.GateMoneyFactor;
                 if (need <= st.Money + inc0 * 180) reserve = need;
