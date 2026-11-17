@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://byvrlb1xn1xc4"
-path="res://.godot/imported/coin_single_3.ogg-7055d0f57e5861926f8b2f41a52fc88e.oggvorbisstr"
+path="res://.godot/imported/coin_single_3.ogg-07b73158da19c38d8e8537df537a1299.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/coin_single_3.ogg"
-dest_files=["res://.godot/imported/coin_single_3.ogg-7055d0f57e5861926f8b2f41a52fc88e.oggvorbisstr"]
+source_file="res://Audio/sfx/coin_single_3.ogg"
+dest_files=["res://.godot/imported/coin_single_3.ogg-07b73158da19c38d8e8537df537a1299.oggvorbisstr"]
 
 [params]
 

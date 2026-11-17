@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://dwg88jd7s5ywy"
-path="res://.godot/imported/paper_bin_drop.ogg-ed51f5bb5929f525e8d2d9df0baf45e1.oggvorbisstr"
+path="res://.godot/imported/paper_bin_drop.ogg-15a69e8adc17784806580e7f416af654.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/paper_bin_drop.ogg"
-dest_files=["res://.godot/imported/paper_bin_drop.ogg-ed51f5bb5929f525e8d2d9df0baf45e1.oggvorbisstr"]
+source_file="res://Audio/sfx/paper_bin_drop.ogg"
+dest_files=["res://.godot/imported/paper_bin_drop.ogg-15a69e8adc17784806580e7f416af654.oggvorbisstr"]
 
 [params]
 

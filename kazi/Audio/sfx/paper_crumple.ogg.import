@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://dfigeetank7mo"
-path="res://.godot/imported/paper_crumple.ogg-d45ab62157c7fef498cbd22c5d78f5e8.oggvorbisstr"
+path="res://.godot/imported/paper_crumple.ogg-9fee44340e4238f05e88356b2d2d4222.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/paper_crumple.ogg"
-dest_files=["res://.godot/imported/paper_crumple.ogg-d45ab62157c7fef498cbd22c5d78f5e8.oggvorbisstr"]
+source_file="res://Audio/sfx/paper_crumple.ogg"
+dest_files=["res://.godot/imported/paper_crumple.ogg-9fee44340e4238f05e88356b2d2d4222.oggvorbisstr"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://0dy6mlckwg7e"
-path="res://.godot/imported/win_small_2.ogg-bb5c828fa198c623126d6bf789874860.oggvorbisstr"
+path="res://.godot/imported/win_small_2.ogg-8b3c6a33bb3cf8665ff73722fd9bee6b.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/win_small_2.ogg"
-dest_files=["res://.godot/imported/win_small_2.ogg-bb5c828fa198c623126d6bf789874860.oggvorbisstr"]
+source_file="res://Audio/sfx/win_small_2.ogg"
+dest_files=["res://.godot/imported/win_small_2.ogg-8b3c6a33bb3cf8665ff73722fd9bee6b.oggvorbisstr"]
 
 [params]
 

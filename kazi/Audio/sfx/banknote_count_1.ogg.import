@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://cgoda4t3jhqe1"
-path="res://.godot/imported/banknote_count_1.ogg-1308af551e372216551e139dea70b91d.oggvorbisstr"
+path="res://.godot/imported/banknote_count_1.ogg-3835d804098081ee4cea3e1ae1dbb67b.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/banknote_count_1.ogg"
-dest_files=["res://.godot/imported/banknote_count_1.ogg-1308af551e372216551e139dea70b91d.oggvorbisstr"]
+source_file="res://Audio/sfx/banknote_count_1.ogg"
+dest_files=["res://.godot/imported/banknote_count_1.ogg-3835d804098081ee4cea3e1ae1dbb67b.oggvorbisstr"]
 
 [params]
 

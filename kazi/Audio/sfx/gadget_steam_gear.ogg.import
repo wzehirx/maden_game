@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://ba1ll66ei5026"
-path="res://.godot/imported/gadget_steam_gear.ogg-f512637161f15db774872b8a6e210705.oggvorbisstr"
+path="res://.godot/imported/gadget_steam_gear.ogg-247684ea93980e1c845c02fc695b6bbd.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/gadget_steam_gear.ogg"
-dest_files=["res://.godot/imported/gadget_steam_gear.ogg-f512637161f15db774872b8a6e210705.oggvorbisstr"]
+source_file="res://Audio/sfx/gadget_steam_gear.ogg"
+dest_files=["res://.godot/imported/gadget_steam_gear.ogg-247684ea93980e1c845c02fc695b6bbd.oggvorbisstr"]
 
 [params]
 

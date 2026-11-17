@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://dsr5a1sm40120"
-path="res://.godot/imported/scratch_1.ogg-ad07c880449f71ef68b27ac255073745.oggvorbisstr"
+path="res://.godot/imported/scratch_1.ogg-80f56d5968e05792356e44f7234fa473.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/scratch_1.ogg"
-dest_files=["res://.godot/imported/scratch_1.ogg-ad07c880449f71ef68b27ac255073745.oggvorbisstr"]
+source_file="res://Audio/sfx/scratch_1.ogg"
+dest_files=["res://.godot/imported/scratch_1.ogg-80f56d5968e05792356e44f7234fa473.oggvorbisstr"]
 
 [params]
 

@@ -1,0 +1,19 @@
+<Project Sdk="Godot.NET.Sdk/4.7.2">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RootNamespace>Kazi</RootNamespace>
+    <AssemblyName>KaziKazan</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Bunlar ayrı dotnet projeleri (xUnit ve denge simülasyonu); Godot derlemesine girmez. -->
+    <Compile Remove="Core.Tests/**" />
+    <Compile Remove="Sim/**" />
+    <Compile Remove="tools/**" />
+    <Compile Remove="Builds/**" />
+    <Compile Remove="release/**" />
+    <Compile Remove="android/**" />
+  </ItemGroup>
+</Project>

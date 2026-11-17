@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://dmpsmwoxk0wgg"
-path="res://.godot/imported/error_wood_1.ogg-5823cb7df3ccf0d221d266b797afe657.oggvorbisstr"
+path="res://.godot/imported/error_wood_1.ogg-5d278c0e8a393a36c158a467949e7d09.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/error_wood_1.ogg"
-dest_files=["res://.godot/imported/error_wood_1.ogg-5823cb7df3ccf0d221d266b797afe657.oggvorbisstr"]
+source_file="res://Audio/sfx/error_wood_1.ogg"
+dest_files=["res://.godot/imported/error_wood_1.ogg-5d278c0e8a393a36c158a467949e7d09.oggvorbisstr"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://d0a8ug4hdrely"
-path="res://.godot/imported/ticket_tear_1.ogg-a42d2ea9a874ea364b986b19b1d2658c.oggvorbisstr"
+path="res://.godot/imported/ticket_tear_1.ogg-1ce3218837b92dd14801d25198954bc9.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/ticket_tear_1.ogg"
-dest_files=["res://.godot/imported/ticket_tear_1.ogg-a42d2ea9a874ea364b986b19b1d2658c.oggvorbisstr"]
+source_file="res://Audio/sfx/ticket_tear_1.ogg"
+dest_files=["res://.godot/imported/ticket_tear_1.ogg-1ce3218837b92dd14801d25198954bc9.oggvorbisstr"]
 
 [params]
 

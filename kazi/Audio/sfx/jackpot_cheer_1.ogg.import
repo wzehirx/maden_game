@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://bwcbguh8mlfm1"
-path="res://.godot/imported/jackpot_cheer_1.ogg-71345088a86260015712d215181bff1e.oggvorbisstr"
+path="res://.godot/imported/jackpot_cheer_1.ogg-46ccc8634e05e4e429b1bf52182be1e9.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/jackpot_cheer_1.ogg"
-dest_files=["res://.godot/imported/jackpot_cheer_1.ogg-71345088a86260015712d215181bff1e.oggvorbisstr"]
+source_file="res://Audio/sfx/jackpot_cheer_1.ogg"
+dest_files=["res://.godot/imported/jackpot_cheer_1.ogg-46ccc8634e05e4e429b1bf52182be1e9.oggvorbisstr"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://d4egclym2ay2g"
-path="res://.godot/imported/gadget_crank_gears.ogg-5d4029c9bb145e1af437a9abaece43a5.oggvorbisstr"
+path="res://.godot/imported/gadget_crank_gears.ogg-adecc38b6d374f02b40e954a8135965e.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/gadget_crank_gears.ogg"
-dest_files=["res://.godot/imported/gadget_crank_gears.ogg-5d4029c9bb145e1af437a9abaece43a5.oggvorbisstr"]
+source_file="res://Audio/sfx/gadget_crank_gears.ogg"
+dest_files=["res://.godot/imported/gadget_crank_gears.ogg-adecc38b6d374f02b40e954a8135965e.oggvorbisstr"]
 
 [params]
 

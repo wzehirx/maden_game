@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://cvcyiuag6u3l3"
-path="res://.godot/imported/gadget_typewriter.ogg-4dca7cb629d0ffe303e99bc67f28cdbc.oggvorbisstr"
+path="res://.godot/imported/gadget_typewriter.ogg-693738c2a81883e91d764d00303e1dea.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/gadget_typewriter.ogg"
-dest_files=["res://.godot/imported/gadget_typewriter.ogg-4dca7cb629d0ffe303e99bc67f28cdbc.oggvorbisstr"]
+source_file="res://Audio/sfx/gadget_typewriter.ogg"
+dest_files=["res://.godot/imported/gadget_typewriter.ogg-693738c2a81883e91d764d00303e1dea.oggvorbisstr"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://jjtq14rexuvt"
-path="res://.godot/imported/lose_thud_3.ogg-3dd749ace1f9870ac1357f4a2c436d24.oggvorbisstr"
+path="res://.godot/imported/lose_thud_3.ogg-e59f5a92ba208769de2e61f0e02f9b2e.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/lose_thud_3.ogg"
-dest_files=["res://.godot/imported/lose_thud_3.ogg-3dd749ace1f9870ac1357f4a2c436d24.oggvorbisstr"]
+source_file="res://Audio/sfx/lose_thud_3.ogg"
+dest_files=["res://.godot/imported/lose_thud_3.ogg-e59f5a92ba208769de2e61f0e02f9b2e.oggvorbisstr"]
 
 [params]
 

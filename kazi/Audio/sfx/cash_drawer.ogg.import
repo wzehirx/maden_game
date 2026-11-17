@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://c5nups0ci4hq4"
-path="res://.godot/imported/cash_drawer.ogg-3e5a0fb89f646014c2e3dbb461d0a490.oggvorbisstr"
+path="res://.godot/imported/cash_drawer.ogg-4f2dbe2299c915e988489a800e083d4f.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/cash_drawer.ogg"
-dest_files=["res://.godot/imported/cash_drawer.ogg-3e5a0fb89f646014c2e3dbb461d0a490.oggvorbisstr"]
+source_file="res://Audio/sfx/cash_drawer.ogg"
+dest_files=["res://.godot/imported/cash_drawer.ogg-4f2dbe2299c915e988489a800e083d4f.oggvorbisstr"]
 
 [params]
 

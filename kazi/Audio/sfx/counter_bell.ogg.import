@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://eawra6ql2yen"
-path="res://.godot/imported/counter_bell.ogg-e2ac14b5d6c3e3c8147c9f50777e463e.oggvorbisstr"
+path="res://.godot/imported/counter_bell.ogg-b39b221978db007bea192008206620c8.oggvorbisstr"
 
 [deps]
 
-source_file="res://kazi/Audio/sfx/counter_bell.ogg"
-dest_files=["res://.godot/imported/counter_bell.ogg-e2ac14b5d6c3e3c8147c9f50777e463e.oggvorbisstr"]
+source_file="res://Audio/sfx/counter_bell.ogg"
+dest_files=["res://.godot/imported/counter_bell.ogg-b39b221978db007bea192008206620c8.oggvorbisstr"]
 
 [params]
 

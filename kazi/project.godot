@@ -1,0 +1,32 @@
+; Kazı Kazan - Godot 4.7 (.NET) projesi. Elle düzenlenebilir.
+config_version=5
+
+[application]
+
+config/name="Kazı Kazan"
+run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
+run/low_processor_mode=true
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=540
+window/size/viewport_height=960
+window/handheld/orientation=1
+
+[dotnet]
+
+project/assembly_name="KaziKazan"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=false
+pointing/emulate_mouse_from_touch=false
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+textures/vram_compression/import_etc2_astc=true
