@@ -63,6 +63,14 @@ if [ ! -f android/build/build.gradle ] || [ "$(cat android/.build_version 2>/dev
 fi
 chmod +x android/build/gradlew
 
+echo "== 3b/6 Android TTS köprüsü (tools/android_tts -> gradle şablonu)"
+# Godot Android plugin v2: GodotPlugin alt sınıfı + manifest meta-data kaydı + <queries> (TTS motoru görünürlüğü).
+TTS_SRC="tools/android_tts/src"
+TTS_DST="android/build/src/main/java"
+[ -d "$TTS_SRC" ] || { echo "HATA: $TTS_SRC yok"; exit 1; }
+cp -R "$TTS_SRC/." "$TTS_DST/"
+python3 tools/android_tts/patch_manifest.py android/build/src/main/AndroidManifest.xml
+
 echo "== 4/6 İçe aktarma (ses dosyaları vb.) ve C# derlemesi"
 "$GODOT" --headless --path "$ROOT" --import >/dev/null 2>&1 || true
 "$GODOT" --headless --path "$ROOT" --build-solutions --quit
@@ -81,4 +89,10 @@ ls -la "$OUT"
 LIST="$(unzip -l "$OUT")"
 grep -q "mono/publish/arm64/Maden.dll" <<<"$LIST" || { echo "HATA: APK içinde Maden.dll (C# kodu) yok"; exit 1; }
 grep -q "StreamingAssets/economy.json" <<<"$LIST" || { echo "HATA: APK içinde economy.json yok"; exit 1; }
+# TTS köprüsü: Java sınıfı classes.dex'te mi, manifestte queries + plugin meta-data var mı?
+unzip -p "$OUT" 'classes*.dex' | strings | grep -q "com/maden/oyun/tts/MadenTtsPlugin" || { echo "HATA: MadenTtsPlugin APK'nın classes.dex dosyasında yok"; exit 1; }
+MANI="$("$BT/aapt2" dump xmltree --file AndroidManifest.xml "$OUT")"
+grep -q "android.intent.action.TTS_SERVICE" <<<"$MANI" || { echo "HATA: manifestte TTS_SERVICE <queries> yok"; exit 1; }
+grep -q "org.godotengine.plugin.v2.MadenTts" <<<"$MANI" || { echo "HATA: manifestte MadenTts plugin meta-data yok"; exit 1; }
+echo "TTS köprüsü: sınıf dex'te, <queries> ve plugin v2 meta-data manifestte."
 echo "TAMAM: $OUT"
