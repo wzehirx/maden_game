@@ -29,6 +29,17 @@ namespace Kazi.Core
         public string Symbol { get; set; }
         public int CellIndex { get; set; }
         public Rarity Rarity { get; set; }
+        /// <summary>Konuşma süresi tahmini (sn): karakter sayısı / (CharsPerSecond × hız). Konuşma kuyruğu kuralları için.</summary>
+        public double EstimatedSeconds { get; set; }
+
+        public const double CharsPerSecond = 13.0;
+
+        public static double Estimate(string speech, double rate)
+        {
+            if (string.IsNullOrEmpty(speech)) return 0;
+            if (rate < 0.1) rate = 0.1;
+            return speech.Length / (CharsPerSecond * rate);
+        }
 
         public GameEvent(EventKind kind, string speech, long amount = 0, string symbol = "", int cell = -1, Rarity rarity = Rarity.None)
         {

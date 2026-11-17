@@ -30,7 +30,7 @@ namespace Kazi.Core
             d["lastSaveUnix"] = s.LastSaveUnix;
             d["notify"] = s.NotifyAffordable;
             d["detail"] = (int)s.Detail; d["mode"] = (int)s.Mode;
-            d["speechRate"] = s.SpeechRate; d["quickRepeat"] = s.QuickRepeat; d["gameSpeed"] = s.GameSpeed;
+            d["speechRate"] = s.SpeechRate;
             return MiniJson.Serialize(d);
         }
 
@@ -75,9 +75,7 @@ namespace Kazi.Core
                 s.NotifyAffordable = MiniJson.GetBool(d, "notify", true);
                 s.Detail = (SpeechDetail)MiniJson.GetInt(d, "detail", (int)SpeechDetail.Short);
                 s.Mode = (ScratchMode)MiniJson.GetInt(d, "mode", 0);
-                s.SpeechRate = MiniJson.GetDouble(d, "speechRate", 1.25);
-                s.QuickRepeat = MiniJson.GetBool(d, "quickRepeat", false);
-                s.GameSpeed = MiniJson.GetDouble(d, "gameSpeed", 1.0);
+                s.SpeechRate = MiniJson.GetDouble(d, "speechRate", GameState.DefaultRate);
                 s.Sanitize(cfg);
                 state = s;
                 return true;

@@ -30,7 +30,7 @@ namespace Kazi.Core
                 case CardRule.SonSans:
                 case CardRule.AltinBilet:
                     Triples(t, cells, 0, 6, ref r);
-                    r.GateHit = r.Win;
+                    r.GateHit = r.PayMult > 0;
                     break;
                 case CardRule.Multiplier:
                     Triples(t, cells, 0, 6, ref r);

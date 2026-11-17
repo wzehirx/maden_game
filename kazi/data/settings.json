@@ -1,0 +1,32 @@
+{
+ "helpMoney": 10,
+ "discardRefundPct": 0.4,
+ "offlineCapSeconds": 7200,
+ "autosaveSeconds": 30,
+ "startMoney": 20,
+ "scratchThresholds": {
+  "open": 0.55,
+  "peek": 0.25
+ },
+ "luckWinScale": 0.05,
+ "luckSymbolScale": 0.02,
+ "luckTrapScale": 0.03,
+ "rarityMults": [
+  2,
+  10,
+  50
+ ],
+ "autoBaseCpm": 15,
+ "baseBag": 1,
+ "baseOfflineSeconds": 600,
+ "maxDiscount": 0.5,
+ "maxRefund": 0.9,
+ "affordableCooldownSeconds": 15,
+ "autoReportSeconds": 60,
+ "autoPeekCells": 3,
+ "abBase": 5,
+ "abRefEarned": 1000000000,
+ "abExponent": 0.5,
+ "minUpgradeCostMult": 0.3,
+ "autoBufferFactor": 2
+}

@@ -45,20 +45,17 @@ namespace Kazi.Core
 
         public bool NotifyAffordable = true;
         public SpeechDetail Detail = SpeechDetail.Short;
-        /// <summary>Konuşma hızı çarpanı (Godot katmanı TTS'e iletir).</summary>
-        public double SpeechRate = 1.25;
-        /// <summary>Hızlı tekrar: kart bitince aynı türden sonraki kart otomatik alınır.</summary>
-        public bool QuickRepeat = false;
-        /// <summary>Oyun hızı: 1, 1.5, 2, 3. Otomasyon ve çevrimiçi tick'leri hızlandırır (çevrimdışı hariç).</summary>
-        public double GameSpeed = 1.0;
+        /// <summary>Konuşma hızı çarpanı 0.5-3.0, 0.25 adım (Godot katmanı TTS'e iletir).</summary>
+        public double SpeechRate = 1.5;
+
         public ScratchMode Mode = ScratchMode.Sequential;
 
-        public static readonly double[] SpeedSteps = { 1.0, 1.5, 2.0, 3.0 };
-        public static double NormalizeSpeed(double v)
+        public const double MinRate = 0.5, MaxRate = 3.0, RateStep = 0.25, DefaultRate = 1.5;
+        public static double NormalizeRate(double v)
         {
-            double best = 1.0;
-            foreach (double x in SpeedSteps) if (Math.Abs(x - v) < Math.Abs(best - v)) best = x;
-            return best;
+            if (double.IsNaN(v) || double.IsInfinity(v)) return DefaultRate;
+            v = Math.Round(v / RateStep) * RateStep;
+            return Math.Max(MinRate, Math.Min(MaxRate, v));
         }
 
         public int Level(string id) { int v; return Upgrades.TryGetValue(id, out v) ? v : 0; }
@@ -106,9 +103,7 @@ namespace Kazi.Core
             Bag.RemoveAll(c => c == null || c.Type == null);
             if (!Enum.IsDefined(typeof(SpeechDetail), Detail)) Detail = SpeechDetail.Full;
             if (!Enum.IsDefined(typeof(ScratchMode), Mode)) Mode = ScratchMode.Sequential;
-            if (double.IsNaN(SpeechRate) || SpeechRate < 0.5) SpeechRate = 0.5;
-            if (SpeechRate > 3) SpeechRate = 3;
-            GameSpeed = NormalizeSpeed(GameSpeed);
+            SpeechRate = NormalizeRate(SpeechRate);
         }
     }
 

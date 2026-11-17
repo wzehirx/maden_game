@@ -1,0 +1,993 @@
+{
+ "catalogs": [
+  {
+   "id": 1,
+   "name": "Mahalle Bayii"
+  },
+  {
+   "id": 2,
+   "name": "Çarşı Pazarı"
+  },
+  {
+   "id": 3,
+   "name": "Han Köşkü"
+  },
+  {
+   "id": 4,
+   "name": "Saray Köşkü"
+  },
+  {
+   "id": 5,
+   "name": "Altın Köşk"
+  }
+ ],
+ "cardTypes": [
+  {
+   "id": "simitci",
+   "name": "Simitçi",
+   "catalog": 1,
+   "rule": "ThreeOfAKind",
+   "price": 10,
+   "symbols": [
+    {
+     "id": "simit",
+     "name": "Simit",
+     "weight": 40,
+     "pay": 1.5,
+     "kind": "Normal"
+    },
+    {
+     "id": "cay",
+     "name": "Çay Bardağı",
+     "weight": 30,
+     "pay": 2,
+     "kind": "Normal"
+    },
+    {
+     "id": "guvercin",
+     "name": "Güvercin",
+     "weight": 18,
+     "pay": 3,
+     "kind": "Normal"
+    },
+    {
+     "id": "marti",
+     "name": "Martı",
+     "weight": 8,
+     "pay": 6,
+     "kind": "Normal"
+    },
+    {
+     "id": "vapur",
+     "name": "Vapur",
+     "weight": 3,
+     "pay": 20,
+     "kind": "Normal"
+    },
+    {
+     "id": "lale",
+     "name": "Lale",
+     "weight": 1,
+     "pay": 60,
+     "kind": "Normal"
+    }
+   ],
+   "winChance": 0.3655,
+   "maxWinChance": 0.8
+  },
+  {
+   "id": "cay_bardagi",
+   "name": "Çay Bardağı Kartı",
+   "catalog": 1,
+   "rule": "NumberHunt",
+   "price": 30,
+   "symbols": [
+    {
+     "id": "n1",
+     "name": "bir",
+     "weight": 30,
+     "pay": 1.2,
+     "kind": "Normal"
+    },
+    {
+     "id": "n2",
+     "name": "iki",
+     "weight": 25,
+     "pay": 1.5,
+     "kind": "Normal"
+    },
+    {
+     "id": "n3",
+     "name": "üç",
+     "weight": 20,
+     "pay": 2.0,
+     "kind": "Normal"
+    },
+    {
+     "id": "n4",
+     "name": "dört",
+     "weight": 15,
+     "pay": 3.0,
+     "kind": "Normal"
+    },
+    {
+     "id": "n5",
+     "name": "beş",
+     "weight": 10,
+     "pay": 5.0,
+     "kind": "Normal"
+    },
+    {
+     "id": "n6",
+     "name": "altı",
+     "weight": 6,
+     "pay": 8.0,
+     "kind": "Normal"
+    },
+    {
+     "id": "n7",
+     "name": "yedi",
+     "weight": 3,
+     "pay": 20.0,
+     "kind": "Normal"
+    },
+    {
+     "id": "n8",
+     "name": "sekiz",
+     "weight": 1,
+     "pay": 50.0,
+     "kind": "Normal"
+    }
+   ],
+   "doubleChance": 0.15,
+   "winChance": 0.3089,
+   "maxWinChance": 0.772
+  },
+  {
+   "id": "mahalle_sonsans",
+   "name": "Mahalle Son Şansı",
+   "catalog": 1,
+   "rule": "SonSans",
+   "price": 10645.609767381346,
+   "symbols": [
+    {
+     "id": "anahtar",
+     "name": "Anahtar",
+     "weight": 1,
+     "pay": 3.4,
+     "kind": "Gate"
+    },
+    {
+     "id": "kilit",
+     "name": "Kilit",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "cira",
+     "name": "Çıra",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "defter",
+     "name": "Defter",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "tespih",
+     "name": "Tespih",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "muhur",
+     "name": "Mühür",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    }
+   ],
+   "winChance": 0.3,
+   "maxWinChance": 0.66,
+   "pityAfter": 4
+  },
+  {
+   "id": "lale_tezgahi",
+   "name": "Lale Tezgâhı",
+   "catalog": 2,
+   "rule": "Multiplier",
+   "price": 400,
+   "symbols": [
+    {
+     "id": "lale",
+     "name": "Lale",
+     "weight": 35,
+     "pay": 1.5,
+     "kind": "Normal"
+    },
+    {
+     "id": "fener",
+     "name": "Fener",
+     "weight": 28,
+     "pay": 2,
+     "kind": "Normal"
+    },
+    {
+     "id": "kilim",
+     "name": "Kilim",
+     "weight": 18,
+     "pay": 3,
+     "kind": "Normal"
+    },
+    {
+     "id": "nazar",
+     "name": "Nazar Boncuğu",
+     "weight": 10,
+     "pay": 6,
+     "kind": "Normal"
+    },
+    {
+     "id": "cini",
+     "name": "Çini",
+     "weight": 5,
+     "pay": 15,
+     "kind": "Normal"
+    },
+    {
+     "id": "zumrut",
+     "name": "Zümrüt",
+     "weight": 1,
+     "pay": 60,
+     "kind": "Normal"
+    }
+   ],
+   "multipliers": [
+    {
+     "mult": 1,
+     "weight": 50
+    },
+    {
+     "mult": 2,
+     "weight": 30
+    },
+    {
+     "mult": 3,
+     "weight": 12
+    },
+    {
+     "mult": 5,
+     "weight": 6
+    },
+    {
+     "mult": 10,
+     "weight": 2
+    }
+   ],
+   "winChance": 0.1661,
+   "maxWinChance": 0.415
+  },
+  {
+   "id": "fener_ustasi",
+   "name": "Fener Ustası",
+   "catalog": 2,
+   "rule": "Trap",
+   "price": 1000,
+   "symbols": [
+    {
+     "id": "kapi",
+     "name": "Kapı",
+     "weight": 35,
+     "pay": 1.5,
+     "kind": "Normal"
+    },
+    {
+     "id": "fener",
+     "name": "Fener",
+     "weight": 28,
+     "pay": 2,
+     "kind": "Normal"
+    },
+    {
+     "id": "sandik",
+     "name": "Sandık",
+     "weight": 18,
+     "pay": 3,
+     "kind": "Normal"
+    },
+    {
+     "id": "ay",
+     "name": "Ay",
+     "weight": 10,
+     "pay": 6,
+     "kind": "Normal"
+    },
+    {
+     "id": "yildiz",
+     "name": "Yıldız",
+     "weight": 5,
+     "pay": 15,
+     "kind": "Normal"
+    },
+    {
+     "id": "tac",
+     "name": "Taç",
+     "weight": 1,
+     "pay": 60,
+     "kind": "Normal"
+    },
+    {
+     "id": "akrep",
+     "name": "Akrep",
+     "weight": 1,
+     "pay": 1.0,
+     "kind": "Trap"
+    },
+    {
+     "id": "kara_bulut",
+     "name": "Kara Bulut",
+     "weight": 2,
+     "pay": 0.5,
+     "kind": "Trap"
+    }
+   ],
+   "trapChance": 0.28,
+   "trapDoubleChance": 0.25,
+   "winChance": 0.3889,
+   "maxWinChance": 0.8
+  },
+  {
+   "id": "carsi_sonsans",
+   "name": "Çarşı Son Şansı",
+   "catalog": 2,
+   "rule": "SonSans",
+   "price": 296671.2121126021,
+   "symbols": [
+    {
+     "id": "anahtar",
+     "name": "Anahtar",
+     "weight": 1,
+     "pay": 3.4,
+     "kind": "Gate"
+    },
+    {
+     "id": "kilit",
+     "name": "Kilit",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "cira",
+     "name": "Çıra",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "defter",
+     "name": "Defter",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "tespih",
+     "name": "Tespih",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "muhur",
+     "name": "Mühür",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    }
+   ],
+   "winChance": 0.3,
+   "maxWinChance": 0.66,
+   "pityAfter": 4
+  },
+  {
+   "id": "kervan_jokeri",
+   "name": "Kervan Jokeri",
+   "catalog": 3,
+   "rule": "Joker",
+   "price": 15000,
+   "symbols": [
+    {
+     "id": "kehribar",
+     "name": "Kehribar",
+     "weight": 35,
+     "pay": 1.5,
+     "kind": "Normal"
+    },
+    {
+     "id": "mercan",
+     "name": "Mercan",
+     "weight": 28,
+     "pay": 2,
+     "kind": "Normal"
+    },
+    {
+     "id": "inci",
+     "name": "İnci",
+     "weight": 18,
+     "pay": 3,
+     "kind": "Normal"
+    },
+    {
+     "id": "zeytin",
+     "name": "Zeytin",
+     "weight": 12,
+     "pay": 5,
+     "kind": "Normal"
+    },
+    {
+     "id": "baharat",
+     "name": "Baharat",
+     "weight": 6,
+     "pay": 12,
+     "kind": "Normal"
+    },
+    {
+     "id": "kervan",
+     "name": "Kervan",
+     "weight": 3,
+     "pay": 30,
+     "kind": "Normal"
+    },
+    {
+     "id": "joker",
+     "name": "Joker",
+     "weight": 4,
+     "pay": 0,
+     "kind": "Joker"
+    }
+   ],
+   "jokerChance": 0.35,
+   "winChance": 0.3051,
+   "maxWinChance": 0.763
+  },
+  {
+   "id": "kilim_deseni",
+   "name": "Kilim Deseni",
+   "catalog": 3,
+   "rule": "Sequence",
+   "price": 40000,
+   "symbols": [
+    {
+     "id": "kilim1",
+     "name": "Kilim",
+     "weight": 35,
+     "pay": 1.5,
+     "kind": "Normal"
+    },
+    {
+     "id": "sedef",
+     "name": "Sedef",
+     "weight": 28,
+     "pay": 2,
+     "kind": "Normal"
+    },
+    {
+     "id": "seccade",
+     "name": "Seccade",
+     "weight": 18,
+     "pay": 3,
+     "kind": "Normal"
+    },
+    {
+     "id": "ibrik",
+     "name": "İbrik",
+     "weight": 10,
+     "pay": 6,
+     "kind": "Normal"
+    },
+    {
+     "id": "hali",
+     "name": "Halı",
+     "weight": 5,
+     "pay": 15,
+     "kind": "Normal"
+    },
+    {
+     "id": "sultan",
+     "name": "Sultan",
+     "weight": 1,
+     "pay": 60,
+     "kind": "Normal"
+    }
+   ],
+   "winChance": 0.312,
+   "maxWinChance": 0.78
+  },
+  {
+   "id": "han_sonsans",
+   "name": "Han Son Şansı",
+   "catalog": 3,
+   "rule": "SonSans",
+   "price": 2533036085.4203396,
+   "symbols": [
+    {
+     "id": "anahtar",
+     "name": "Anahtar",
+     "weight": 1,
+     "pay": 3.4,
+     "kind": "Gate"
+    },
+    {
+     "id": "kilit",
+     "name": "Kilit",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "cira",
+     "name": "Çıra",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "defter",
+     "name": "Defter",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "tespih",
+     "name": "Tespih",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "muhur",
+     "name": "Mühür",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    }
+   ],
+   "winChance": 0.3,
+   "maxWinChance": 0.66,
+   "pityAfter": 4
+  },
+  {
+   "id": "bogaz_yalisi",
+   "name": "Boğaz Yalısı",
+   "catalog": 4,
+   "rule": "Jackpot",
+   "price": 600000,
+   "symbols": [
+    {
+     "id": "yali",
+     "name": "Yalı",
+     "weight": 40,
+     "pay": 1.5,
+     "kind": "Normal"
+    },
+    {
+     "id": "martik",
+     "name": "Martı",
+     "weight": 30,
+     "pay": 2,
+     "kind": "Normal"
+    },
+    {
+     "id": "vapur2",
+     "name": "Vapur",
+     "weight": 18,
+     "pay": 3,
+     "kind": "Normal"
+    },
+    {
+     "id": "kule",
+     "name": "Kule",
+     "weight": 8,
+     "pay": 6,
+     "kind": "Normal"
+    },
+    {
+     "id": "kopru",
+     "name": "Köprü",
+     "weight": 3,
+     "pay": 15,
+     "kind": "Normal"
+    },
+    {
+     "id": "hilal",
+     "name": "Altın Hilal",
+     "weight": 0.6,
+     "pay": 150,
+     "kind": "Normal"
+    }
+   ],
+   "winChance": 0.3208,
+   "maxWinChance": 0.8
+  },
+  {
+   "id": "saray_sayisi",
+   "name": "Saray Sayısı",
+   "catalog": 4,
+   "rule": "NumberHunt",
+   "price": 1500000,
+   "symbols": [
+    {
+     "id": "n1",
+     "name": "bir",
+     "weight": 30,
+     "pay": 1.2,
+     "kind": "Normal"
+    },
+    {
+     "id": "n2",
+     "name": "iki",
+     "weight": 25,
+     "pay": 1.5,
+     "kind": "Normal"
+    },
+    {
+     "id": "n3",
+     "name": "üç",
+     "weight": 20,
+     "pay": 2.0,
+     "kind": "Normal"
+    },
+    {
+     "id": "n4",
+     "name": "dört",
+     "weight": 15,
+     "pay": 3.0,
+     "kind": "Normal"
+    },
+    {
+     "id": "n5",
+     "name": "beş",
+     "weight": 10,
+     "pay": 5.0,
+     "kind": "Normal"
+    },
+    {
+     "id": "n6",
+     "name": "altı",
+     "weight": 6,
+     "pay": 8.0,
+     "kind": "Normal"
+    },
+    {
+     "id": "n7",
+     "name": "yedi",
+     "weight": 3,
+     "pay": 20.0,
+     "kind": "Normal"
+    },
+    {
+     "id": "n8",
+     "name": "sekiz",
+     "weight": 1,
+     "pay": 50.0,
+     "kind": "Normal"
+    }
+   ],
+   "doubleChance": 0.2,
+   "winChance": 0.2826,
+   "maxWinChance": 0.707
+  },
+  {
+   "id": "divan_tuzagi",
+   "name": "Divan Tuzağı",
+   "catalog": 4,
+   "rule": "Trap",
+   "price": 3000000,
+   "symbols": [
+    {
+     "id": "ferman",
+     "name": "Ferman",
+     "weight": 35,
+     "pay": 1.5,
+     "kind": "Normal"
+    },
+    {
+     "id": "muhur2",
+     "name": "Mühür",
+     "weight": 28,
+     "pay": 2,
+     "kind": "Normal"
+    },
+    {
+     "id": "kilic",
+     "name": "Kılıç",
+     "weight": 18,
+     "pay": 3,
+     "kind": "Normal"
+    },
+    {
+     "id": "taht",
+     "name": "Taht",
+     "weight": 10,
+     "pay": 6,
+     "kind": "Normal"
+    },
+    {
+     "id": "elmas",
+     "name": "Elmas",
+     "weight": 5,
+     "pay": 15,
+     "kind": "Normal"
+    },
+    {
+     "id": "hazine",
+     "name": "Hazine",
+     "weight": 1,
+     "pay": 60,
+     "kind": "Normal"
+    },
+    {
+     "id": "akrep",
+     "name": "Akrep",
+     "weight": 1,
+     "pay": 1.0,
+     "kind": "Trap"
+    },
+    {
+     "id": "kara_bulut",
+     "name": "Kara Bulut",
+     "weight": 2,
+     "pay": 0.5,
+     "kind": "Trap"
+    }
+   ],
+   "trapChance": 0.3,
+   "trapDoubleChance": 0.25,
+   "winChance": 0.3799,
+   "maxWinChance": 0.8
+  },
+  {
+   "id": "saray_sonsans",
+   "name": "Saray Son Şansı",
+   "catalog": 4,
+   "rule": "SonSans",
+   "price": 2191975408210.3032,
+   "symbols": [
+    {
+     "id": "anahtar",
+     "name": "Anahtar",
+     "weight": 1,
+     "pay": 3.4,
+     "kind": "Gate"
+    },
+    {
+     "id": "kilit",
+     "name": "Kilit",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "cira",
+     "name": "Çıra",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "defter",
+     "name": "Defter",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "tespih",
+     "name": "Tespih",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "muhur",
+     "name": "Mühür",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    }
+   ],
+   "winChance": 0.3,
+   "maxWinChance": 0.66,
+   "pityAfter": 4
+  },
+  {
+   "id": "altin_kosk",
+   "name": "Altın Köşk Çarpanı",
+   "catalog": 5,
+   "rule": "Multiplier",
+   "price": 25000000,
+   "symbols": [
+    {
+     "id": "altin",
+     "name": "Altın",
+     "weight": 35,
+     "pay": 1.5,
+     "kind": "Normal"
+    },
+    {
+     "id": "gumus",
+     "name": "Gümüş",
+     "weight": 28,
+     "pay": 2,
+     "kind": "Normal"
+    },
+    {
+     "id": "yakut",
+     "name": "Yakut",
+     "weight": 18,
+     "pay": 3,
+     "kind": "Normal"
+    },
+    {
+     "id": "safir",
+     "name": "Safir",
+     "weight": 10,
+     "pay": 6,
+     "kind": "Normal"
+    },
+    {
+     "id": "pirlanta",
+     "name": "Pırlanta",
+     "weight": 5,
+     "pay": 15,
+     "kind": "Normal"
+    },
+    {
+     "id": "tac2",
+     "name": "Taç",
+     "weight": 1,
+     "pay": 60,
+     "kind": "Normal"
+    }
+   ],
+   "multipliers": [
+    {
+     "mult": 1,
+     "weight": 50
+    },
+    {
+     "mult": 2,
+     "weight": 30
+    },
+    {
+     "mult": 3,
+     "weight": 12
+    },
+    {
+     "mult": 5,
+     "weight": 6
+    },
+    {
+     "mult": 10,
+     "weight": 2
+    }
+   ],
+   "winChance": 0.1592,
+   "maxWinChance": 0.398
+  },
+  {
+   "id": "define_haritasi",
+   "name": "Define Haritası",
+   "catalog": 5,
+   "rule": "Jackpot",
+   "price": 60000000,
+   "symbols": [
+    {
+     "id": "define",
+     "name": "Define",
+     "weight": 40,
+     "pay": 1.5,
+     "kind": "Normal"
+    },
+    {
+     "id": "harita",
+     "name": "Harita",
+     "weight": 30,
+     "pay": 2,
+     "kind": "Normal"
+    },
+    {
+     "id": "pusula",
+     "name": "Pusula",
+     "weight": 18,
+     "pay": 3,
+     "kind": "Normal"
+    },
+    {
+     "id": "sandik5",
+     "name": "Sandık",
+     "weight": 8,
+     "pay": 6,
+     "kind": "Normal"
+    },
+    {
+     "id": "kese",
+     "name": "Kese",
+     "weight": 3,
+     "pay": 15,
+     "kind": "Normal"
+    },
+    {
+     "id": "hazine5",
+     "name": "Büyük Hazine",
+     "weight": 0.6,
+     "pay": 200,
+     "kind": "Normal"
+    }
+   ],
+   "winChance": 0.296,
+   "maxWinChance": 0.74
+  },
+  {
+   "id": "altin_bilet",
+   "name": "Altın Bilet Son Şansı",
+   "catalog": 5,
+   "rule": "AltinBilet",
+   "price": 47152766630693.375,
+   "symbols": [
+    {
+     "id": "anahtar",
+     "name": "Anahtar",
+     "weight": 1,
+     "pay": 3.4,
+     "kind": "Gate"
+    },
+    {
+     "id": "kilit",
+     "name": "Kilit",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "cira",
+     "name": "Çıra",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "defter",
+     "name": "Defter",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "tespih",
+     "name": "Tespih",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    },
+    {
+     "id": "muhur",
+     "name": "Mühür",
+     "weight": 1,
+     "pay": 0,
+     "kind": "Normal"
+    }
+   ],
+   "winChance": 0.3,
+   "maxWinChance": 0.66,
+   "pityAfter": 4
+  }
+ ]
+}

@@ -1,0 +1,220 @@
+{
+ "nodes": [
+  {
+   "id": "n_start1",
+   "name": "Cep Harçlığı",
+   "desc": "Her koşuya beş yüz lirayla başla.",
+   "cost": 2,
+   "kind": "StartMoney",
+   "value": 500,
+   "requires": ""
+  },
+  {
+   "id": "n_luck1",
+   "name": "Kalıcı Şans I",
+   "desc": "Başlangıç şansı beş artar.",
+   "cost": 3,
+   "kind": "Luck",
+   "value": 5,
+   "requires": ""
+  },
+  {
+   "id": "n_pay1",
+   "name": "Altın Eller",
+   "desc": "Ödemeler yüzde yirmi beş artar.",
+   "cost": 4,
+   "kind": "Payout",
+   "value": 0.25,
+   "requires": ""
+  },
+  {
+   "id": "n_disc1",
+   "name": "Pazarlık",
+   "desc": "Bilet fiyatları yüzde üç düşer.",
+   "cost": 3,
+   "kind": "Discount",
+   "value": 0.03,
+   "requires": ""
+  },
+  {
+   "id": "n_power1",
+   "name": "Hızlı Parmaklar",
+   "desc": "Kazıma gücü bir artar.",
+   "cost": 3,
+   "kind": "ScratchPower",
+   "value": 1,
+   "requires": ""
+  },
+  {
+   "id": "n_off1",
+   "name": "Hafif Uyku",
+   "desc": "Çevrimdışı süre yirmi dakika uzar.",
+   "cost": 3,
+   "kind": "Offline",
+   "value": 1200,
+   "requires": ""
+  },
+  {
+   "id": "n_auto",
+   "name": "Erken Kazıyıcı",
+   "desc": "Otomatik kazıyıcı koşu başında hazır.",
+   "cost": 6,
+   "kind": "StartAuto",
+   "value": 1,
+   "requires": "n_start1"
+  },
+  {
+   "id": "n_start2",
+   "name": "Dolu Cüzdan",
+   "desc": "Her koşuya yirmi bin lirayla başla.",
+   "cost": 6,
+   "kind": "StartMoney",
+   "value": 20000,
+   "requires": "n_start1"
+  },
+  {
+   "id": "n_luck2",
+   "name": "Kalıcı Şans II",
+   "desc": "Başlangıç şansı on artar.",
+   "cost": 7,
+   "kind": "Luck",
+   "value": 10,
+   "requires": "n_luck1"
+  },
+  {
+   "id": "n_pay2",
+   "name": "Altın Parmaklar",
+   "desc": "Ödemeler yüzde yetmiş beş artar.",
+   "cost": 8,
+   "kind": "Payout",
+   "value": 0.75,
+   "requires": "n_pay1"
+  },
+  {
+   "id": "n_ucd1",
+   "name": "Esnaf İndirimi",
+   "desc": "Yükseltmeler yüzde on ucuzlar.",
+   "cost": 8,
+   "kind": "UpgradeDiscount",
+   "value": 0.1,
+   "requires": "n_disc1"
+  },
+  {
+   "id": "n_speed1",
+   "name": "Yağlı Dişliler",
+   "desc": "Kazıyıcı dakikada on kart hızlanır.",
+   "cost": 7,
+   "kind": "AutoSpeed",
+   "value": 10,
+   "requires": "n_auto"
+  },
+  {
+   "id": "n_help",
+   "name": "Cömert Yardım",
+   "desc": "Yardım parası yirmi lira artar.",
+   "cost": 4,
+   "kind": "HelpMoney",
+   "value": 20,
+   "requires": "n_power1"
+  },
+  {
+   "id": "n_buy",
+   "name": "Erken Alım",
+   "desc": "Otomatik alım koşu başında hazır.",
+   "cost": 15,
+   "kind": "AutoBuy",
+   "value": 1,
+   "requires": "n_auto"
+  },
+  {
+   "id": "n_ab1",
+   "name": "Altın Fırsat",
+   "desc": "Altın Bilet puanı yüzde yirmi beş artar.",
+   "cost": 12,
+   "kind": "AbGain",
+   "value": 0.25,
+   "requires": "n_pay1"
+  },
+  {
+   "id": "n_start3",
+   "name": "Kasa Dolusu",
+   "desc": "Her koşuya iki milyon lirayla başla.",
+   "cost": 12,
+   "kind": "StartMoney",
+   "value": 2000000,
+   "requires": "n_start2"
+  },
+  {
+   "id": "n_luck3",
+   "name": "Kalıcı Şans III",
+   "desc": "Başlangıç şansı yirmi artar.",
+   "cost": 14,
+   "kind": "Luck",
+   "value": 20,
+   "requires": "n_luck2"
+  },
+  {
+   "id": "n_pay3",
+   "name": "Altın Kasa",
+   "desc": "Ödemeler iki kat gibi artar.",
+   "cost": 16,
+   "kind": "Payout",
+   "value": 2.0,
+   "requires": "n_pay2"
+  },
+  {
+   "id": "n_ucd2",
+   "name": "Toptancı",
+   "desc": "Yükseltmeler yüzde on beş daha ucuzlar.",
+   "cost": 16,
+   "kind": "UpgradeDiscount",
+   "value": 0.15,
+   "requires": "n_ucd1"
+  },
+  {
+   "id": "n_press",
+   "name": "Çift Dişli",
+   "desc": "Tek turda bir kart daha işlenir.",
+   "cost": 14,
+   "kind": "Press",
+   "value": 1,
+   "requires": "n_speed1"
+  },
+  {
+   "id": "n_cat2",
+   "name": "Çarşıdan Başla",
+   "desc": "Çarşı Pazarı koşu başında açık.",
+   "cost": 20,
+   "kind": "StartCatalog",
+   "value": 2,
+   "requires": "n_start3"
+  },
+  {
+   "id": "n_cat3",
+   "name": "Handan Başla",
+   "desc": "Han Köşkü koşu başında açık.",
+   "cost": 30,
+   "kind": "StartCatalog",
+   "value": 3,
+   "requires": "n_cat2"
+  },
+  {
+   "id": "n_ab2",
+   "name": "Altın Mıknatıs",
+   "desc": "Altın Bilet puanı yüzde elli artar.",
+   "cost": 25,
+   "kind": "AbGain",
+   "value": 0.5,
+   "requires": "n_ab1"
+  },
+  {
+   "id": "n_pay4",
+   "name": "Altın Çağ",
+   "desc": "Ödemeler altı kat artar.",
+   "cost": 30,
+   "kind": "Payout",
+   "value": 6.0,
+   "requires": "n_pay3"
+  }
+ ]
+}

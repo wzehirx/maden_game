@@ -116,7 +116,7 @@ namespace Kazi.Core
             var sy = SymbolAt(i);
             if (sy == null) return "";
             if (Type.Rule == CardRule.NumberHunt)
-                return (i < 3 ? "Kazanan sayı " : "Senin sayın ") + sy.Name.ToLowerInvariant();
+                return (i < 3 ? "Kazanan sayı " : "Senin sayın ") + sy.Name;
             if (sy.Kind == SymbolKind.Trap) return "Dikkat, " + sy.Name;
             return sy.Name;
         }
