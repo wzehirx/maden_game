@@ -620,6 +620,103 @@ namespace Kazi.Game
             // 12) Ses
             Check(SoundPlayer.MissingCount == 0, "eksik ses dosyası yok (" + SoundPlayer.MissingCount + ")");
             await Wait(0.3);
+
+            // 13) GERÇEK SES ENERJİSİ: Master'a (limiter sonrası, donanıma giden nokta) AudioEffectCapture takılır;
+            //     her yol çalınır ve yakalanan örneklerin RMS'i ölçülür. (Dummy sürücü karışımı yine çalıştırır.)
+            await AudioEnergyChecks();
+        }
+
+        /// <summary>Bus üzerine geçici yakalama efekti ekler, tetikleyiciyi çalıştırır, bekler, RMS (lineer) döndürür.</summary>
+        async System.Threading.Tasks.Task<double> MeasureRms(string bus, Action trigger, double waitSec = 0.35)
+        {
+            int idx = AudioServer.GetBusIndex(bus);
+            if (idx < 0) return -1;
+            var cap = new AudioEffectCapture { BufferLength = 1.0f };
+            AudioServer.AddBusEffect(idx, cap);
+            int eff = AudioServer.GetBusEffectCount(idx) - 1;
+            cap.ClearBuffer();
+            trigger();
+            await Wait(waitSec);
+            int n = cap.GetFramesAvailable();
+            double sum = 0; int cnt = 0;
+            if (n > 0)
+            {
+                var buf = cap.GetBuffer(n);
+                foreach (var f in buf) { sum += f.X * f.X + f.Y * f.Y; cnt += 2; }
+            }
+            AudioServer.RemoveBusEffect(idx, eff);
+            return cnt > 0 ? Math.Sqrt(sum / cnt) : 0.0;
+        }
+
+        async System.Threading.Tasks.Task AudioEnergyChecks()
+        {
+            const double Thr = 0.0005; // ~ -66 dBFS: sessizden açıkça ayrılır
+            var snd = _sound;
+            snd.StopAllForTest();
+            await Wait(0.2);
+            double Db(double r) => r <= 1e-9 ? -999 : 20 * Math.Log10(r);
+            string Fmt(double r) => r.ToString("0.00000") + " (" + Db(r).ToString("0.0") + " dBFS)";
+
+            double silence = await MeasureRms("Master", () => { }, 0.25);
+            GD.Print("  ses ölçümü: sessizlik tabanı Master RMS=" + Fmt(silence));
+            Check(silence < Thr, "ölçüm tabanı sessiz (hiçbir şey çalmazken Master RMS " + Fmt(silence) + ")");
+
+            // Her satır: ad, kaynak bus (efekt öncesi), tetikleyici
+            var cases = new List<(string name, string srcBus, Action act)>
+            {
+                ("efekt cell_reveal", "Sfx", () => snd.PlaySfx("cell_reveal")),
+                ("efekt win_small", "Sfx", () => snd.PlaySfx("win_small")),
+                ("efekt coin_slide", "Sfx", () => snd.PlaySfx("coin_slide")),
+                ("kazıma (pan sol)", "ScratchPan0", () => snd.PlayScratch(1f, 0f)),
+                ("kazıma (pan orta)", "ScratchPan2", () => snd.PlayScratch(1f, 0.5f)),
+                ("kazıma (pan sağ)", "ScratchPan4", () => snd.PlayScratch(1f, 1f)),
+                ("sınır tıkı", "ScratchPan2", () => snd.PlayBoundary(0.5f)),
+                ("döngü auto_scratch_loop", "Loops", () => snd.SetLoop("auto_scratch_loop", true)),
+                ("müzik", "Music", () => snd.StartMusic()),
+                ("ortam", "Ambient", () => { }), // StartMusic ortamı da başlatır; aşağıda ayrıca ölçülür
+            };
+            foreach (var c in cases)
+            {
+                snd.StopAllForTest();
+                await Wait(0.15);
+                double src = -1;
+                double master;
+                if (c.name == "müzik" || c.name == "ortam")
+                {
+                    // müzik/ortam çapraz geçişle yumuşak açılır: daha uzun bekle
+                    var t = c.name == "müzik" ? (Action)(() => snd.StartMusic()) : () => snd.StartMusic();
+                    master = await MeasureRms("Master", t, 1.6);
+                    src = -1;
+                }
+                else
+                {
+                    // kaynak bus ve Master'ı aynı tetiklemede ölç: önce Master'a yakalama ekle, sonra kaynak bus'a
+                    int mi = AudioServer.GetBusIndex("Master"), si = AudioServer.GetBusIndex(c.srcBus);
+                    var capM = new AudioEffectCapture { BufferLength = 1.0f };
+                    var capS = new AudioEffectCapture { BufferLength = 1.0f };
+                    AudioServer.AddBusEffect(mi, capM);
+                    AudioServer.AddBusEffect(si, capS);
+                    int em = AudioServer.GetBusEffectCount(mi) - 1, es = AudioServer.GetBusEffectCount(si) - 1;
+                    capM.ClearBuffer(); capS.ClearBuffer();
+                    c.act();
+                    await Wait(0.4);
+                    double Rms(AudioEffectCapture cp)
+                    {
+                        int n = cp.GetFramesAvailable(); if (n <= 0) return 0;
+                        double sum = 0; int cnt = 0;
+                        foreach (var f in cp.GetBuffer(n)) { sum += f.X * f.X + f.Y * f.Y; cnt += 2; }
+                        return Math.Sqrt(sum / cnt);
+                    }
+                    master = Rms(capM); src = Rms(capS);
+                    AudioServer.RemoveBusEffect(si, es);
+                    AudioServer.RemoveBusEffect(mi, em);
+                }
+                GD.Print("  ses ölçümü: " + c.name + " -> Master RMS=" + Fmt(master) + (src >= 0 ? "  | kaynak bus " + c.srcBus + " RMS=" + Fmt(src) : ""));
+                Check(master > Thr, "ses enerjisi Master'a ulaştı: " + c.name + " (RMS " + Fmt(master) + ")");
+            }
+            snd.StopAllForTest();
+            snd.WriteDiag();
+            GD.Print(snd.BuildDiag());
         }
     }
 }

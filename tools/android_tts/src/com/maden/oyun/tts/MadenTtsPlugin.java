@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
 import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -114,6 +115,27 @@ public class MadenTtsPlugin extends GodotPlugin {
 
     @UsedByGodot
     public void ClearError() { synchronized (lock) { lastError = ""; } }
+
+    /** Ses tanisi: medya (STREAM_MUSIC, oyun sesi) ve erisilebilirlik (konusma) akisi seviyeleri. TTS erisilebilirlik akisini kullanir; medya sesi 0 ise efektler/muzik duyulmaz. */
+    @UsedByGodot
+    public String GetAudioInfo() {
+        JSONObject o = new JSONObject();
+        try {
+            Context c = ctx();
+            AudioManager am = c == null ? null : (AudioManager) c.getSystemService(Context.AUDIO_SERVICE);
+            if (am == null) { o.put("error", "AudioManager yok"); return o.toString(); }
+            o.put("musicVol", am.getStreamVolume(AudioManager.STREAM_MUSIC));
+            o.put("musicMax", am.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+            o.put("musicMuted", am.isStreamMute(AudioManager.STREAM_MUSIC));
+            o.put("a11yVol", am.getStreamVolume(10 /* STREAM_ACCESSIBILITY */));
+            o.put("a11yMax", am.getStreamMaxVolume(10));
+            o.put("ringerMode", am.getRingerMode());
+            o.put("mode", am.getMode());
+            o.put("musicActive", am.isMusicActive());
+            o.put("micMute", am.isMicrophoneMute());
+        } catch (Throwable t) { try { o.put("error", String.valueOf(t)); } catch (Throwable ignored) { } }
+        return o.toString();
+    }
 
     /** {"state","engine","elapsedMs","lastError","speaking","queued","audioUsage","langResult","voiceResult"} */
     @UsedByGodot

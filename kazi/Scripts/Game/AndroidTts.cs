@@ -201,6 +201,28 @@ namespace Kazi.Game
         /// <summary>"accessibility" (varsayılan; müzik hacminden bağımsız) ya da "media".</summary>
         public static void SetAudioUsage(string usage) { if (HasPlugin) Call("SetAudioUsage", usage ?? "accessibility"); }
 
+        /// <summary>Android ses tanısı (JSON): medya/erişilebilirlik akışı seviyeleri. Köprü yoksa boş.</summary>
+        public static string AudioInfoJson()
+        {
+            if (!HasPlugin) return "";
+            try { return Call("GetAudioInfo").AsString(); } catch { return ""; }
+        }
+
+        /// <summary>Telefonun medya sesi (efekt/müzik akışı) kapalı mı? true = kapalı/0. Bilinmiyorsa false.</summary>
+        public static bool MediaVolumeIsZero()
+        {
+            var j = ParseJson(AudioInfoJson());
+            if (j == null) return false;
+            try
+            {
+                var r = j.Value;
+                if (r.TryGetProperty("musicMuted", out var m) && m.ValueKind == JsonValueKind.True) return true;
+                if (r.TryGetProperty("musicVol", out var v) && v.ValueKind == JsonValueKind.Number && v.GetInt32() <= 0) return true;
+            }
+            catch { }
+            return false;
+        }
+
         // ---------- Konuşma ----------
 
         public static string Speak(string text, float rate, float pitch, bool interrupt, long utteranceId = 0)

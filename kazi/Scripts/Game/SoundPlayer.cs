@@ -30,6 +30,78 @@ namespace Kazi.Game
         const float PitchJitter = 0.05f; // rastgele perde ±%5
 
         public static int MissingCount { get; private set; }
+        public static int PlayCalls { get; private set; }
+        public static int LoadedClips { get; private set; }
+        readonly List<string> _playLog = new List<string>();
+
+        void LogPlay(string what, AudioStreamPlayer p)
+        {
+            PlayCalls++;
+            if (_playLog.Count < 20)
+                _playLog.Add(what + " bus=" + p.Bus + " vol_db=" + p.VolumeDb.ToString("0.0") + " playing=" + p.Playing + " pitch=" + p.PitchScale.ToString("0.00"));
+        }
+
+        /// <summary>Ses tanı günlüğü: user://audio_diag.txt (bus listesi, seviyeler, klip sayısı, ilk 20 Play çağrısı, çıkış sürücüsü).</summary>
+        public string BuildDiag()
+        {
+            var sb = new System.Text.StringBuilder();
+            sb.AppendLine("== Ses tanı günlüğü == " + Time.GetDatetimeStringFromSystem());
+            sb.AppendLine("platform=" + OS.GetName() + " driver=" + DisplayServer.GetName() + " mix_rate=" + AudioServer.GetMixRate() + " output_latency=" + AudioServer.GetOutputLatency().ToString("0.000")
+                + " output_device=" + AudioServer.OutputDevice + " speaker_mode=" + AudioServer.GetSpeakerMode());
+            sb.AppendLine("yüklü klip=" + LoadedClips + " eksik=" + MissingCount + " play_calls=" + PlayCalls + " music_tracks=" + _musicTracks.Count);
+            sb.AppendLine("ayar: musicStep=" + Settings.MusicStep + " sfxStep=" + Settings.SfxStep + " duckDb=" + _duckDb.ToString("0.0"));
+            for (int i = 0; i < AudioServer.BusCount; i++)
+            {
+                var n = AudioServer.GetBusName(i);
+                sb.AppendLine("bus[" + i + "] " + n + " send=" + AudioServer.GetBusSend(i) + " vol_db=" + AudioServer.GetBusVolumeDb(i).ToString("0.0")
+                    + " mute=" + AudioServer.IsBusMute(i) + " solo=" + AudioServer.IsBusSolo(i) + " bypass=" + AudioServer.IsBusBypassingEffects(i)
+                    + " effects=" + AudioServer.GetBusEffectCount(i) + " peak_db=" + AudioServer.GetBusPeakVolumeLeftDb(i, 0).ToString("0.0") + "/" + AudioServer.GetBusPeakVolumeRightDb(i, 0).ToString("0.0"));
+            }
+            sb.AppendLine("android_ses=" + (AndroidTts.AudioInfoJson() is { Length: > 0 } aj ? aj : "(yok/masaüstü)"));
+            sb.Append("kare başına en yüksek tepe dB (açılıştan beri): ");
+            foreach (var kv in _peakMaxDb) sb.Append(kv.Key + "=" + kv.Value.ToString("0.0") + " ");
+            sb.AppendLine();
+            sb.AppendLine("ilk Play çağrıları:");
+            foreach (var l in _playLog) sb.AppendLine("  " + l);
+            return sb.ToString();
+        }
+
+        public void WriteDiag()
+        {
+            try
+            {
+                using var f = FileAccess.Open("user://audio_diag.txt", FileAccess.ModeFlags.Write);
+                f?.StoreString(BuildDiag());
+            }
+            catch (Exception e) { GD.PushWarning("audio_diag yazılamadı: " + e.Message); }
+        }
+        static readonly double[] DiagTimes = { 5, 30, 120 };
+        int _diagIdx;
+        readonly Dictionary<string, float> _peakMaxDb = new Dictionary<string, float>();
+        bool _mediaChecked;
+
+        /// <summary>Kare başına en yüksek tepe seviyesi (dB): Master'a gerçekten ses ulaşıyor mu cihazda da görülsün.</summary>
+        void SamplePeaks()
+        {
+            for (int i = 0; i < AudioServer.BusCount; i++)
+            {
+                string n = AudioServer.GetBusName(i);
+                float pk = Math.Max(AudioServer.GetBusPeakVolumeLeftDb(i, 0), AudioServer.GetBusPeakVolumeRightDb(i, 0));
+                if (!_peakMaxDb.TryGetValue(n, out float cur) || pk > cur) _peakMaxDb[n] = pk;
+            }
+        }
+
+        /// <summary>Açılıştan kısa süre sonra: telefonun MEDYA sesi 0 ise (konuşma erişilebilirlik akışında olduğu için duyulur) kullanıcıyı uyar.</summary>
+        void CheckMediaVolume()
+        {
+            _mediaChecked = true;
+            try
+            {
+                if (OS.GetName() == "Android" && AndroidTts.MediaVolumeIsZero())
+                    Speech.Instance?.Say("Telefonun medya sesi kapalı. Efektler ve müzik için ses tuşuyla medya sesini aç.", SpeechPriority.High);
+            }
+            catch (Exception e) { GD.PushWarning("Medya sesi denetimi: " + e.Message); }
+        }
         public static readonly List<string> Missing = new List<string>();
 
         /// <summary>Kodun kullandığı TÜM efekt aileleri (base, base_1..8). Açılışta önyüklenir ve varlığı denetlenir.</summary>
@@ -96,8 +168,8 @@ namespace Kazi.Game
             for (int i = 0; i < SfxPoolSize; i++) _sfxPool.Add(new Voice { P = NewPlayer("sfx" + i, BusSfx) });
             for (int i = 0; i < ScratchPoolSize; i++) _scratchPool.Add(new Voice { P = NewPlayer("scr" + i, PanBuses[2]) });
             for (int i = 0; i < TickPoolSize; i++) _tickPool.Add(new Voice { P = NewPlayer("tick" + i, PanBuses[2]) });
-            _music = new Crossfade(NewPlayer("musicA", BusMusic), NewPlayer("musicB", BusMusic));
-            _ambient = new Crossfade(NewPlayer("ambA", BusAmbient), NewPlayer("ambB", BusAmbient)) { FadeSeconds = 4f };
+            _music = new Crossfade(NewPlayer("musicA", BusMusic), NewPlayer("musicB", BusMusic), this);
+            _ambient = new Crossfade(NewPlayer("ambA", BusAmbient), NewPlayer("ambB", BusAmbient), this) { FadeSeconds = 4f };
             foreach (var k in LoopKeys) _loops[k] = new LoopVoice { P = NewPlayer("loop_" + k, BusLoops) };
 
             _musicTracks = FindMusic();
@@ -206,6 +278,7 @@ namespace Kazi.Game
             foreach (var k in AmbientKeys)
                 if (Load("ambient/" + k) is AudioStreamOggVorbis ogg) { ogg.Loop = true; n++; }
             foreach (var m in _musicTracks) if (Load(m) != null) n++;
+            LoadedClips = n;
             GD.Print("Ses önyüklendi: " + n + " klip, eksik: " + MissingCount);
         }
 
@@ -247,6 +320,7 @@ namespace Kazi.Game
             }
             else { v.StopAt = 0; }
             v.P.Play(m.Start);
+            LogPlay("sfx " + key, v.P);
         }
 
         /// <summary>Kırpılmış kısa vuruşlarda bitişe yaklaşırken sön, sonra durdur (çıtlama olmasın).</summary>
@@ -319,7 +393,17 @@ namespace Kazi.Game
                 l.Level = 0f;
                 l.P.VolumeDb = -80f;
                 l.P.Play((float)(_rng.NextDouble() * Math.Max(0.1, s.GetLength() - 0.1)));
+                LogPlay("loop " + key, l.P);
             }
+        }
+
+        /// <summary>Selftest: her şeyi durdur (ölçüm temiz olsun); müzik/ortam zamanlayıcıları askıya alınır.</summary>
+        public void StopAllForTest()
+        {
+            _musicNextAt = -1; _ambientNextAt = -1;
+            foreach (var c in GetChildren()) if (c is AudioStreamPlayer ap) ap.Stop();
+            foreach (var l in _loops.Values) { l.Target = 0f; l.Level = 0f; }
+            _music.Reset(); _ambient.Reset();
         }
 
         public bool LoopOn(string key) => _loops.TryGetValue(key, out var l) && l.Target > 0f;
@@ -374,6 +458,9 @@ namespace Kazi.Game
             double now = NowSec();
             float dt = (float)delta;
 
+            SamplePeaks();
+            if (_diagIdx < DiagTimes.Length && now >= DiagTimes[_diagIdx]) { WriteDiag(); _diagIdx++; }
+            if (!_mediaChecked && now >= 6) CheckMediaVolume();
             if (_musicNextAt >= 0 && now >= _musicNextAt) NextMusic();
             if (_ambientNextAt >= 0 && now >= _ambientNextAt) NextAmbient();
 
@@ -431,7 +518,8 @@ namespace Kazi.Game
             int _active = -1;
             public float FadeSeconds = 3f;
 
-            public Crossfade(AudioStreamPlayer a, AudioStreamPlayer b) { _p[0] = a; _p[1] = b; }
+            public SoundPlayer Owner;
+            public Crossfade(AudioStreamPlayer a, AudioStreamPlayer b, SoundPlayer owner = null) { _p[0] = a; _p[1] = b; Owner = owner; }
 
             public void CrossTo(AudioStream s, float gainDb = 0f)
             {
@@ -443,7 +531,10 @@ namespace Kazi.Game
                 _p[next].VolumeDb = -80f;
                 _p[next].Play();
                 _active = next;
+                Owner?.LogPlay("xfade", _p[next]);
             }
+
+            public void Reset() { _active = -1; _level[0] = _level[1] = 0f; }
 
             public void Tick(float dt)
             {
