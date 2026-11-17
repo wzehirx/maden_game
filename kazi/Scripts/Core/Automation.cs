@@ -15,16 +15,8 @@ namespace Kazi.Core
             CardTypeDef t;
             if (stats.AutoTypeLevel > 0 && st.AutoType != "" && cfg.TypeById.TryGetValue(st.AutoType, out t)
                 && t.Catalog <= Math.Min(st.UnlockedCatalog, stats.AutoTypeLevel)) return t;
-            // Tür seçici yokken: birinci katalogdaki, bakiyenin dörtte birini aşmayan en pahalı kart (yoksa en ucuz).
-            CardTypeDef best = null, cheap = null;
-            foreach (var c in cfg.CardTypes)
-            {
-                if (c.Catalog != 1 || c.IsGate) continue;
-                long price = stats.TicketPrice(c);
-                if (cheap == null || price < stats.TicketPrice(cheap)) cheap = c;
-                if (price * 4 <= st.Money && (best == null || price > stats.TicketPrice(best))) best = c;
-            }
-            return best ?? cheap;
+            // Tür seçici yokken: açık kataloglardaki en çok kazandıran, bilet bedeli bakiyenin yarısını aşmayan tür.
+            return Economy.BestType(cfg, stats, st.UnlockedCatalog, st.Money, 0.5);
         }
 
         public int BufferTarget()

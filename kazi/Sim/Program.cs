@@ -10,9 +10,10 @@ namespace Kazi.Sim
     public sealed class Strategy
     {
         public double ActionsPerSec = 1.7;       // elle dokunuş/eylem hızı (≈10 kart/dk sıralı modda)
-        public double BankrollFraction = 0.25;   // kart fiyatı ≤ bankroll × bu
+        public double BankrollFraction = 0.5;   // kart fiyatı ≤ bankroll × bu
         public double GateMoneyFactor = 2.5;     // Son Şans kartı için gereken bakiye / fiyat
-        public double HorizonSeconds = 120;      // bu süre içinde biriken gelirle ulaşılabilen kalemler adaydır
+        public double HorizonSeconds = 120;
+        public double PaybackFactor = 1e9;      // bu süre içinde biriken gelirle ulaşılabilen kalemler adaydır
         public bool ManualAfterAuto = false;
         public double MaxHours = 40;
         public double Dt = 0.25;
@@ -95,18 +96,7 @@ namespace Kazi.Sim
             public double lastMarkT;
         }
 
-        static double Net(Stats st, CardTypeDef t, GameConfig cfg)
-        {
-            double gross = Odds.ExpectedPayMult(t, st.Luck, cfg.Settings) * t.Price * st.PayoutMult;
-            if (t.IsGate && t.PityAfter > 0)
-            {
-                double p = Odds.WinChance(t, st.Luck, cfg.Settings);
-                double trials = Odds.ExpectedTrialsPerWin(t, st.Luck, cfg.Settings);
-                gross = Odds.ExpectedPayMult(t, st.Luck, cfg.Settings) / Math.Max(1e-9, p) / trials * t.Price * st.PayoutMult;
-            }
-            double pen = Odds.ExpectedPenaltyMult(t, st.Luck, cfg.Settings) * t.Price;
-            return gross - pen - st.TicketPrice(t);
-        }
+        static double Net(Stats st, CardTypeDef t, GameConfig cfg) { return Economy.ExpectedNet(cfg, st, t); }
 
         static CardTypeDef BestType(Bot b, Stats st, int maxCat, double bankroll, double money)
         {
@@ -130,23 +120,23 @@ namespace Kazi.Sim
             if (auto)
             {
                 int maxCat = st.AutoTypeLevel > 0 ? Math.Min(state.UnlockedCatalog, st.AutoTypeLevel) : 1;
-                var t = BestType(b, st, st.AutoTypeLevel > 0 ? maxCat : 1, bankroll, double.MaxValue);
+                var t = BestType(b, st, state.UnlockedCatalog, double.MaxValue, double.MaxValue);
                 if (t == null) return 0;
                 double cpm = st.AutoCpm * st.Batch;
                 return cpm / 60.0 * Net(st, t, b.Cfg);
             }
             else
             {
-                var t = BestType(b, st, state.UnlockedCatalog, bankroll, double.MaxValue);
+                var t = BestType(b, st, state.UnlockedCatalog, double.MaxValue, double.MaxValue);
                 if (t == null) return 0;
                 double actions = 1 + Math.Ceiling(t.Cells / (double)st.ScratchPower);
                 double manual = b.St.ActionsPerSec / actions * Net(st, t, b.Cfg);
-                if (st.AutoOwned && st.AutoBuyOwned) manual += st.AutoCpm * st.Batch / 60.0 * Net(st, BestType(b, st, 1, bankroll, double.MaxValue), b.Cfg);
+                if (st.AutoOwned && st.AutoBuyOwned) manual += st.AutoCpm * st.Batch / 60.0 * Net(st, BestType(b, st, state.UnlockedCatalog, double.MaxValue, double.MaxValue), b.Cfg);
                 return manual;
             }
         }
 
-        static readonly HashSet<string> Mandatory = new HashSet<string> { "oto_kaziyici", "oto_alim", "oto_tur" };
+        static readonly HashSet<string> Mandatory = new HashSet<string> { "oto_kaziyici", "oto_alim" };
 
         static void Mark_(Bot b, string label)
         {
@@ -232,8 +222,7 @@ namespace Kazi.Sim
             CardTypeDef t = forceType;
             if (t == null)
             {
-                double bankroll = Math.Max(st.Money, b.LastBuyCost);
-                t = BestType(b, s.Stats, st.UnlockedCatalog, bankroll, st.Money);
+                t = BestType(b, s.Stats, st.UnlockedCatalog, st.Money, st.Money);
             }
             if (t == null) return;
             bool okb = s.BuyCard(t.Id);
@@ -274,6 +263,8 @@ namespace Kazi.Sim
             // yükseltmeler
             double bankroll = Math.Max(st.Money, b.LastBuyCost);
             double inc0 = Income(b, s.Stats, st, bankroll);
+            double gateNeed = 0;
+            { var gc = cfg.GateOfCatalog(st.UnlockedCatalog); if (gc != null && !st.PrestigeOffer) gateNeed = s.Stats.TicketPrice(gc) * b.St.GateMoneyFactor; }
             Cand best = null, cheapest = null;
             foreach (var u in cfg.Upgrades)
             {
@@ -293,6 +284,13 @@ namespace Kazi.Sim
                     if (u.Kind == EffectKind.Offline || u.Kind == EffectKind.Refund || u.Kind == EffectKind.Lens) score = 1e-16;
                 }
                 var cd = new Cand { Kind = "u", Id = u.Id, Cost = cost, Score = score };
+                if (gateNeed > 0 && !Mandatory.Contains(u.Id) && score > 1e-14)
+                {
+                    // Son Şans kapısı yaklaşırken yalnızca kısa sürede kendini geri ödeyen yükseltmeler alınır
+                    double dInc = score * cost;
+                    double remaining = Math.Max(0, gateNeed - st.Money) / Math.Max(1e-9, inc0);
+                    if (cost / Math.Max(1e-12, dInc) > Math.Max(30, remaining * b.St.PaybackFactor)) continue;
+                }
                 if (cheapest == null || cost < cheapest.Cost) cheapest = cd;
                 if (cost <= st.Money + inc0 * b.St.HorizonSeconds || cost <= st.Money)
                     if (best == null || score > best.Score) best = cd;
@@ -306,16 +304,24 @@ namespace Kazi.Sim
                 double need = s.Stats.TicketPrice(gateC) * b.St.GateMoneyFactor;
                 if (need <= st.Money + inc0 * 180) reserve = need;
             }
+            // oynanan en iyi kartın bedelini koruyacak küçük tampon
+            double buffer = 0;
+            {
+                int mc = st.UnlockedCatalog;
+                var bt = BestType(b, s.Stats, mc, double.MaxValue, double.MaxValue);
+                if (bt != null) buffer = s.Stats.TicketPrice(bt) * 2.0;
+            }
+            reserve = Math.Max(reserve, buffer);
             if (target != null && target.Cost <= st.Money && st.Money - target.Cost >= reserve)
             {
                 if (s.BuyUpgrade(target.Id)) { b.LastBuyCost = Math.Max(10, target.Cost); }
             }
             // otomatik tür
-            if (b.T >= b.NextTypePick && s.Stats.AutoTypeLevel > 0)
+            if (false && b.T >= b.NextTypePick && s.Stats.AutoTypeLevel > 0)
             {
                 b.NextTypePick = b.T + 5;
                 int maxCat = Math.Min(st.UnlockedCatalog, s.Stats.AutoTypeLevel);
-                var t = BestType(b, s.Stats, maxCat, Math.Max(st.Money, b.LastBuyCost), st.Money);
+                var t = BestType(b, s.Stats, maxCat, st.Money, st.Money);
                 if (t != null) s.SetAutoType(t.Id);
             }
         }

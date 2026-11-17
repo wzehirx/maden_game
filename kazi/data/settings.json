@@ -16,7 +16,7 @@
   10,
   50
  ],
- "autoBaseCpm": 15,
+ "autoBaseCpm": 12,
  "baseBag": 1,
  "baseOfflineSeconds": 600,
  "maxDiscount": 0.5,

@@ -6,7 +6,7 @@ namespace Kazi.Core
     /// <summary>İhtimal ve beklenen getiri hesapları. Kart üreticisiyle AYNI formülleri kullanır; RTP testi ikisini karşılaştırır.</summary>
     public static class Odds
     {
-        private const double MaxShift = 1.0;
+        private const double MaxShift = 0.5;
 
         public static double WinChance(CardTypeDef t, double luck, SettingsDef s)
         {
