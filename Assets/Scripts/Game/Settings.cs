@@ -52,7 +52,9 @@ namespace Maden.Game
         public static int MusicStep { get => Get("musicStep", 5); set => Set("musicStep", Math.Clamp(value, 0, MaxStep)); }
         public static int SfxStep { get => Get("sfxStep", 8); set => Set("sfxStep", Math.Clamp(value, 0, MaxStep)); }
         public static int SpeechStep { get => Get("speechStep", 3); set => Set("speechStep", Math.Clamp(value, 0, SpeechRates.Length - 1)); }
-        /// <summary>Seçilen konuşma sesi kimliği. Boş = telefonun varsayılan motoru/sesi.</summary>
+        /// <summary>Seçilen konuşma motoru (Android paket adı). Boş = telefonun varsayılan motoru.</summary>
+        public static string EngineId { get => GetStr("engineId", ""); set => SetStr("engineId", value ?? ""); }
+        /// <summary>Seçilen konuşma sesi kimliği. Boş = seçili motorun varsayılan sesi. Motor değişince sıfırlanır.</summary>
         public static string VoiceId { get => GetStr("voiceId", ""); set => SetStr("voiceId", value ?? ""); }
         public static bool HapticsOn { get => Get("haptics", 1) == 1; set => Set("haptics", value ? 1 : 0); }
         public static bool TutorialDone { get => Get("tutorialDone", 0) == 1; set => Set("tutorialDone", value ? 1 : 0); }

@@ -9,8 +9,8 @@ namespace Maden.Game
     /// </summary>
     public sealed class SettingsMenu
     {
-        enum Item { Music, Sfx, SpeechRate, Voice, Haptics, Tutorial }
-        const int ItemCount = 6;
+        enum Item { Music, Sfx, SpeechRate, Engine, Voice, Haptics, Tutorial }
+        const int ItemCount = 7;
 
         readonly Speech _speech;
         readonly SoundPlayer _sound;
@@ -29,7 +29,7 @@ namespace Maden.Game
             IsOpen = true;
             _index = 0;
             _sound.PlaySfx("menu_open");
-            _speech.Say("Ayarlar. Sola ve sağa kaydır: ayar seç. Yukarı ve aşağı kaydır: değiştir. Ses seçimi de buradan yapılır. Üç parmakla dokunursan kapanır. " + Describe(), SpeechPriority.Critical);
+            _speech.Say("Ayarlar. Sola ve sağa kaydır: ayar seç. Yukarı ve aşağı kaydır: değiştir. Konuşma motoru ve ses seçimi de buradan yapılır. Üç parmakla dokunursan kapanır. " + Describe(), SpeechPriority.Critical);
         }
 
         public void Close()
@@ -66,6 +66,10 @@ namespace Maden.Game
                 case Item.Music: Settings.MusicStep += d; break;
                 case Item.Sfx: Settings.SfxStep += d; _sound.PlayHit(0); break;
                 case Item.SpeechRate: Settings.SpeechStep += d; break;
+                case Item.Engine:
+                    // Motor değişir, kaydedilir; yeni motor açılınca adı ve örnek cümle onunla okunur.
+                    _speech.SelectEngineOption(_speech.CurrentEngineOption() + d);
+                    return;
                 case Item.Voice:
                     // Seçim kaydedilir; ad ve örnek cümle yeni sesle okunur (Describe çağrılmaz).
                     _speech.SelectVoiceOption(_speech.CurrentVoiceOption() + d);
@@ -91,7 +95,12 @@ namespace Maden.Game
                 case Item.Sfx: return "Efekt sesi yüzde " + Settings.SfxStep * 10;
                 case Item.SpeechRate:
                     return "Konuşma hızı " + (Settings.SpeechStep + 1) + " üzerinden " + Settings.SpeechStepCount;
- case Item.Voice:
+                case Item.Engine:
+                    return "Konuşma motoru: " + _speech.EngineOptionName(_speech.CurrentEngineOption()) + ". " +
+                        (_speech.EngineChoiceAvailable
+                            ? (_speech.CurrentEngineOption() + 1) + " / " + _speech.EngineOptionCount + ". Değiştirmek için yukarı veya aşağı kaydır."
+                            : "Bu cihazda motor seçimi yok.");
+                case Item.Voice:
                     return "Ses seçimi: " + _speech.VoiceOptionName(_speech.CurrentVoiceOption()) + ". " + (_speech.CurrentVoiceOption() + 1) + " / " + _speech.VoiceOptionCount + ". Değiştirmek için yukarı veya aşağı kaydır.";
                 case Item.Haptics: return "Titreşim " + (Settings.HapticsOn ? "açık" : "kapalı");
                 default: return "Öğreticiyi tekrar dinle. Başlatmak için yukarı veya aşağı kaydır.";
