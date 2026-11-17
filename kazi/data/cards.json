@@ -3,27 +3,27 @@
   {
    "id": 1,
    "name": "Mahalle Bayii",
-   "gateLevels": 215
+   "gateLevels": 181
   },
   {
    "id": 2,
    "name": "Çarşı Pazarı",
-   "gateLevels": 419
+   "gateLevels": 576
   },
   {
    "id": 3,
    "name": "Han Köşkü",
-   "gateLevels": 551
+   "gateLevels": 754
   },
   {
    "id": 4,
    "name": "Saray Köşkü",
-   "gateLevels": 674
+   "gateLevels": 909
   },
   {
    "id": 5,
    "name": "Altın Köşk",
-   "gateLevels": 757
+   "gateLevels": 1013
   }
  ],
  "cardTypes": [
@@ -65,19 +65,19 @@
     {
      "id": "vapur",
      "name": "Vapur",
-     "weight": 3,
-     "pay": 20,
+     "weight": 4,
+     "pay": 12,
      "kind": "Normal"
     },
     {
      "id": "lale",
      "name": "Lale",
-     "weight": 1,
-     "pay": 60,
+     "weight": 2,
+     "pay": 25,
      "kind": "Normal"
     }
    ],
-   "winChance": 0.3655,
+   "winChance": 0.3984,
    "maxWinChance": 0.8
   },
   {
@@ -133,20 +133,20 @@
      "id": "n7",
      "name": "yedi",
      "weight": 3,
-     "pay": 20.0,
+     "pay": 12.0,
      "kind": "Normal"
     },
     {
      "id": "n8",
      "name": "sekiz",
-     "weight": 1,
-     "pay": 50.0,
+     "weight": 2,
+     "pay": 30.0,
      "kind": "Normal"
     }
    ],
    "doubleChance": 0.15,
-   "winChance": 0.3089,
-   "maxWinChance": 0.772
+   "winChance": 0.3244,
+   "maxWinChance": 0.8
   },
   {
    "id": "mahalle_sonsans",
@@ -351,7 +351,7 @@
    "name": "Çarşı Son Şansı",
    "catalog": 2,
    "rule": "SonSans",
-   "price": 10435,
+   "price": 20000,
    "symbols": [
     {
      "id": "anahtar",
@@ -519,7 +519,7 @@
    "name": "Han Son Şansı",
    "catalog": 3,
    "rule": "SonSans",
-   "price": 62218081,
+   "price": 800000,
    "symbols": [
     {
      "id": "anahtar",
@@ -674,20 +674,20 @@
      "id": "n7",
      "name": "yedi",
      "weight": 3,
-     "pay": 20.0,
+     "pay": 12.0,
      "kind": "Normal"
     },
     {
      "id": "n8",
      "name": "sekiz",
-     "weight": 1,
-     "pay": 50.0,
+     "weight": 2,
+     "pay": 30.0,
      "kind": "Normal"
     }
    ],
    "doubleChance": 0.2,
-   "winChance": 0.2826,
-   "maxWinChance": 0.707
+   "winChance": 0.2969,
+   "maxWinChance": 0.742
   },
   {
    "id": "divan_tuzagi",
@@ -763,7 +763,7 @@
    "name": "Saray Son Şansı",
    "catalog": 4,
    "rule": "SonSans",
-   "price": 4493316991,
+   "price": 60000000,
    "symbols": [
     {
      "id": "anahtar",
@@ -945,7 +945,7 @@
    "name": "Altın Bilet Son Şansı",
    "catalog": 5,
    "rule": "AltinBilet",
-   "price": 4293705257394,
+   "price": 1200000000,
    "symbols": [
     {
      "id": "anahtar",

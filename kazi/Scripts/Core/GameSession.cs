@@ -217,13 +217,13 @@ namespace Kazi.Core
         {
             var t = c.Type;
             var r = c.Resolve();
-            long gross = r.Win ? (long)Math.Round(t.Price * r.PayMult * Stats.PayoutMult, MidpointRounding.AwayFromZero) : 0;
-            long penalty = r.PenaltyMult > 0 ? (long)Math.Ceiling(t.Price * r.PenaltyMult) : 0;
+            long gross = r.Win ? SafeLong(t.Price * r.PayMult * Stats.PayoutMult) : 0;
+            long penalty = r.PenaltyMult > 0 ? SafeLong(Math.Ceiling(t.Price * r.PenaltyMult)) : 0;
             long net = gross - penalty;
             long delta;
             if (net >= 0) { State.Wallet.Add(net); delta = net; }
             else { delta = -State.Wallet.SpendUpTo(-net); }
-            State.RunEarned += gross; State.TotalEarned += gross; State.TotalCards++;
+            State.RunEarned = SatAdd(State.RunEarned, gross); State.TotalEarned = SatAdd(State.TotalEarned, gross); State.TotalCards++;
             Rarity rar = RarityOf(t, gross);
 
             if (t.IsGate)
@@ -249,6 +249,19 @@ namespace Kazi.Core
 
             if (t.IsGate && r.GateHit) OnGateHit(t);
             return delta;
+        }
+
+        internal static long SafeLong(double v)
+        {
+            if (double.IsNaN(v) || v <= 0) return 0;
+            if (v >= 4.0e18) return 4000000000000000000L;
+            return (long)Math.Round(v, MidpointRounding.AwayFromZero);
+        }
+
+        internal static long SatAdd(long a, long b)
+        {
+            long r = a + b;
+            return r < a ? long.MaxValue : r;
         }
 
         private void OnGateHit(CardTypeDef t)
@@ -332,9 +345,10 @@ namespace Kazi.Core
                 if (cost <= State.Money) { if (!notified.Contains(key)) fresh.Add(u); }
                 else notified.Remove(key);
             }
-            if (fresh.Count == 0) return;
-            if (!notifyInit) { notifyInit = true; foreach (var u in fresh) notified.Add(u.Id + "#" + State.Level(u.Id)); return; }
+            bool first = !notifyInit;
             notifyInit = true;
+            if (fresh.Count == 0) return;
+            if (first) { foreach (var u in fresh) notified.Add(u.Id + "#" + State.Level(u.Id)); return; } // oyun açılışında zaten alınabilenler sessiz
             if (State.PlaySeconds - lastNotifyAt < Config.Settings.AffordableCooldownSeconds) return;
             lastNotifyAt = State.PlaySeconds;
             foreach (var u in fresh) notified.Add(u.Id + "#" + State.Level(u.Id));

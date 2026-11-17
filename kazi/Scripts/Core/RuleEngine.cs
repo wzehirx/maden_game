@@ -34,7 +34,7 @@ namespace Kazi.Core
                     break;
                 case CardRule.Multiplier:
                     Triples(t, cells, 0, 6, ref r);
-                    if (r.Win)
+                    if (r.PayMult > 0)
                     {
                         int mi = cells[6];
                         double m = (mi >= 0 && mi < t.Multipliers.Count) ? t.Multipliers[mi].Mult : 1.0;

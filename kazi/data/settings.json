@@ -3,7 +3,7 @@
  "discardRefundPct": 0.4,
  "offlineCapSeconds": 7200,
  "autosaveSeconds": 30,
- "startMoney": 20,
+ "startMoney": 30,
  "scratchThresholds": {
   "open": 0.55,
   "peek": 0.25
@@ -25,7 +25,7 @@
  "autoReportSeconds": 60,
  "autoPeekCells": 3,
  "abBase": 5,
- "abRefEarned": 1000000000,
+ "abRefEarned": 45000000000000.0,
  "abExponent": 0.5,
  "minUpgradeCostMult": 0.3,
  "autoBufferFactor": 2

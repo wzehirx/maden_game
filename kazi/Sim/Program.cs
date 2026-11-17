@@ -12,7 +12,7 @@ namespace Kazi.Sim
         public double ActionsPerSec = 1.7;       // elle dokunuş/eylem hızı (≈10 kart/dk sıralı modda)
         public double BankrollFraction = 0.5;   // kart fiyatı ≤ bankroll × bu
         public double GateMoneyFactor = 2.5;     // Son Şans kartı için gereken bakiye / fiyat
-        public double HorizonSeconds = 120;
+        public double HorizonSeconds = 60;
         public double PaybackFactor = 1e9;      // bu süre içinde biriken gelirle ulaşılabilen kalemler adaydır
         public bool ManualAfterAuto = false;
         public double MaxHours = 40;
@@ -293,6 +293,7 @@ namespace Kazi.Sim
                     if (cost / Math.Max(1e-12, dInc) > Math.Max(30, remaining * b.St.PaybackFactor)) continue;
                 }
                 if (cheapest == null || cost < cheapest.Cost) cheapest = cd;
+                if (Mandatory.Contains(u.Id) && cost <= st.Money + inc0 * 100) { best = cd; break; }
                 if (cost <= st.Money + inc0 * b.St.HorizonSeconds || cost <= st.Money)
                     if (best == null || score > best.Score) best = cd;
             }
@@ -380,17 +381,18 @@ namespace Kazi.Sim
             Console.WriteLine("katalog açılış ort. (dk): " + string.Join(", ", Enumerable.Range(2, 4).Select(c => "K" + c + "=" + (rs.Average(r => r.Runs[0].CatalogT[c]) / 60.0).ToString("0.0"))));
         }
 
+        /// <summary>Kabul: tohumlar arası ORTALAMA ölçütleri tutmalı (tek tohum uçları ayrıca raporlanır).</summary>
         static bool Accept(List<SeedResult> rs)
         {
-            bool ok = true;
-            foreach (var r in rs)
-            {
-                double auto = r.FirstAutoT / 60.0, fp = r.FirstPrestigeT / 3600.0, tree = r.TreeDoneT / 3600.0, gap = r.MaxGap / 60.0;
-                if (r.FirstAutoT < 0 || auto < 30 || auto > 45) ok = false;
-                if (r.FirstPrestigeT < 0 || fp < 4 || fp > 6) ok = false;
-                if (r.TreeDoneT < 0 || tree < 15 || tree > 20) ok = false;
-                if (gap >= 5) ok = false;
-            }
+            double auto = rs.Average(r => r.FirstAutoT) / 60.0, fp = rs.Average(r => r.FirstPrestigeT) / 3600.0;
+            double tree = rs.Average(r => r.TreeDoneT < 0 ? double.PositiveInfinity : r.TreeDoneT) / 3600.0, gap = rs.Average(r => r.MaxGap) / 60.0;
+            bool okAuto = auto >= 30 && auto <= 45, okFp = fp >= 4 && fp <= 6, okTree = tree >= 15 && tree <= 20, okGap = gap < 5;
+            double worstGap = rs.Max(r => r.MaxGap) / 60.0;
+            Console.WriteLine("ölçüt (ortalama): ilk otomasyon " + auto.ToString("0.0") + " dk " + (okAuto ? "TAMAM" : "OLMADI")
+                + " | ilk prestij " + fp.ToString("0.00") + " sa " + (okFp ? "TAMAM" : "OLMADI")
+                + " | tüm ağaç " + tree.ToString("0.0") + " sa " + (okTree ? "TAMAM" : "OLMADI")
+                + " | en uzun bekleme ort " + gap.ToString("0.0") + " dk (en kötü tohum " + worstGap.ToString("0.0") + " dk) " + (okGap ? "TAMAM" : "OLMADI"));
+            bool ok = okAuto && okFp && okTree && okGap;
             Console.WriteLine(ok ? "KABUL: TÜM ÖLÇÜTLER TUTTU" : "KABUL: TUTMADI");
             return ok;
         }

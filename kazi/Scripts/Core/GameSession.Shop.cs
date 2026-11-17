@@ -272,6 +272,7 @@ namespace Kazi.Core
             }
             State.AB -= n.Cost;
             State.Nodes[n.Id] = 1;
+            Prestige.GrantStartUnlocks(Config, State);
             RecalcStats();
             // kalıcı ağacın anında etkisi: koşu başı değerler bir sonraki sıfırlamada uygulanır; ancak otomasyon ve katalog hemen geçerli olsun
             if (n.Kind == EffectKind.StartCatalog && State.UnlockedCatalog < Stats.StartCatalog) State.UnlockedCatalog = Stats.StartCatalog;
