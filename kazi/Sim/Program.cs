@@ -158,7 +158,7 @@ namespace Kazi.Sim
                         Mark_(bot, e.Symbol + " alındı");
                         if (e.Symbol == "oto_kaziyici" && bot.Cur.FirstAutoT < 0) bot.Cur.FirstAutoT = bot.T;
                         break;
-                    case EventKind.CardResult: if (trace && e.Symbol.EndsWith("sonsans") || e.Symbol == "altin_bilet") Console.WriteLine("    gate sonuç " + H(bot.T) + " " + e.Speech + " para " + NumberFormat.Short(state.Money)); break;
+                    case EventKind.CardResult: if (trace && (e.Symbol.EndsWith("sonsans") || e.Symbol == "altin_bilet")) Console.WriteLine("    gate sonuç " + H(bot.T) + " " + e.Speech + " para " + NumberFormat.Short(state.Money)); break;
                     case EventKind.NodeBought: Mark_(bot, "düğüm " + e.Symbol); break;
                     case EventKind.CatalogUnlocked: Mark_(bot, "katalog " + e.Amount + " açıldı"); bot.Cur.CatalogT[e.Amount] = bot.T - bot.Cur.StartT; break;
                 }
