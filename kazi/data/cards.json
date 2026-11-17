@@ -148,7 +148,7 @@
    "name": "Mahalle Son Şansı",
    "catalog": 1,
    "rule": "SonSans",
-   "price": 10645.609767381346,
+   "price": 10801.91241905445,
    "symbols": [
     {
      "id": "anahtar",
@@ -346,7 +346,7 @@
    "name": "Çarşı Son Şansı",
    "catalog": 2,
    "rule": "SonSans",
-   "price": 296671.2121126021,
+   "price": 386390.9968586189,
    "symbols": [
     {
      "id": "anahtar",
@@ -514,7 +514,7 @@
    "name": "Han Son Şansı",
    "catalog": 3,
    "rule": "SonSans",
-   "price": 2533036085.4203396,
+   "price": 25119974423.26722,
    "symbols": [
     {
      "id": "anahtar",
@@ -758,7 +758,7 @@
    "name": "Saray Son Şansı",
    "catalog": 4,
    "rule": "SonSans",
-   "price": 2191975408210.3032,
+   "price": 54532055419757.01,
    "symbols": [
     {
      "id": "anahtar",
@@ -940,7 +940,7 @@
    "name": "Altın Bilet Son Şansı",
    "catalog": 5,
    "rule": "AltinBilet",
-   "price": 47152766630693.375,
+   "price": 2.414221651491501e+16,
    "symbols": [
     {
      "id": "anahtar",
